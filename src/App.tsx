@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useRoutes } from "react-router-dom"
+
 import { Auth } from "./components/Auth"
 import { Club } from "./components/Club"
 import { Footer } from "./components/Footer"
@@ -9,16 +10,15 @@ import { Preview } from "./components/Preview"
 import { SideBar } from "./components/SideBar"
 
 export const App = () => {
+  const routs = useRoutes([
+    { path: "/freelancers", element: <><Freelancers /><SideBar /></> },
+    { path: "/club", element: <><Club /><SideBar /></> },
+    { path: "/orders", element: <><Orders /><SideBar /></> },
+    { path: "/auth", element: <><Auth /><SideBar /></> },
+    { path: "/", element: <><Preview /></> }])
   return (<div>
     <Header />
-    <Routes>
-      <Route path="freelancers" element={<Freelancers />} />
-      <Route path="club" element={<Club />} />
-      <Route path="orders" element={<Orders />} />
-      <Route path="auth" element={<Auth />} />
-      <Route path="*" element={<Preview />} />
-    </Routes>
-    <SideBar />
+    {routs}
     <Footer />
   </div>)
 }
