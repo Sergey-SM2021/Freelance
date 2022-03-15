@@ -15,7 +15,7 @@ export const Header = () => {
             <HeaderNav isIntro={isIntro}>
                 <HeaderGroup>
                     <NavLink to="orders">Заказы</NavLink>
-                    <NavLink to="specialization">Специалисты</NavLink>
+                    <NavLink to="specialists">Специалисты</NavLink>
                     <NavLink to="services">Услуги</NavLink>
                     <NavLink to="project">Проеты</NavLink>
                     <NavLink to="club">Клуб</NavLink>

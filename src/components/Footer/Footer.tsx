@@ -1,6 +1,6 @@
 import { Container } from "../Common.style"
 import { FooterGrid, FooterWrapper, SocialNetwork, SocialNetworks } from "./Footer.style"
-import { FooterItems } from "./FooterItem"
+import { FooterItems } from "./FooterItem/FooterItem"
 import vk from '../../assets/vk.png'
 import facebook from '../../assets/facebook.png'
 import telegram from '../../assets/telegram.png'

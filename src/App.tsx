@@ -11,7 +11,7 @@ import { SideBar } from "./components/SideBar"
 
 export const App = () => {
   const routs = useRoutes([
-    { path: "/freelancers", element: <><Freelancers /><SideBar /></> },
+    { path: "/specialists", element: <><Freelancers /><SideBar /></> },
     { path: "/club", element: <><Club /><SideBar /></> },
     { path: "/orders", element: <><Orders /><SideBar /></> },
     { path: "/auth", element: <><Auth /><SideBar /></> },
