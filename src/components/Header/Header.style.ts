@@ -20,21 +20,15 @@ export const HeaderTop = styled.div`
     }
 `
 
-export const HeaderNav = styled.div`
+export const HeaderNav = styled.div<{ isIntro: boolean }>`
     display: flex;
     justify-content: space-between;
     height: 45px;
     align-items: center;
-`
-
-export const HeaderGroup = styled.div`
-    a:first-child{
-        margin: 0px;
-    };
     a{
         font-size: 18px;
         font-weight: 500;
-        color: #999;
+        color: ${(props) => (props.isIntro ? "#000" : "#999")};
         text-decoration: none;
         margin: 0px 0px 0px 15px;
         &:hover{
@@ -45,4 +39,10 @@ export const HeaderGroup = styled.div`
         color: black;
         border-bottom: 2px solid #60bcfa;
     }
+`
+
+export const HeaderGroup = styled.div`
+    a:first-child{
+        margin: 0px;
+    };
 `

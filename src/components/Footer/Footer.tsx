@@ -9,7 +9,7 @@ import twitter from '../../assets/twitter.png'
 import { useLocation } from "react-router-dom"
 
 export const Footer = () => {
-    const isIntro = useLocation().pathname.length>1?false:true
+    const isIntro = useLocation().pathname.length===1?true:false
     return (<FooterWrapper>
         <Container>
             <FooterGrid>
