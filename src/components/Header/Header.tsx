@@ -1,17 +1,17 @@
 import { NavLink, useLocation } from "react-router-dom"
+
 import { Container } from "../Common.style"
-import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper } from './Header.style'
+import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper, HeaderNavBG } from './Header.style'
 
 export const Header = () => {
     const isIntro = useLocation().pathname.length === 1 ? true : false
-    console.log(useLocation().pathname.length)
     return (<HeaderWrapper>
         <HeaderTop>
             <Container>
                 <NavLink to="/">Freelance</NavLink>
             </Container>
         </HeaderTop>
-        <Container>
+        <HeaderNavBG isIntro={isIntro}>
             <HeaderNav isIntro={isIntro}>
                 <HeaderGroup>
                     <NavLink to="orders">Заказы</NavLink>
@@ -25,6 +25,6 @@ export const Header = () => {
                     <NavLink to="registration">Регистрация</NavLink>
                 </HeaderGroup>
             </HeaderNav>
-        </Container>
+        </HeaderNavBG>
     </HeaderWrapper>)
 }

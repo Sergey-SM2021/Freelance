@@ -1,10 +1,19 @@
 import styled from "styled-components"
+import { Container } from "../Common.style"
 
 export const HeaderWrapper = styled.div`
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    &::after{
+        content:"";
+        width: 100%;
+        background-color: black;
+        bottom: 0px;
+        left: 0px;
+        height: 1px;
+        display: block;
+    }
 `
 
 export const HeaderTop = styled.div`
@@ -20,7 +29,7 @@ export const HeaderTop = styled.div`
     }
 `
 
-export const HeaderNav = styled.div<{ isIntro: boolean }>`
+export const HeaderNav = styled(Container) <{ isIntro: boolean }>`
     display: flex;
     justify-content: space-between;
     height: 45px;
@@ -45,4 +54,8 @@ export const HeaderGroup = styled.div`
     a:first-child{
         margin: 0px;
     };
+`
+
+export const HeaderNavBG = styled.div<{isIntro:boolean}>`
+    background-color: ${({isIntro})=>(isIntro?"#32c789":"")};
 `
