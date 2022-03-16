@@ -5,6 +5,7 @@ import {
     SearchWarapper, SearchIcon
 } from "./Freelancers.style"
 import SearchIconPath from '../../assets/search.png'
+import {Freelancer} from './Freelancer/Freelancer'
 
 export const Freelancers = () => {
     return (<FreelancersWrapper>
@@ -15,11 +16,11 @@ export const Freelancers = () => {
                 </FreelancersCount>
                 <SearchWarapper >
                     <Search placeholder="Поиск фрилансеров" />
-                    <SearchIcon src={SearchIconPath} onClick={()=>{alert("searching...")}}/>
+                    <SearchIcon src={SearchIconPath} onClick={() => { alert("searching...") }} />
                 </SearchWarapper>
             </FreelancersHeader>
             <FreelancersBody>
-                <div>Freelancer</div>
+                <Freelancer/>
             </FreelancersBody>
             <Pagination />
         </FreelancersPaper>

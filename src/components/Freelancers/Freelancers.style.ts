@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 export const FreelancersWrapper = styled.div`
     padding: 10px 0px 10px 0px;
-    width: 100%;
+    width: 70%;
 `
 
 export const FreelancersPaper = styled.div`
-    width: 70%;
+    width: 100%;
     background-color: #ffffff;
     min-height: 100vh;
 `
@@ -52,7 +52,7 @@ export const Search = styled.input`
     align-items: center;
     border: none;
     outline: none;
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: #eeee;
 `
@@ -60,4 +60,5 @@ export const Search = styled.input`
 export const SearchIcon = styled.img`
     width: 26px;
     height: 26px;
+    cursor: pointer;
 `
