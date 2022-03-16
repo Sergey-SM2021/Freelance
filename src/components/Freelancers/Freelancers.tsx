@@ -1,29 +1,16 @@
-import {
-    FreelancersBody,
-    FreelancersCount, FreelancersHeader,
-    FreelancersPaper, FreelancersWrapper, Pagination, Search,
-    SearchWarapper, SearchIcon
-} from "./Freelancers.style"
-import SearchIconPath from '../../assets/search.png'
+import {FreelancersBody, FreelancersPaper, FreelancersWrapper, Pagination} from "./Freelancers.style"
 import { Freelancer } from './Freelancer/Freelancer'
 import { useSelector } from "react-redux"
 import { RootType } from "../../store/store"
+import { HeaderPage } from "../HeaderPage/HeaderPage"
 
 export const Freelancers = () => {
-    const freelancers = useSelector((state: RootType)=>(state.freelancers.personsData))
+    const freelancers = useSelector((state: RootType) => (state.freelancers.personsData))
     return (<FreelancersWrapper>
         <FreelancersPaper>
-            <FreelancersHeader>
-                <FreelancersCount>
-                    Фрилансеры (93710)
-                </FreelancersCount>
-                <SearchWarapper >
-                    <Search placeholder="Поиск фрилансеров" />
-                    <SearchIcon src={SearchIconPath} onClick={() => { alert("searching...") }} />
-                </SearchWarapper>
-            </FreelancersHeader>
+            <HeaderPage />
             <FreelancersBody>
-                {freelancers.map(f => <Freelancer {...f}/>)}
+                {freelancers.map(freelancer => <Freelancer {...freelancer} />)}
             </FreelancersBody>
             <Pagination />
         </FreelancersPaper>
