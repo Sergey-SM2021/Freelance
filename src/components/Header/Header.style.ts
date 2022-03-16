@@ -9,8 +9,6 @@ export const HeaderWrapper = styled.div`
         content:"";
         width: 100%;
         background-color: black;
-        bottom: 0px;
-        left: 0px;
         height: 1px;
         display: block;
     }
