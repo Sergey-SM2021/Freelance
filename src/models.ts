@@ -6,5 +6,8 @@ export type FreelancerType = {
     specialization: string,
     projects: [string, string, string],
     steck: Array<string>,
-    price: number
+    price: number,
+    description:string,
+    like:number,
+    dislike:number
 }

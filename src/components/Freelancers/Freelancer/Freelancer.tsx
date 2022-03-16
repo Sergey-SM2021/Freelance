@@ -1,20 +1,37 @@
 import {
-    Ava, FreelancerCard, FreelancerContent, FreelancerDescription,
+    Ava, AvaArea, DisLike, FreelancerCard, FreelancerContent, FreelancerDescription,
     FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill,
-    FreelancerSkills, FreelancerWrapper, Price, PricePer, Secialization
+    FreelancerSkills, FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
 } from "./Freelancer.style"
 import avaIconPath from '../../../assets/man.png'
 import { FreelancerType } from "../../../models"
 
-export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, specialization, steck, price }: FreelancerType) => {
+import { Link } from "react-router-dom"
+
+export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, specialization, steck, price, description,dislike,like }: FreelancerType) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
-            <Ava src={ava} />
+            <AvaArea>
+                <Link to={`/freelancer/${id}/profile`}>
+                    <Ava src={ava} />
+                </Link>
+                <Reviews>
+                    <Link to={`/freelancer/${id}/reviews`}>
+                        <ReviewsInner>
+                            <Like >+{like}</Like>
+                            /
+                            <DisLike >-{dislike}</DisLike>
+                        </ReviewsInner>
+                    </Link>
+                </Reviews>
+            </AvaArea>
             <FreelancerContent>
                 <FreelancerHeader>
                     <div>
                         <FreelancerName>
-                            {name} {lastName}
+                            <Link to={`/freelancer/${id}`}>
+                                {name} {lastName}
+                            </Link>
                         </FreelancerName>
                         <Secialization>
                             {specialization}
@@ -30,14 +47,10 @@ export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, sp
                     </div>
                 </FreelancerHeader>
                 <FreelancerDescription>
-                    Основная информация: Представляю команду профессионалов MetaLamp, в разработке уже более 7 лет.
-                    Команда насчитывает 60 человек, покрываем все часовые пояса России.
-                    Успешно завершили 100+ проектов в разных предметных областях: финансовые технологии, аналитические и образовательные платформы,
-                    логистические системы, маркетплейсы, блокчейн. На фронте имеем мощную экспертизу на стеке Typescript+React.
-                    На бэке специализируемся на Node.js и экзотическом Haskell. Осуществляем проекты под ключ,...
+                    {description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {projects.map((el)=><FreelancerProject src={el}/>)}
+                    {projects.map((el) => <FreelancerProject src={el} />)}
                 </FreelancerProjects>
                 <FreelancerSkills>
                     {steck.map((el) => (<FreelancerSkill >{el}</FreelancerSkill>))}

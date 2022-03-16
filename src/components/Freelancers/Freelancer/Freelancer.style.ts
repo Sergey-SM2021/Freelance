@@ -12,7 +12,8 @@ export const FreelancerCard = styled.div`
 `
 
 export const Ava = styled.img`
-    height: 55px;
+    height: 65px;
+    cursor: pointer;
 `
 
 export const FreelancerContent = styled.div`
@@ -55,7 +56,11 @@ export const FreelancerSkill = styled.button`
 `
 
 export const FreelancerName = styled.h3`
-    
+    cursor: pointer;
+    a{
+        color: black;
+        text-decoration: none;
+    }
 `
 
 export const Secialization = styled.p`
@@ -70,3 +75,28 @@ export const PricePer = styled.p`
     
 `
 
+export const AvaArea = styled.div`
+    
+`
+
+export const Reviews = styled.div`
+    a{
+        color: black;
+        text-decoration: none;
+    }
+`
+
+export const DisLike = styled.div`
+    height: 20px;
+    color: #d10000;
+`
+
+export const Like = styled.div`
+    height: 20px;
+    color: green;
+`
+
+export const ReviewsInner = styled.div`
+    display: flex;
+    justify-content: space-around;
+`
