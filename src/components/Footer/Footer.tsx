@@ -1,10 +1,10 @@
 import { Container } from "../Common.style"
 import { FooterGrid, FooterWrapper, SocialNetwork, SocialNetworks } from "./Footer.style"
 import { FooterItems } from "./FooterItem/FooterItem"
-import vk from '../../assets/vk.png'
-import facebook from '../../assets/facebook.png'
-import telegram from '../../assets/telegram.png'
-import twitter from '../../assets/twitter.png'
+import vk from '../../assets/socialNetworks/vk.png'
+import facebook from '../../assets/socialNetworks/facebook.png'
+import telegram from '../../assets/socialNetworks/telegram.png'
+import twitter from '../../assets/socialNetworks/twitter.png'
 
 import { useLocation } from "react-router-dom"
 

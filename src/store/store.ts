@@ -1,9 +1,10 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
-import { specialists } from './reducers/specialists'
+import { freelancers } from './reducers/freelancers'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-    specialists
+    freelancers
 })
 
 export const store = createStore(rootReducer,applyMiddleware(thunk))
+export type RootType = ReturnType<typeof rootReducer>

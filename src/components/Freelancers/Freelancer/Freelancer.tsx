@@ -1,26 +1,28 @@
-import { Ava, FreelancerCard, FreelancerContent, FreelancerDescription, FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill, FreelancerSkills, FreelancerWrapper, Price, PricePer, Secialization } from "./Freelancer.style"
+import {
+    Ava, FreelancerCard, FreelancerContent, FreelancerDescription,
+    FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill,
+    FreelancerSkills, FreelancerWrapper, Price, PricePer, Secialization
+} from "./Freelancer.style"
 import avaIconPath from '../../../assets/man.png'
-import project0Path from '../../../assets/ADbu3KMS_lgtJH4_wK-FlA.jpeg'
-import project1Path from '../../../assets/p1_2848898_bbd3ec66.jpg'
-import project2Path from '../../../assets/ps4-assassins-creed-odyssey-origins_1.jpg'
+import { FreelancerType } from "../../../models"
 
-export const Freelancer = () => {
+export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, specialization, steck, price }: FreelancerType) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
-            <Ava src={avaIconPath} />
+            <Ava src={ava} />
             <FreelancerContent>
                 <FreelancerHeader>
                     <div>
                         <FreelancerName>
-                            Михаил Агафонов
+                            {name} {lastName}
                         </FreelancerName>
                         <Secialization>
-                            Front-end (Typescript+React)
+                            {specialization}
                         </Secialization>
                     </div>
                     <div>
                         <Price>
-                            от 1 200 руб.
+                            от {price} руб.
                         </Price>
                         <PricePer>
                             за час
@@ -35,16 +37,12 @@ export const Freelancer = () => {
                     На бэке специализируемся на Node.js и экзотическом Haskell. Осуществляем проекты под ключ,...
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    <FreelancerProject src={project0Path} />
-                    <FreelancerProject src={project1Path} />
-                    <FreelancerProject src={project2Path} />
+                    {projects.map((el)=><FreelancerProject src={el}/>)}
                 </FreelancerProjects>
                 <FreelancerSkills>
-                    <FreelancerSkill >
-                    react
-                </FreelancerSkill>
-            </FreelancerSkills>
-        </FreelancerContent>
-    </FreelancerCard>
+                    {steck.map((el) => (<FreelancerSkill >{el}</FreelancerSkill>))}
+                </FreelancerSkills>
+            </FreelancerContent>
+        </FreelancerCard>
     </FreelancerWrapper >)
 }
