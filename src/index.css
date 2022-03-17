@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-h4, h3, p {
+h4, h3,h2, p {
   margin: 0px;
   padding: 0px;
 }

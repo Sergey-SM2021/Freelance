@@ -1,7 +1,6 @@
 import { Route, Routes, useRoutes } from "react-router-dom"
-import styled from "styled-components"
-import { RouteBG, RouteWrapper } from "./App.style"
 
+import { RouteBG, RouteWrapper } from "./App.style"
 import { Auth } from "./components/Auth"
 import { Club } from "./components/Club"
 import { Footer } from "./components/Footer/Footer"
@@ -9,7 +8,7 @@ import { Freelancers } from "./components/Freelancers/Freelancers"
 import { Header } from "./components/Header/Header"
 import { Orders } from "./components/Orders"
 import { Preview } from "./components/Preview"
-import { Profile } from "./components/Profile"
+import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar"
 
