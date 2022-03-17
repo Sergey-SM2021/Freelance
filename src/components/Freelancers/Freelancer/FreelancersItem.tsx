@@ -2,7 +2,7 @@ import {
     Ava, AvaArea, DisLike, FreelancerCard, FreelancerContent, FreelancerDescription,
     FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill,
     FreelancerSkills, FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
-} from "./Freelancer.style"
+} from "./FreelancerItem.style"
 import { FreelancerPreviewType } from "../../../models"
 
 import { Link } from "react-router-dom"

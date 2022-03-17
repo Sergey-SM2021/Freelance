@@ -3,17 +3,22 @@ import {
     Ava, PaymentMethod, ProfileResume,
     ProfileAboute, ProfileExpiriens, ProfileHeader,
     ProfileHeaderAbout, ProfileHeaderContent, ProfileHeaderName,
-    ProfilePaper, ProfilePortfolio, ProfilePrice,
-    ProfileReviews, ProfileSectionTitle, ProfileWrapper, ProfileSkill,
-    ProfileSkills, ProfileSkillTitle, ProfilePortfolioContainer,
-    PortfolioProject, ProfileReviewsInner
+    ProfilePaper, ProfilePrice,
+    ProfileReviews, ProfileWrapper, ProfileSkill,
+    ProfileSkills, ProfileSkillTitle,
+    ProfileReviewsInner,
 } from './Profile.style'
 import bg from '../../assets/bg.jpg'
-import { useSelector } from 'react-redux'
 import { RootType } from '../../store/store'
+import {SectionTitle} from '../Common.style'
+
+import { useSelector } from 'react-redux'
+import { ProfilePortfolio } from './ProfilePortfolio/ProfilePortfolio'
+import { ProfileWorksHistory } from './ProfileWorkHistory/ProfileWorkHistory'
 
 export const Profile = () => {
-    const {description,name,lastName,...profile} = useSelector((state:RootType)=>(state.freelncer))
+    // #TODO: combine proerties on section as description, reviews
+    const { description, name, lastName, ...profile } = useSelector((state: RootType) => (state.freelncer))
     return (<ProfileWrapper>
         <ProfilePaper>
             <ProfileHeader bg={bg}>
@@ -23,9 +28,9 @@ export const Profile = () => {
                     <ProfileHeaderAbout>{profile.specialization}</ProfileHeaderAbout>
                 </ProfileHeaderContent>
             </ProfileHeader>
-            <ProfileSectionTitle>
+            <SectionTitle>
                 <h3>Обо мне</h3>
-            </ProfileSectionTitle>
+            </SectionTitle>
             <ProfileAboute>
                 <ProfilePrice>
                     <h4>Стоимость работы:</h4>
@@ -44,19 +49,19 @@ export const Profile = () => {
                 </ProfileResume>
                 <ProfileSkills>
                     <ProfileSkillTitle>Ключевые навыки:</ProfileSkillTitle>
-                    {profile.steck.map((skill)=>(<ProfileSkill>{skill}</ProfileSkill>))}
+                    {profile.steck.map((skill) => (<ProfileSkill>{skill}</ProfileSkill>))}
                 </ProfileSkills>
             </ProfileAboute>
-            <ProfilePortfolio>
-                <ProfileSectionTitle><h3>Портфолио (9)</h3></ProfileSectionTitle>
-                <ProfilePortfolioContainer>
-                    {profile.projects.map((project)=>(<PortfolioProject src={project}/>))}
-                </ProfilePortfolioContainer>
-            </ProfilePortfolio>
+            <ProfileWorksHistory/>
+            <ProfilePortfolio projects={profile.projects}/>
             <ProfileReviews>
-                <ProfileSectionTitle><h3>Отзывы</h3></ProfileSectionTitle>
+                <SectionTitle><h3>Отзывы</h3></SectionTitle>
                 <ProfileReviewsInner />
             </ProfileReviews>
         </ProfilePaper>
     </ProfileWrapper>)
 }
+
+// export const ProfileReviews = () => {
+//     return (<div></div>)
+// }

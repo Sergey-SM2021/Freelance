@@ -1,5 +1,5 @@
 import {FreelancersBody, FreelancersPaper, FreelancersWrapper, Pagination} from "./Freelancers.style"
-import { Freelancer } from './Freelancer/Freelancer'
+import { Freelancer } from './Freelancer/FreelancersItem'
 import { useSelector } from "react-redux"
 import { RootType } from "../../store/store"
 import { HeaderPage } from "../HeaderPage/HeaderPage"
