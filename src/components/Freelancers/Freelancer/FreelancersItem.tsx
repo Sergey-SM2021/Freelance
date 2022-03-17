@@ -7,12 +7,12 @@ import { FreelancerPreviewType } from "../../../models"
 
 import { Link } from "react-router-dom"
 
-export const Freelancer = ({ ava, id, lastName, name, projects, specialization, steck, price, description,dislike,like }: FreelancerPreviewType) => {
+export const Freelancer = ({ about,dislike,header,id,like,portfolio,workHistory }: FreelancerPreviewType) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
             <AvaArea>
                 <Link to={`/freelancer/${id}/profile`}>
-                    <Ava src={ava} />
+                    <Ava src={header.ava} />
                 </Link>
                 <Reviews>
                     <Link to={`/freelancer/${id}/reviews`}>
@@ -29,16 +29,16 @@ export const Freelancer = ({ ava, id, lastName, name, projects, specialization, 
                     <div>
                         <FreelancerName>
                             <Link to={`/freelancer/${id}/profile`}>
-                                {name} {lastName}
+                                {header.name} {header.lastName}
                             </Link>
                         </FreelancerName>
                         <Secialization>
-                            {specialization}
+                            {header.specialization}
                         </Secialization>
                     </div>
                     <div>
                         <Price>
-                            от {price} руб.
+                            от {about.price} руб.
                         </Price>
                         <PricePer>
                             за час
@@ -46,13 +46,13 @@ export const Freelancer = ({ ava, id, lastName, name, projects, specialization, 
                     </div>
                 </FreelancerHeader>
                 <FreelancerDescription>
-                    {description}
+                    {about.description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {projects.map((el) => <FreelancerProject src={el} />)}
+                    {portfolio.projects.map((el) => <FreelancerProject src={el} />)}
                 </FreelancerProjects>
                 <FreelancerSkills>
-                    {steck.map((el) => (<FreelancerSkill >{el}</FreelancerSkill>))}
+                    {about.steck.map((el) => (<FreelancerSkill >{el}</FreelancerSkill>))}
                 </FreelancerSkills>
             </FreelancerContent>
         </FreelancerCard>

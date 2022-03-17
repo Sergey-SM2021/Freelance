@@ -4,17 +4,24 @@ export enum paymentMethod {
 }
 
 export type FreelancerFullType = {
-    name: string,
-    lastName: string,
+    header: {
+        name: string,
+        lastName: string,
+        ava: string,
+        specialization: string,
+    },
+    about: {
+        description: string,
+        expiriens: string,
+        price: number,
+        steck: Array<string>,
+        paymentMethod: paymentMethod,
+    },
+    portfolio: {
+        projects: Array<string>,
+    },
+    workHistory:{},
     id: string,
-    ava: string,
-    specialization: string,
-    projects: Array<string>,
-    steck: Array<string>,
-    price: number,
-    description: string,
-    expiriens: string,
-    paymentMethod: paymentMethod,
     reviews: Array<string>
     // #FIXME: these properties are not needed by a fullfreelancer
     like: number,
@@ -22,5 +29,6 @@ export type FreelancerFullType = {
 }
 
 export type FreelancerPreviewType = Omit<FreelancerFullType, "reviews" | "paymentMethod" | "expiriens">
+// #FIXME: this type not mast contain work history!!!
 
 export type FreelancersType = Array<FreelancerPreviewType>

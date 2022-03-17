@@ -9,7 +9,7 @@ export const ProfileHeaderAbout = styled.p`
     font-weight: 500;
 `
 
-export const ProfileHeader = styled.div<{ bg: string }>`
+export const HeaderWrapper = styled.div<{ bg: string }>`
     box-sizing:border-box ;
     padding: 20px;
     display:flex ;
@@ -38,54 +38,8 @@ export const ProfileWrapper = styled.div`
     width: 70%;
 `
 
-export const ProfileReviews = styled.div`
-    
-`
-
 export const ProfilePaper = styled.div`
     width: 100%;
     background-color: #ffffff;
     min-height: 100vh;
-`
-
-export const ProfilePrice = styled.div`
-    display: flex;
-`
-
-export const ProfileAboute = styled.section`
-    color: #5d6577;
-    padding: 20px;
-    box-sizing: border-box;
-`
-
-export const ProfileExpiriens = styled.div`
-    display: flex;
-`
-
-export const PaymentMethod = styled.div`
-    display: flex;
-`
-
-export const ProfileResume = styled.p`
-    
-`
-
-export const ProfileSkills = styled.div`
-    box-sizing: border-box;
-    padding-top: 20px;
-`
-
-export const ProfileSkill = styled.button`
-    border-radius: 4px;
-    border: 1px solid #5d6577;
-    color: #5d6577;
-    background: none;
-    margin: 10px 10px 0px 0px;
-`
-
-export const ProfileSkillTitle = styled.h4`
-`
-
-export const ProfileReviewsInner = styled.div`
-    min-height: 30vh;
 `
