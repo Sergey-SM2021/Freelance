@@ -113,10 +113,9 @@ export const ProfilePortfolioContainer = styled.div`
     gap: 10px;
 `
 
-export const PortfolioProject = styled.div`
+export const PortfolioProject = styled.img`
     width: 100%;
     height: 100%;
-    background-color: #8998;
 `
 
 export const ProfileReviewsInner = styled.div`

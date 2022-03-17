@@ -3,12 +3,11 @@ import {
     FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill,
     FreelancerSkills, FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
 } from "./Freelancer.style"
-import avaIconPath from '../../../assets/man.png'
-import { FreelancerType } from "../../../models"
+import { FreelancerPreviewType } from "../../../models"
 
 import { Link } from "react-router-dom"
 
-export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, specialization, steck, price, description,dislike,like }: FreelancerType) => {
+export const Freelancer = ({ ava, id, lastName, name, projects, specialization, steck, price, description,dislike,like }: FreelancerPreviewType) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
             <AvaArea>
@@ -29,7 +28,7 @@ export const Freelancer = ({ ava = avaIconPath, id, lastName, name, projects, sp
                 <FreelancerHeader>
                     <div>
                         <FreelancerName>
-                            <Link to={`/freelancer/${id}`}>
+                            <Link to={`/freelancer/${id}/profile`}>
                                 {name} {lastName}
                             </Link>
                         </FreelancerName>

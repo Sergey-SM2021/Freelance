@@ -5,19 +5,22 @@ import {
     ProfileHeaderAbout, ProfileHeaderContent, ProfileHeaderName,
     ProfilePaper, ProfilePortfolio, ProfilePrice,
     ProfileReviews, ProfileSectionTitle, ProfileWrapper, ProfileSkill,
-    ProfileSkills, ProfileSkillTitle, ProfilePortfolioContainer, 
+    ProfileSkills, ProfileSkillTitle, ProfilePortfolioContainer,
     PortfolioProject, ProfileReviewsInner
 } from './Profile.style'
 import bg from '../../assets/bg.jpg'
+import { useSelector } from 'react-redux'
+import { RootType } from '../../store/store'
 
 export const Profile = () => {
+    const {description,name,lastName,...profile} = useSelector((state:RootType)=>(state.freelncer))
     return (<ProfileWrapper>
         <ProfilePaper>
             <ProfileHeader bg={bg}>
                 <Ava src={avaPath} />
                 <ProfileHeaderContent>
-                    <ProfileHeaderName>ProfileName</ProfileHeaderName>
-                    <ProfileHeaderAbout>Front-end (Typescript+React)</ProfileHeaderAbout>
+                    <ProfileHeaderName>{name} {lastName}</ProfileHeaderName>
+                    <ProfileHeaderAbout>{profile.specialization}</ProfileHeaderAbout>
                 </ProfileHeaderContent>
             </ProfileHeader>
             <ProfileSectionTitle>
@@ -26,7 +29,7 @@ export const Profile = () => {
             <ProfileAboute>
                 <ProfilePrice>
                     <h4>Стоимость работы:</h4>
-                    <p>от 2 500 руб. за час</p>
+                    <p>от {profile.price} руб. за час</p>
                 </ProfilePrice>
                 <ProfileExpiriens>
                     <h4>Профессиональный опыт:</h4>
@@ -37,74 +40,22 @@ export const Profile = () => {
                     <p>безналичный расчёт, электронные деньги</p>
                 </PaymentMethod>
                 <ProfileResume>
-                    Приветствую! ✊
-
-                    Меня зовут Роман. Я руководитель цифровых продуктов, продюсер интернет-проектов и стартап-менеджер.
-                    Имею 15-летний опыт в диджитал-сфере, из которых последние 10 лет работаю на руководящих позициях.
-
-                    ✦ Ключевые компетенции:
-
-                    — Продуктовый менеджмент;
-                    — Проектный менеджмент;
-                    — Операционный менеджмент.
-
-                    ✦ Чем могу быть полезен:
-
-                    Цели и стратегия
-                    Разработаю краткосрочные и долгосрочные цели, позиционирование, дорожную карту и стратегию запуска проекта.
-
-                    Планирование
-                    Подготовлю техническое задание, сметную и проектную документацию, карту связей и детальный план запуска проекта.
-
-                    Декомпозиция
-                    Разделю проект на отдельные итерации и релизы, задачи и подзадачи, назначу ответственных и расставлю приоритеты.
-
-                    Инструменты и сервисы
-                    Настрою инструменты и сервисы для совместной работы, планирования, генерации идей, аналитики, отчетности и коммуникации.
-
-                    Команда проекта
-                    Сформирую кросс-функциональную и эффективную команду опытных, компетентных специалистов и подрядчиков.
-
-                    Процессы
-                    Организую прозрачный процесс вовлеченности, мотивации и эффективного взаимодействия между всеми участниками процесса.
-
-                    Контроль и результат
-                    Проконтролирую качество и сроки реализации проекта, подготовлю итоговые отчеты, проведу демонстрацию и презентацию проекта.
-
-                    ✦ Контакты:
-
-                    Сайт | www.enaev.pro
-                    Почта | roman@enaev.pro
-                    Telegram | t.me/enairoma
-                    WhatsApp | wa.me/enairoma
-                    Facebook | m.me/enairoma
-
+                    {description}
                 </ProfileResume>
                 <ProfileSkills>
                     <ProfileSkillTitle>Ключевые навыки:</ProfileSkillTitle>
-                    <ProfileSkill>Redux</ProfileSkill>
-                    <ProfileSkill>Vue</ProfileSkill>
-                    <ProfileSkill>Angular</ProfileSkill>
-                    <ProfileSkill>Coa</ProfileSkill>
+                    {profile.steck.map((skill)=>(<ProfileSkill>{skill}</ProfileSkill>))}
                 </ProfileSkills>
             </ProfileAboute>
             <ProfilePortfolio>
                 <ProfileSectionTitle><h3>Портфолио (9)</h3></ProfileSectionTitle>
                 <ProfilePortfolioContainer>
-                    <PortfolioProject>1</PortfolioProject>
-                    <PortfolioProject></PortfolioProject>
-                    <PortfolioProject>2</PortfolioProject>
-                    <PortfolioProject>3</PortfolioProject>
-                    <PortfolioProject>4</PortfolioProject>
-                    <PortfolioProject></PortfolioProject>
-                    <PortfolioProject>1</PortfolioProject>
-                    <PortfolioProject></PortfolioProject>
-                    <PortfolioProject>2</PortfolioProject>
+                    {profile.projects.map((project)=>(<PortfolioProject src={project}/>))}
                 </ProfilePortfolioContainer>
             </ProfilePortfolio>
             <ProfileReviews>
                 <ProfileSectionTitle><h3>Отзывы</h3></ProfileSectionTitle>
-                <ProfileReviewsInner/>
+                <ProfileReviewsInner />
             </ProfileReviews>
         </ProfilePaper>
     </ProfileWrapper>)
