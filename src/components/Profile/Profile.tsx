@@ -11,15 +11,14 @@ import { useSelector } from 'react-redux'
 import { ProfileHeader } from './ProfileHeader/ProfileHeader'
 
 export const Profile = () => {
-    // #TODO: combine proerties on section as description, reviews
-    const { header, about, portfolio, workHistory } = useSelector((state: RootType) => (state.profile))
+    const { header, about, portfolio, workHistory, reviews } = useSelector((state: RootType) => (state.profile))
     return (<ProfileWrapper>
         <ProfilePaper>
             <ProfileHeader {...header} />
             <ProfileAbout {...about} />
             <ProfileWorksHistory works={workHistory} />
             <ProfilePortfolio {...portfolio} />
-            <ProfileReviews />
+            <ProfileReviews reviews={reviews}/>
         </ProfilePaper>
     </ProfileWrapper>)
 }

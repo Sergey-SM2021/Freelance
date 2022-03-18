@@ -9,6 +9,14 @@ export type WorksHistoryType = {
     skills: Array<string>
 }
 
+export type ReviewsType = {
+    ava:string,
+    name:string,
+    description:string,
+    stars:number,
+    details:string
+}
+
 export type FreelancerFullType = {
     header: {
         name: string,
@@ -28,7 +36,7 @@ export type FreelancerFullType = {
     },
     workHistory: Array<WorksHistoryType>,
     id: string,
-    reviews: Array<string>
+    reviews: Array<ReviewsType>
     // #FIXME: these properties are not needed by a fullfreelancer
     like: number,
     dislike: number,

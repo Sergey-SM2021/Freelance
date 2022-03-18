@@ -1,9 +1,15 @@
+import { FreelancerFullType } from "../../../models"
 import { SectionTitle } from "../../Common.style"
-import { ReviewsInner, ReviewsWrapper } from "./ProfileReviews.style"
+import { Review } from "./ProfileReview"
+import { ReviewsWrapper } from "./ProfileReviews.style"
 
-export const ProfileReviews = () => {
+type ProfileReviewsType = {
+    reviews: FreelancerFullType["reviews"]
+}
+
+export const ProfileReviews = ({ reviews }: ProfileReviewsType) => {
     return (<ReviewsWrapper>
         <SectionTitle><h3>Отзывы</h3></SectionTitle>
-        <ReviewsInner />
+        {reviews.map(review => (<Review {...review} />))}
     </ReviewsWrapper>)
 }

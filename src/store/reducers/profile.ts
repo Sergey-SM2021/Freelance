@@ -19,7 +19,7 @@ const initState: FreelancerFullType = {
         specialization: "Backend developer junior",
     },
     portfolio: {
-        projects: [Project0, Project1, Project2,Project0, Project0, Project1,Project0, Project1,],
+        projects: [Project0, Project1, Project2, Project0, Project0, Project1, Project0, Project1,],
     },
     workHistory: [
         {
@@ -33,7 +33,22 @@ const initState: FreelancerFullType = {
             skills: ["angular", "rest", "mongoDB"]
         }
     ],
-    reviews: ["[хорош]"],
+    reviews: [
+        {
+            ava: avaPath,
+            description: `Sibdev хорошо выполнили свою задачу, придраться не к чему.Всё сделали как и договаривались,
+            дали рекомендации как лучш и аргументировали свои предложения.
+            За это отдельное уважение.В общем и целом, работой довольна.Обратимся снова - факт.Sibdev хорошо выполнили свою 
+            задачу, придраться не к чему.Всё сделали как и договаривались, дали рекомендации как  и аргументировали свои предложения.
+            За это отдельное уважение.В общем и целом, работой довольна.Обратимся снова - факт.Sibdev хорошо выполнили свою задачу, 
+            придраться не к чему.Всё сделали как и договаривались, дали рекомендации как  
+            и аргументировали свои предложения.За это отдельное уважение.В общем и целом, 
+            работой довольна.Обратимся снова - факт.`,
+            details: "Заказ: дизайн под ключ",
+            name: "name",
+            stars: 3
+        }
+    ],
     dislike: 8,
     id: "perfectPerson676",
     like: 99,
