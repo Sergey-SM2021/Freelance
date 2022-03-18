@@ -3,6 +3,12 @@ export enum paymentMethod {
     "cardMoney" = "cardMoney"
 }
 
+export type WorksHistoryType = {
+    name: string,
+    price: number,
+    skills: Array<string>
+}
+
 export type FreelancerFullType = {
     header: {
         name: string,
@@ -20,7 +26,7 @@ export type FreelancerFullType = {
     portfolio: {
         projects: Array<string>,
     },
-    workHistory:{},
+    workHistory: Array<WorksHistoryType>,
     id: string,
     reviews: Array<string>
     // #FIXME: these properties are not needed by a fullfreelancer

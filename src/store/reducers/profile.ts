@@ -19,9 +19,20 @@ const initState: FreelancerFullType = {
         specialization: "Backend developer junior",
     },
     portfolio: {
-        projects: [Project0, Project1, Project2],
+        projects: [Project0, Project1, Project2,Project0, Project0, Project1,Project0, Project1,],
     },
-    workHistory:{},
+    workHistory: [
+        {
+            name: "Vue",
+            price: 99000,
+            skills: ["vue", "node", "mongoDB"]
+        },
+        {
+            name: "Работа на Арабов",
+            price: 110000,
+            skills: ["angular", "rest", "mongoDB"]
+        }
+    ],
     reviews: ["[хорош]"],
     dislike: 8,
     id: "perfectPerson676",

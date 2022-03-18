@@ -5,7 +5,7 @@ export const PortfolioContainer = styled.div`
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 155px 155px 155px;
+    grid-auto-rows: 1fr;
     gap: 10px;
 `
 

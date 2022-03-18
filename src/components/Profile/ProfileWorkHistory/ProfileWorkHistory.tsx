@@ -1,28 +1,35 @@
+import { FreelancerFullType } from "../../../models"
 import { SectionTitle, Skill, Skills } from "../../Common.style"
-import { WorksHistoryOrder, WorksHistoryOrderPrice, WorksHistoryWork, WorksHistory, WorksHistoryWrapper } from "./ProfileWorkHistory.style"
+import { WorksHistoryOrder, WorksHistoryOrderPrice, WorkWrapper, WorksHistory, WorksHistoryWrapper } from "./ProfileWorkHistory.style"
 
-export const ProfileWorksHistory = () => {
+type ProfileWorksHistory = {
+    works: FreelancerFullType["workHistory"]
+}
+
+export const ProfileWorksHistory = (props: ProfileWorksHistory) => {
     return (<WorksHistoryWrapper>
         <SectionTitle>
             <h3>История работы</h3>
         </SectionTitle>
         <WorksHistory>
-            <WorksHistoryWork>
-                <WorksHistoryOrder>
-                    <h3>Сервис на Vue</h3>
-                    <Skills>
-                        <Skill>Java</Skill>
-                        <Skill>Php</Skill>
-                        <Skill>Laravel</Skill>
-                        <Skill>Css</Skill>
-                        <Skill>Webpack</Skill>
-                        <Skill>Алгоритмы</Skill>
-                    </Skills>
-                </WorksHistoryOrder>
-                <WorksHistoryOrderPrice>
-                    <h4>100 000руб</h4>
-                </WorksHistoryOrderPrice>
-            </WorksHistoryWork>
+            {props.works.map(work => (<WorksHistoryWork {...work} />))}
         </WorksHistory>
     </WorksHistoryWrapper>)
+}
+
+type WorksHistoryWorkType = FreelancerFullType["workHistory"][0]
+
+export const WorksHistoryWork = ({ name, price, skills }: WorksHistoryWorkType) => {
+    return (<WorkWrapper>
+        <WorksHistoryOrder>
+            <h3>{name}</h3>
+            <Skills>
+                {skills.map(skill => <Skill>{skill}</Skill>)}
+            </Skills>
+        </WorksHistoryOrder>
+        <WorksHistoryOrderPrice>
+            <h4>{price} руб.</h4>
+            <p>За проект</p>
+        </WorksHistoryOrderPrice>
+    </WorkWrapper>)
 }
