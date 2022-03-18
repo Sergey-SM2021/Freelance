@@ -6,20 +6,8 @@ export const AboutePaper = styled.section`
     box-sizing: border-box;
 `
 
-export const AboutSkills = styled.div`
-    box-sizing: border-box;
-    padding-top: 20px;
-`
-
-export const AboutSkill = styled.button`
-    border-radius: 4px;
-    border: 1px solid #5d6577;
-    color: #5d6577;
-    background: none;
-    margin: 10px 10px 0px 0px;
-`
-
 export const AboutSkillTitle = styled.h4`
+margin-top: 20px;
 `
 
 export const AboutPrice = styled.div`

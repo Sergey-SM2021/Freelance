@@ -1,4 +1,4 @@
-import { SectionTitle } from "../../Common.style"
+import { SectionTitle, Skill, Skills } from "../../Common.style"
 import { WorksHistoryOrder, WorksHistoryOrderPrice, WorksHistoryWork, WorksHistory, WorksHistoryWrapper } from "./ProfileWorkHistory.style"
 
 export const ProfileWorksHistory = () => {
@@ -10,9 +10,17 @@ export const ProfileWorksHistory = () => {
             <WorksHistoryWork>
                 <WorksHistoryOrder>
                     <h3>Сервис на Vue</h3>
+                    <Skills>
+                        <Skill>Java</Skill>
+                        <Skill>Php</Skill>
+                        <Skill>Laravel</Skill>
+                        <Skill>Css</Skill>
+                        <Skill>Webpack</Skill>
+                        <Skill>Алгоритмы</Skill>
+                    </Skills>
                 </WorksHistoryOrder>
                 <WorksHistoryOrderPrice>
-                    100 000руб
+                    <h4>100 000руб</h4>
                 </WorksHistoryOrderPrice>
             </WorksHistoryWork>
         </WorksHistory>

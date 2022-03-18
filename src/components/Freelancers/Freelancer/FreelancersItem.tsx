@@ -1,11 +1,12 @@
 import {
     Ava, AvaArea, DisLike, FreelancerCard, FreelancerContent, FreelancerDescription,
-    FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects, FreelancerSkill,
-    FreelancerSkills, FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
+    FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects,
+    FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
 } from "./FreelancerItem.style"
 import { FreelancerPreviewType } from "../../../models"
 
 import { Link } from "react-router-dom"
+import { Skill, Skills } from "../../Common.style"
 
 export const Freelancer = ({ about, dislike, header, id, like, portfolio }: FreelancerPreviewType) => {
     return (<FreelancerWrapper>
@@ -29,7 +30,7 @@ export const Freelancer = ({ about, dislike, header, id, like, portfolio }: Free
                     <div>
                         <FreelancerName>
                             <Link to={`/freelancer/${id}/profile`}>
-                                {header.name} {header.lastName}
+                                <h2>{header.name} {header.lastName}</h2>
                             </Link>
                         </FreelancerName>
                         <Secialization>
@@ -51,9 +52,9 @@ export const Freelancer = ({ about, dislike, header, id, like, portfolio }: Free
                 <FreelancerProjects>
                     {portfolio.projects.map((el) => <FreelancerProject src={el} />)}
                 </FreelancerProjects>
-                <FreelancerSkills>
-                    {about.steck.map((el) => (<FreelancerSkill >{el}</FreelancerSkill>))}
-                </FreelancerSkills>
+                <Skills>
+                    {about.steck.map((el) => (<Skill >{el}</Skill>))}
+                </Skills>
             </FreelancerContent>
         </FreelancerCard>
     </FreelancerWrapper >)

@@ -18,3 +18,20 @@ export const SectionTitle = styled.div`
         margin-left: 20px;
     }
 `
+
+export const Skill = styled.button`
+    &:first-child{
+        margin: 0px;
+    };
+    margin-left: 10px;
+    background: none;
+    border: 1px solid #666770;;
+    border-radius: 3px;
+    color: #666770;
+    font-weight: 400;
+`
+
+export const Skills = styled.div`
+    display: flex;
+    margin: 15px 0px ;
+`

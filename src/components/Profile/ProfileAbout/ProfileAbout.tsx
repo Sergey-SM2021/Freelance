@@ -1,13 +1,13 @@
 import { FreelancerFullType } from "../../../models"
-import { SectionTitle } from "../../Common.style"
+import { SectionTitle, Skill, Skills } from "../../Common.style"
 import {
     AboutWrapper, AboutePaper,
-    AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkills, AboutSkillTitle, AboutSkill
+    AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
 } from "./ProfileAbout.style"
 
 type ProfileAboutType = FreelancerFullType["about"]
 
-export const ProfileAbout = ({description,expiriens,paymentMethod,price,steck}:ProfileAboutType) => {
+export const ProfileAbout = ({ description, expiriens, paymentMethod, price, steck }: ProfileAboutType) => {
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
@@ -28,9 +28,9 @@ export const ProfileAbout = ({description,expiriens,paymentMethod,price,steck}:P
             <AboutResume>
                 {description}
             </AboutResume>
-            <AboutSkills>
-                <AboutSkillTitle>Ключевые навыки:</AboutSkillTitle>
-                {steck.map((skill) => (<AboutSkill>{skill}</AboutSkill>))}
-            </AboutSkills>
+            <AboutSkillTitle>Ключевые навыки:</AboutSkillTitle>
+            <Skills>
+                {steck.map((skill) => (<Skill>{skill}</Skill>))}
+            </Skills>
         </AboutePaper></AboutWrapper>)
 }

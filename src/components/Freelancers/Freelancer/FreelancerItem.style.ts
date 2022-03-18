@@ -41,20 +41,6 @@ export const FreelancerProject = styled.img`
     height: 120px;
 `
 
-export const FreelancerSkills = styled.div`
-    display: flex;
-    margin: 30px 0px ;
-`
-
-export const FreelancerSkill = styled.button`
-    margin-left: 10px;
-    background: none;
-    border: 1px solid #666770;;
-    border-radius: 3px;
-    color: #666770;
-    font-weight: 400;
-`
-
 export const FreelancerName = styled.h3`
     cursor: pointer;
     a{
