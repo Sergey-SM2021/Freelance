@@ -26,7 +26,6 @@ const InitialState: { personsData: FreelancersType } = {
             portfolio: {
                 projects: [Project0, Project1, Project2],
             },
-            workHistory: "",
             like: 91,
             dislike: 5,
             id: "sergiy3220",
@@ -48,7 +47,6 @@ const InitialState: { personsData: FreelancersType } = {
             portfolio: {
                 projects: [Project3, Project4, Project5],
             },
-            workHistory: "",
             like: 11,
             dislike: 3,
             id: "mikha__aga777",

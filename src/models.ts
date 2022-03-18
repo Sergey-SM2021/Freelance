@@ -28,7 +28,6 @@ export type FreelancerFullType = {
     dislike: number,
 }
 
-export type FreelancerPreviewType = Omit<FreelancerFullType, "reviews" | "paymentMethod" | "expiriens">
-// #FIXME: this type not mast contain work history!!!
+export type FreelancerPreviewType = Omit<FreelancerFullType, "reviews" | "workHistory" | "paymentMethod" | "expiriens">
 
 export type FreelancersType = Array<FreelancerPreviewType>

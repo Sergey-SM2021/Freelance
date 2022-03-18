@@ -28,6 +28,6 @@ const initState: FreelancerFullType = {
     like: 99,
 }
 
-export const freelncer = (state = initState, action: any) => {
+export const profile = (state = initState, action: any) => {
     return { ...state }
 }

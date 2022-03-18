@@ -7,7 +7,7 @@ import { FreelancerPreviewType } from "../../../models"
 
 import { Link } from "react-router-dom"
 
-export const Freelancer = ({ about,dislike,header,id,like,portfolio,workHistory }: FreelancerPreviewType) => {
+export const Freelancer = ({ about, dislike, header, id, like, portfolio }: FreelancerPreviewType) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
             <AvaArea>
