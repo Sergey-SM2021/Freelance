@@ -4,7 +4,7 @@ import {
 } from './Profile.style'
 import { RootType } from '../../store/store'
 import { ProfilePortfolio } from './ProfilePortfolio/ProfilePortfolio'
-import { ProfileWorksHistory } from './ProfileWorkHistory/ProfileWorkHistory'
+import { ProfileWorksHistory } from './ProfileWorksHistory/ProfileWorksHistory'
 import { ProfileReviews } from './ProfileReviews/ProfileReviews'
 
 import { useSelector } from 'react-redux'

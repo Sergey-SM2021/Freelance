@@ -1,7 +1,11 @@
 import styled from "styled-components"
 
-export const WorksHistory = styled.div`
-    padding: 0px 20px;
+export const WorkOrder = styled.div`
+   
+`
+
+export const WorkPrice = styled.div`
+    
 `
 
 export const WorkWrapper = styled.div`
@@ -23,14 +27,6 @@ export const WorkWrapper = styled.div`
     }
 `
 
-export const WorksHistoryOrder = styled.div`
-   
-`
-
-export const WorksHistoryOrderPrice = styled.div`
-    
-`
-
-export const WorksHistoryWrapper = styled.div`
+export const WorkTitle = styled.h3`
     
 `

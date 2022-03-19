@@ -12,6 +12,7 @@ export type WorksHistoryType = {
 export type ReviewsType = {
     ava:string,
     name:string,
+    lastName:string,
     description:string,
     stars:number,
     details:string
