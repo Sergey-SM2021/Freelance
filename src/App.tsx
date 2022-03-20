@@ -11,13 +11,14 @@ import { Preview } from "./components/Preview"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar"
+import { SignUp } from "./components/SignUp/SignUp"
 
 export const App = () => {
   const routs = useRoutes([
     { path: "/specialists", element: <><Freelancers /><SideBar /> </> },
     { path: "/club", element: <><Club /><SideBar /> </> },
     { path: "/orders", element: <><Orders /><SideBar /> </> },
-    { path: "/auth", element: <><Auth /><SideBar /> </> },
+    { path: "/signUp", element: <SignUp/> },
     { path: "/freelancer/:id/profile", element: <><Profile /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> }
   ])

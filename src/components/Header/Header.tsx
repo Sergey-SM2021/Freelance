@@ -22,7 +22,7 @@ export const Header = () => {
                 </HeaderGroup>
                 <HeaderGroup>
                     <NavLink to="auth">Вход</NavLink>
-                    <NavLink to="registration">Регистрация</NavLink>
+                    <NavLink to="signUp">Регистрация</NavLink>
                 </HeaderGroup>
             </HeaderNav>
         </HeaderNavBG>
