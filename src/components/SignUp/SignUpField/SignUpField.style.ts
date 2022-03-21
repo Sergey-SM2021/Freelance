@@ -14,3 +14,7 @@ export const FieldInput = styled.input`
     border: 1px solid ;
     border-radius: 3px;
 `
+
+export const Error = styled.div`
+    color: red;
+`

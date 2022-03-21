@@ -2,20 +2,38 @@ import { Link } from "react-router-dom"
 import {
     AlreadySignUp, LogoTitle, SignUpWrapper,
     SignUpInner, SignUpMainPaper, SignUpTitlePaper,
-    Registration,
-    SignUpRolesWrapper,
-    SignUpRolesInner,
-    SignUpRolesTitle,
-    SignUpRole,
+    Registration, SignUpRolesWrapper,
+    SignUpRolesInner, SignUpRolesTitle,
+    SignUpRole, SignUpSubmit,
 } from "./SignUp.style"
-import { Field, Form, Formik, FormikProps } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import { SignUpField } from './SignUpField/SignUpField'
+import { useRef } from "react"
+import { validationSchema } from "./validationSchema"
 
 export const SignUp = () => {
+    const client = useRef<HTMLButtonElement>(null)
+    const freelancer = useRef<HTMLButtonElement>(null)
 
-    const clientHandler = (state:any) => () => { state.values.role = "client"}
+    const clientHandler = (state: any) => () => {
+        state.values.role = "client"
+        if (client.current) {
+            client.current.style.background = '#ecf3f8'
+        }
+        if (freelancer.current) {
+            freelancer.current.style.background = 'none'
+        }
+    }
 
-    const freelancerHandler = (state:any) => () => {state.values.role = "freelancer" }
+    const freelancerHandler = (state: any) => () => {
+        state.values.role = "freelancer"
+        if (client.current) {
+            client.current.style.background = 'none'
+        }
+        if (freelancer.current) {
+            freelancer.current.style.background = '#ecf3f8'
+        }
+    }
 
     return (<SignUpWrapper>
         <SignUpInner>
@@ -28,6 +46,8 @@ export const SignUp = () => {
                 <LogoTitle>Freelance</LogoTitle>
                 <Registration>Регистрация</Registration>
                 <Formik
+                    validateOnBlur
+                    validationSchema={validationSchema}
                     onSubmit={(value) => { alert(JSON.stringify(value)) }}
                     initialValues={{ login: "", mail: "", password: "", role: "" }}>
                     {(values) => (<Form>
@@ -39,15 +59,15 @@ export const SignUp = () => {
                                 Роль
                             </SignUpRolesTitle>
                             <SignUpRolesInner>
-                                <SignUpRole type="button" onClick={clientHandler(values)}>
+                                <SignUpRole ref={client} type="button" onClick={clientHandler(values)}>
                                     Заказчик
                                 </SignUpRole>
-                                <SignUpRole type="button" onClick={freelancerHandler(values)}>
+                                <SignUpRole ref={freelancer} type="button" onClick={freelancerHandler(values)}>
                                     Фрилансер
                                 </SignUpRole>
                             </SignUpRolesInner>
                         </SignUpRolesWrapper>
-                        <button type="submit">Зарегистрироваться</button>
+                        <SignUpSubmit type="submit">Зарегистрироваться</SignUpSubmit>
                     </Form>)}
                 </Formik>
             </SignUpMainPaper>

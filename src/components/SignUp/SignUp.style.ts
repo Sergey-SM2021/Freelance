@@ -47,14 +47,13 @@ export const Registration = styled.p`
 `
 
 export const SignUpRolesWrapper = styled.div`
-    
+    margin-top: 20px;
 `
 
 export const SignUpRolesInner = styled.div`
-    margin-top: 20px;
     display: flex;
     width: 100%;
-    height: 30px;
+    height: 40px;
 `
 
 export const SignUpRolesTitle = styled.h3`
@@ -62,6 +61,7 @@ export const SignUpRolesTitle = styled.h3`
 `
 
 export const SignUpRole = styled.button`
+    background:none;
     &:first-child{
         border-right: none;
         border-bottom-right-radius: 0px;
@@ -73,6 +73,23 @@ export const SignUpRole = styled.button`
     }
     width: 50%;
     border-radius: 3px;
-    background: none;
-    border: black solid 1px;
+    border: #558cb7 solid 1px;
+    color: #558cb7;
+    &:hover{
+        cursor: pointer;
+    }
+`
+
+export const SignUpSubmit = styled.button`
+    margin-top: 20px;
+    background-color: #558cb7;
+    border:none;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    &:hover{
+        background-color:#376f9a;
+        cursor: pointer;
+    }
 `
