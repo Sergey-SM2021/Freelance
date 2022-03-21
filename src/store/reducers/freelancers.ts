@@ -32,6 +32,27 @@ const InitialState: { personsData: FreelancersType } = {
         },
         {
             about: {
+                steck: ["react", "redux", "typescript", "material-ui"],
+                expiriens: "",
+                paymentMethod: paymentMethod.moneyInCash,
+                price: 2000,
+                description: "Основная информация: Представляю команду профессионалов MetaLamp, в разработке уже более 7 лет. Команда насчитывает 60 человек, покрываем все часовые пояса России. Успешно завершили 100+ проектов в разных предметных областях: финансовые технологии, аналитические и образовательные платформы, логистические системы, маркетплейсы, блокчейн. На фронте имеем мощную экспертизу на стеке Typescript+React. На бэке специализируемся на Node.js и экзотическом Haskell. Осуществляем проекты под ключ,..."
+            },
+            header: {
+                specialization: "FullStack developer midlle ++",
+                ava: man,
+                lastName: "Царёв",
+                name: "Сергий",
+            },
+            portfolio: {
+                projects: [Project0, Project1, Project2],
+            },
+            like: 91,
+            dislike: 5,
+            id: "sergiy3220",
+        },
+        {
+            about: {
                 steck: ["typescript", "react", "redux"],
                 expiriens: "",
                 paymentMethod: paymentMethod.moneyInCash,

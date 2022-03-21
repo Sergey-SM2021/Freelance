@@ -10,7 +10,7 @@ import { Orders } from "./components/Orders"
 import { Preview } from "./components/Preview"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
-import { SideBar } from "./components/SideBar"
+import { SideBar } from "./components/SideBar/SideBar"
 import { SignUp } from "./components/SignUp/SignUp"
 
 export const App = () => {

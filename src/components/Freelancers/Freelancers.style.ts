@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const FreelancersWrapper = styled.div`
     padding: 10px 0px 10px 0px;
     width: 70%;
+    box-sizing: border-box;
 `
 
 export const FreelancersPaper = styled.div`

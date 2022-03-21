@@ -4,6 +4,9 @@ export const FreelancerWrapper = styled.div`
     padding: 20px 20px 0px 20px;
     background-color: #fdf8d1;
     margin-bottom: 10px;
+    &:last-child{
+        margin-bottom: 0px;
+    }
 `
 
 export const FreelancerCard = styled.div`
