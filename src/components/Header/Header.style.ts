@@ -37,7 +37,7 @@ export const HeaderNav = styled(Container) <{ isIntro: boolean }>`
         font-weight: 500;
         color: ${(props) => (props.isIntro ? "#000" : "#999")};
         text-decoration: none;
-        margin: 0px 0px 0px 15px;
+        margin: 0px 0px 0px 23px;
         &:hover{
             color: black;
         }

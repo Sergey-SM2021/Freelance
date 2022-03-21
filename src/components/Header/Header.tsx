@@ -3,7 +3,11 @@ import { NavLink, useLocation } from "react-router-dom"
 import { Container } from "../Common.style"
 import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper, HeaderNavBG } from './Header.style'
 
-export const Header = () => {
+type HeaderType = {
+    isAuth: boolean
+}
+
+export const Header = ({ isAuth }: HeaderType) => {
     const isIntro = useLocation().pathname.length === 1 ? true : false
     return (<HeaderWrapper>
         <HeaderTop>
@@ -21,8 +25,9 @@ export const Header = () => {
                     <NavLink to="club">Клуб</NavLink>
                 </HeaderGroup>
                 <HeaderGroup>
-                    <NavLink to="auth">Вход</NavLink>
-                    <NavLink to="signUp">Регистрация</NavLink>
+                    {isAuth ?
+                    <><NavLink to="/personalAccount">Личный кабинет</NavLink><NavLink to="/">Ава</NavLink></> :
+                    <><NavLink to="auth">Вход</NavLink><NavLink to="signUp">Регистрация</NavLink></>}
                 </HeaderGroup>
             </HeaderNav>
         </HeaderNavBG>

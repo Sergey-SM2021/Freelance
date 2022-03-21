@@ -23,7 +23,7 @@ export const App = () => {
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> }
   ])
   return (<div>
-    <Header />
+    <Header isAuth={false}/>
     <RouteBG>
       <RouteWrapper>
         {routs}
