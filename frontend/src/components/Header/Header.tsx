@@ -27,7 +27,7 @@ export const Header = ({ isAuth }: HeaderType) => {
                 <HeaderGroup>
                     {isAuth ?
                     <><NavLink to="/personalAccount">Личный кабинет</NavLink><NavLink to="/">Ава</NavLink></> :
-                    <><NavLink to="auth">Вход</NavLink><NavLink to="signUp">Регистрация</NavLink></>}
+                    <><NavLink to="auth/signIn">Вход</NavLink><NavLink to="auth/signUp">Регистрация</NavLink></>}
                 </HeaderGroup>
             </HeaderNav>
         </HeaderNavBG>

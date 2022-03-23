@@ -80,7 +80,7 @@ export const SignUpRole = styled.button`
     }
 `
 
-export const SignUpSubmit = styled.button`
+export const AuthSubmit = styled.button`
     margin-top: 20px;
     background-color: #558cb7;
     border:none;
