@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
-import { freelancers } from './reducers/freelancers'
+import { freelancers } from './reducers/freelancers/freelancers'
 import thunk from 'redux-thunk'
 import { profile } from './reducers/Profile/profile'
 

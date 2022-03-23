@@ -1,14 +1,21 @@
-import { FreelancersType, paymentMethod } from "../../models"
-import Project0 from '../../assets/Projects/Project0.jpeg'
-import Project1 from '../../assets/Projects/Project1.jpeg'
-import Project2 from '../../assets/Projects/Project2.jpg'
-import Project3 from '../../assets/Projects/Project3.jpg'
-import Project4 from '../../assets/Projects/Project4.jpg'
-import Project5 from '../../assets/Projects/Project5.jpeg'
-import man from '../../assets/man.png'
+import { FreelancersType } from "../../../models"
+import { constants, dispatchType, setFreelancersType } from "./freelancersActionsTypes"
+import {paymentMethod} from '../../../models'
+import man from '../../../assets/man.png'
+import Project0 from '../../../assets/Projects/Project0.jpeg'
+import Project1 from '../../../assets/Projects/Project1.jpeg'
+import Project2 from '../../../assets/Projects/Project2.jpg'
+import Project3 from '../../../assets/Projects/Project3.jpg'
+import Project4 from '../../../assets/Projects/Project4.jpg'
+import Project5 from '../../../assets/Projects/Project5.jpeg'
 
-const InitialState: { personsData: FreelancersType } = {
-    personsData: [
+export const setFreelancers = (freelancers: FreelancersType): setFreelancersType => ({
+    payload: freelancers,
+    type: constants.SETFREELANCERS
+})
+
+export const getFreelancers = () => (dispatch: dispatchType) => {
+    const fetchedData = [
         {
             about: {
                 steck: ["react", "redux", "typescript", "material-ui"],
@@ -73,8 +80,6 @@ const InitialState: { personsData: FreelancersType } = {
             id: "mikha__aga777",
         }
     ]
-}
-
-export const freelancers = (state = InitialState, action: any) => {
-    return (state)
-}
+    // axios.get freelancers
+    dispatch(setFreelancers(fetchedData))
+} 
