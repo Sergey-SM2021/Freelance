@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const AboutePaper = styled.section`
     color: #5d6577;

@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 export const Profile = () => {
     const dispatch = useDispatch()
-    useEffect(() => { dispatch(getProfile()) }, [])
+    useEffect(() => { dispatch(getProfile(0)) }, [])
     const { header, about, portfolio, workHistory, reviews } = useSelector((state: RootType) => (state.profile))
     return (<ProfileWrapper>
         <ProfilePaper>
