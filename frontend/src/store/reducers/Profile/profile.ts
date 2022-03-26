@@ -1,17 +1,23 @@
-import { FreelancerFullType, paymentMethod } from "../../../models"
 import Project0 from '../../../assets/Projects/Project3.jpg'
 import Project1 from '../../../assets/Projects/Project4.jpg'
 import Project2 from '../../../assets/Projects/Project5.jpeg'
 import avaPath from '../../../assets/man.png'
 import { actionType, actionTypes } from "./profileActionsTypes"
+import { TFreelancer } from '../../../models'
 
-const initState: FreelancerFullType = {
+const initState: TFreelancer = {
     about: {
         description: "test",
         expiriens: "test",
-        paymentMethod: paymentMethod.moneyInCash,
+        paymentMethod: "Карта банк Тинькофф",
         price: 0,
-        steck: ["test", "test", "test", "test"],
+        stack: [
+            {
+                freelancer: 685,
+                id: 990,
+                name: ".Net"
+            },
+        ]
     },
     header: {
         ava: avaPath,
@@ -19,34 +25,34 @@ const initState: FreelancerFullType = {
         name: "test",
         specialization: "test",
     },
-    portfolio: {
-        projects: [Project0, Project1, Project2, Project0, Project0, Project1, Project0, Project1,],
-    },
+    portfolio: [
+        Project0,
+        Project1,
+        Project2
+    ],
     workHistory: [
         {
-            name: "test",
-            price: 0,
-            skills: ["test", "test", "test"]
-        },
-        {
-            name: "test",
-            price: 0,
-            skills: ["test", "test", "test"]
+            name: "SPA на реакт",
+            price: 8980,
+            freelancer: 685,
+            id: 68588
         }
     ],
     reviews: [
         {
-            ava: avaPath,
-            description: "test",
-            details: "test",
-            name: "test",
-            lastName: "test",
-            stars: 0
+            ava:avaPath,
+            description:"Олегом Тайлером была проделана очень сложная работа...",
+            details:"spa na react",
+            freelancer:685,
+            id:99942,
+            lastName:"Морозов",
+            name:"Николай",
+            stars:5
         },
     ],
     dislike: 0,
-    id: "test",
-    like: 0,
+    id: 685,
+    likes: 0,
 }
 
 export const profile = (state = initState, action: actionType) => {

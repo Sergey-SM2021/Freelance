@@ -1,10 +1,10 @@
-import { FreelancerFullType } from "../../../models"
+import { TFreelancer } from "../../../models"
 import { SectionTitle } from "../../Common.style"
 import { WorksHistory, WorksHistoryWrapper } from "./ProfileWorksHistory.style"
 import { WorksHistoryWork } from "./ProfileWorksHistoryWork/ProfileWorkHistory"
 
 type ProfileWorksHistory = {
-    works: FreelancerFullType["workHistory"]
+    works: TFreelancer["workHistory"]
 }
 
 export const ProfileWorksHistory = (props: ProfileWorksHistory) => {

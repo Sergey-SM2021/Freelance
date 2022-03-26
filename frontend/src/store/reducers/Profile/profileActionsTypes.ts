@@ -1,4 +1,4 @@
-import { FreelancerFullType } from "../../../models"
+import { TFreelancer } from "../../../models"
 
 export enum actionTypes {
     SETPROFILE = "SETPROFILE",
@@ -16,7 +16,7 @@ export interface ICompliteLoading {
 
 export interface ISetProfile {
     type: actionTypes.SETPROFILE
-    payload: FreelancerFullType
+    payload: TFreelancer
 }
 
 export type actionType = IStartLoading | ICompliteLoading | ISetProfile

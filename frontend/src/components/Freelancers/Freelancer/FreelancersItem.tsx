@@ -3,22 +3,24 @@ import {
     FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects,
     FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
 } from "./FreelancerItem.style"
-import { FreelancerPreviewType } from "../../../models"
+import IMG from '../../../assets/Projects/Project0.jpeg'
+import avaPath from '../../../assets/man.png'
+import { Skill, Skills } from "../../Common.style"
+import { TFreelancerPreview } from "../../../models"
 
 import { Link } from "react-router-dom"
-import { Skill, Skills } from "../../Common.style"
 
-export const Freelancer = ({ about, dislike, header, id, like, portfolio }: FreelancerPreviewType) => {
+export const Freelancer = ({ about, dislike, likes, header, portfolio, id }: TFreelancerPreview) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
             <AvaArea>
                 <Link to={`/freelancer/${id}/profile`}>
-                    <Ava src={header.ava} />
+                    <Ava src={avaPath} />
                 </Link>
                 <Reviews>
                     <Link to={`/freelancer/${id}/reviews`}>
                         <ReviewsInner>
-                            <Like >+{like}</Like>
+                            <Like >+{likes}</Like>
                             /
                             <DisLike >-{dislike}</DisLike>
                         </ReviewsInner>
@@ -50,10 +52,10 @@ export const Freelancer = ({ about, dislike, header, id, like, portfolio }: Free
                     {about.description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {portfolio.projects.map((el) => <FreelancerProject src={el} />)}
+                    {portfolio.map((el) => <FreelancerProject src={IMG} />)}
                 </FreelancerProjects>
                 <Skills>
-                    {about.steck.map((el) => (<Skill >{el}</Skill>))}
+                    {about.stack.map((el) => (<Skill >{el.name}</Skill>))}
                 </Skills>
             </FreelancerContent>
         </FreelancerCard>

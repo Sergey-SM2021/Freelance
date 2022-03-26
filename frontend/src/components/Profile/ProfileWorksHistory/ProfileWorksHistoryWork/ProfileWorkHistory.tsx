@@ -1,16 +1,16 @@
-import { FreelancerFullType } from "../../../../models"
+import { TFreelancer } from "../../../../models"
 import { Skill, Skills } from "../../../Common.style"
 import { WorkOrder, WorkPrice, WorkTitle, WorkWrapper } from "./ProfileWorkHistory.style"
 
-type WorksHistoryWorkType = FreelancerFullType["workHistory"][0]
+type WorksHistoryWorkType = TFreelancer["workHistory"][0]
 
-export const WorksHistoryWork = ({ name, price, skills }: WorksHistoryWorkType) => {
+export const WorksHistoryWork = ({ name, price, freelancer, id }: WorksHistoryWorkType) => {
     return (<WorkWrapper>
         <WorkOrder>
             <WorkTitle>{name}</WorkTitle>
-            <Skills>
+            {/* <Skills>
                 {skills.map(skill => <Skill>{skill}</Skill>)}
-            </Skills>
+            </Skills> */}
         </WorkOrder>
         <WorkPrice>
             <h4>{price} руб.</h4>

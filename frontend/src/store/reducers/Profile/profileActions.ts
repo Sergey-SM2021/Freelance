@@ -1,15 +1,14 @@
 import { Dispatch } from "redux"
 
-import { FreelancerFullType } from "../../../models"
-import { actionType, actionTypes } from "./profileActionsTypes"
+import { TFreelancer } from "../../../models"
+import { actionType, actionTypes, ISetProfile } from "./profileActionsTypes"
 
-import { paymentMethod } from '../../../models'
 import avaPath from '../../../assets/man.png'
 import Project0 from '../../../assets/Projects/Project0.jpeg'
 import Project1 from '../../../assets/Projects/Project3.jpg'
 import Project2 from '../../../assets/Projects/Project4.jpg'
 
-export const setPofile = (profile: FreelancerFullType) => ({
+export const setPofile = (profile: TFreelancer): ISetProfile => ({
     type: actionTypes.SETPROFILE,
     payload: profile
 })
@@ -22,14 +21,20 @@ export const compliteLoading = () => ({
     type: actionTypes.COMPLITELOADING
 })
 
-const downloadedProfile =
+const downloadedProfile: TFreelancer =
 {
     about: {
         description: "Разрабатываем веб-сервисы и мобильные приложения. Ведем проекты с нуля, а также дорабатываем существующие. Мы самостоятельно создаем frontend, backend, верстку и дизайн интерфейсов для доверенных нам продуктов. В штате — свыше 40 специалистов: разработчики на React, Vue.js, Python (Django), Kotlin и Swift дизайнеры и менеджеры. Более 80 завершенных кастомных проектов. Мы сотрудничаем как с частными стартапами, так и с российскими и зарубежными корпорациями, а также с госcектором. Мы компания из сердца Сибири. Любим технически сложные восхождения, ценим крепкое и долгосрочное сотрудничество.",
         expiriens: "",
-        paymentMethod: paymentMethod.moneyInCash,
+        paymentMethod: "наличка, только наличка",
         price: 800,
-        steck: ["php", "html", "css", "laravel"],
+        stack: [
+            {
+                freelancer: 19277,
+                id: 96455,
+                name: "Node"
+            }
+        ],
     },
     header: {
         ava: avaPath,
@@ -37,19 +42,19 @@ const downloadedProfile =
         name: "Роберт",
         specialization: "Backend developer junior",
     },
-    portfolio: {
-        projects: [Project0, Project1, Project2, Project0, Project0, Project1, Project0, Project1,],
-    },
+    portfolio: [
+        Project0,
+        Project1,
+        Project2,
+        Project0,
+        Project0,
+    ],
     workHistory: [
         {
             name: "Vue",
             price: 99000,
-            skills: ["vue", "node", "mongoDB"]
-        },
-        {
-            name: "Работа на Арабов",
-            price: 110000,
-            skills: ["angular", "rest", "mongoDB"]
+            freelancer: 19277,
+            id: 78333434
         }
     ],
     reviews: [
@@ -66,7 +71,9 @@ const downloadedProfile =
             details: "Заказ: дизайн под ключ",
             name: "Олег",
             lastName: "Кошкин",
-            stars: 3
+            stars: 3,
+            id: 9,
+            freelancer: 19277
         },
         {
             ava: avaPath,
@@ -81,12 +88,14 @@ const downloadedProfile =
             details: "Заказ: дизайн под ключ",
             name: "Олег",
             lastName: "Кошкин",
-            stars: 3
+            stars: 3,
+            id: 911,
+            freelancer: 19277
         }
     ],
     dislike: 8,
-    id: "perfectPerson676",
-    like: 99
+    id: 19277,
+    likes: 99
 }
 
 export const getProfile = () => (

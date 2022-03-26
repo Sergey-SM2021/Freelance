@@ -19,10 +19,10 @@ export const App = () => {
     { path: "/orders", element: <><Orders /><SideBar /> </> },
     { path: "/freelancer/:id/profile", element: <><Profile /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
-    { path: "/auth/:loc", element: <Auth/> }
+    { path: "/auth/:loc", element: <Auth /> }
   ])
   return (<div>
-    <Header isAuth={false}/>
+    <Header isAuth={false} />
     <RouteBG>
       <RouteWrapper>
         {routs}

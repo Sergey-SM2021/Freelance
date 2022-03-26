@@ -21,7 +21,7 @@ export const Profile = () => {
             <ProfileHeader {...header} />
             <ProfileAbout {...about} />
             <ProfileWorksHistory works={workHistory} />
-            <ProfilePortfolio {...portfolio} />
+            <ProfilePortfolio portfolio={portfolio} />
             <ProfileReviews reviews={reviews} />
         </ProfilePaper>
     </ProfileWrapper>)

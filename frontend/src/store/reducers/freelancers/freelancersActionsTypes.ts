@@ -1,4 +1,4 @@
-import { FreelancersType } from "../../../models"
+import { TFreelancer } from "../../../models"
 
 export type actionType = setFreelancersType
 
@@ -9,6 +9,6 @@ export enum constants {
 export type dispatchType = any
 
 export type setFreelancersType = {
-    payload: FreelancersType,
+    payload: Array<TFreelancer>,
     type: constants.SETFREELANCERS
 } 

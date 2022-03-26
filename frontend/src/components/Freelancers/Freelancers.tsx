@@ -11,7 +11,7 @@ export const Freelancers = () => {
     useEffect(() => {
         dispatch(getFreelancers())
     }, [])
-    const freelancers = useSelector((state: RootType) => (state.freelancers.personsData))
+    const freelancers = useSelector((state: RootType) => (state.freelancers))
     return (<FreelancersWrapper>
         <FreelancersPaper>
             <HeaderPage />

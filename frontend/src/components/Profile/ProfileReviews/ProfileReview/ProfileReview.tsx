@@ -1,12 +1,13 @@
 import starPath from '../../../../assets/favourite.png'
-import { FreelancerFullType } from "../../../../models"
+import { TFreelancer } from "../../../../models"
 import { ReviewAva, ReviewDescription, ReviewDetails, ReviewInner, ReviewName, ReviewWrapper, Star } from './ProfileReview.style'
+import avaPath from '../../../../assets/man.png'
 
-type ReviewType = FreelancerFullType["reviews"][0]
+type ReviewType = TFreelancer["reviews"][0]
 
 export const ProfileReview = ({ ava, description, details, name, stars, lastName }: ReviewType) => {
     return (<ReviewWrapper>
-        <ReviewAva src={ava} />
+        <ReviewAva src={avaPath} />
         <ReviewInner>
             <ReviewName>
                 {name} {lastName}

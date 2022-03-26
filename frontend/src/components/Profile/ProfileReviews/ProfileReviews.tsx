@@ -1,10 +1,10 @@
-import { FreelancerFullType } from "../../../models"
+import { TFreelancer } from "../../../models"
 import { SectionTitle } from "../../Common.style"
 import { ProfileReview } from "./ProfileReview/ProfileReview"
 import { ReviewsWrapper } from "./ProfileReviews.style"
 
 type ProfileReviewsType = {
-    reviews: FreelancerFullType["reviews"]
+    reviews: TFreelancer["reviews"]
 }
 
 export const ProfileReviews = ({ reviews }: ProfileReviewsType) => {
