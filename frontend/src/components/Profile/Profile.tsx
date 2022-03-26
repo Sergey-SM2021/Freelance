@@ -11,10 +11,12 @@ import { getProfile } from '../../store/reducers/Profile/profileActions'
 
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 export const Profile = () => {
+    const id = useParams().id
     const dispatch = useDispatch()
-    useEffect(() => { dispatch(getProfile(0)) }, [])
+    useEffect(() => { dispatch(getProfile(Number(id))) }, [])
     const { header, about, portfolio, workHistory, reviews } = useSelector((state: RootType) => (state.profile))
     return (<ProfileWrapper>
         <ProfilePaper>

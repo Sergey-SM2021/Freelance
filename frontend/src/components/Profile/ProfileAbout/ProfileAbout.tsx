@@ -8,7 +8,6 @@ import {
 type ProfileAboutType = TFreelancer["about"]
 
 export const ProfileAbout = ({ description, expiriens, paymentMethod, price, stack }: ProfileAboutType) => {
-    debugger
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
