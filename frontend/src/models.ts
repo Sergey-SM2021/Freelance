@@ -2,6 +2,12 @@ export type id = number
 
 export type ava = string | null
 
+export type TClientApi = {
+    id: number,
+    mail: string,
+    password: string
+}
+
 export type TFreelancerApi = {
     name: string,
     lastname: string,

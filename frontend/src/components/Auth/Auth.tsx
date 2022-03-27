@@ -10,6 +10,8 @@ import {
 } from "./Auth.style"
 import { AuthField } from './AuthField/AuthField'
 import { validationSchema } from "./signUpValidationSchema"
+import { useDispatch } from "react-redux"
+import { CreateUser, getUser } from "../../store/reducers/auth/authActions"
 
 export const Auth = () => {
     const loc = useParams().loc
@@ -32,16 +34,20 @@ export const Auth = () => {
 }
 
 export const SignIn = () => {
-    return (<Formik initialValues={{ mail: "", password: "" }} onSubmit={() => { alert("Lol") }}>
+    const dispatch = useDispatch()
+    return (<Formik
+        initialValues={{ mail: "", password: "" }}
+        onSubmit={(values) => { dispatch(getUser(values.mail, values.password)) }}>
         {(values) => (<Form>
             <Field name="mail" title="Почта" component={AuthField} />
             <Field name="password" title="Пороль" component={AuthField} />
-            <AuthSubmit>Войти</AuthSubmit>
+            <AuthSubmit type="submit">Войти</AuthSubmit>
         </Form>)}
     </Formik>)
 }
 
 export const SignUp = () => {
+    const dispatch = useDispatch()
     const client = useRef<HTMLButtonElement>(null)
     const freelancer = useRef<HTMLButtonElement>(null)
 
@@ -67,10 +73,9 @@ export const SignUp = () => {
     return (<Formik
         validateOnBlur
         validationSchema={validationSchema}
-        onSubmit={(value) => { alert(JSON.stringify(value)) }}
-        initialValues={{ login: "", mail: "", password: "", role: "" }}>
+        onSubmit={(values) => { dispatch(CreateUser(values.mail, values.password, values.role)) }}
+        initialValues={{ mail: "", password: "", role: "" }}>
         {(values) => (<Form>
-            <Field title="Логин" name="login" component={AuthField} />
             <Field title="Email" name="mail" component={AuthField} />
             <Field title="Пороль" name="password" component={AuthField} />
             <SignUpRolesWrapper>

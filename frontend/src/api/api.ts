@@ -64,3 +64,29 @@ export const getProfileFreelancer = async (id: number) => {
     }
     return profileFreelancer
 }
+
+export const createFreelancer = (mail: string, password: string) => {
+    axios.post('/freelancer',
+        {
+            "mail": mail,
+            "password": password
+        })
+}
+
+export const createClient = (mail: string, password: string) => {
+    axios.post('/client', {
+        "mail": mail,
+        "password": password
+    })
+}
+
+export const getClient = async (mail: string, password: string) => await (await axios.get(`/client?mail=${mail}&password=${password}`)).data
+
+export const getFreelancer = async (mail: string, password: string) => {
+    try {
+        const freelancer = await (await axios.get(`/freelancer?mail=${mail}&password=${password}`)).data
+        return freelancer
+    } catch (error) {
+        throw "freelancer не найден" 
+    }
+}

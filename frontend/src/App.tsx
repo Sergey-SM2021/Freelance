@@ -22,7 +22,7 @@ export const App = () => {
     { path: "/auth/:loc", element: <Auth /> }
   ])
   return (<div>
-    <Header isAuth={false} />
+    <Header />
     <RouteBG>
       <RouteWrapper>
         {routs}
