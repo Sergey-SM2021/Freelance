@@ -10,7 +10,7 @@ export const ProfilePortfolio = (props: ProfilePortfolioType) => {
     return (<PortfolioWrapper>
         <SectionTitle><h3>Портфолио (9)</h3></SectionTitle>
         <PortfolioContainer>
-            {props?.portfolio?.length ? props.portfolio.map((project) => (<PortfolioProject src={project} />)) : "Нет завершённых работ"}
+            {props?.portfolio?.length ? props.portfolio.map((project) => (<PortfolioProject key={project} src={project} />)) : "Нет завершённых работ"}
         </PortfolioContainer>
     </PortfolioWrapper>)
 }

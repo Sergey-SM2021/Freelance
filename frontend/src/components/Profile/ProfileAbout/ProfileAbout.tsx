@@ -32,7 +32,7 @@ export const ProfileAbout = (props: ProfileAboutType) => {
             {
                 props?.stack ?
                     <Skills>
-                        {props.stack.map((skill) => (<Skill>{skill.name}</Skill>))}
+                        {props.stack.map((skill) => (<Skill key={skill.id}>{skill.name}</Skill>))}
                     </Skills> : <>Ключевые навыки не указаны</>
             }
         </AboutePaper></AboutWrapper>)

@@ -59,7 +59,6 @@ export const auth = (state = initialState, action: TAction) => {
         case constats.SETFREELANCER:
             stateCopy.isAuth = true
             stateCopy.person = action.payload
-            console.log(`~~~~~~~~~~~ stateCopy ~~~~~~~~~ ${stateCopy.person}`)
             return stateCopy
         default:
             return stateCopy

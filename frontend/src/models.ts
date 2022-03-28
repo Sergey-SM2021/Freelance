@@ -78,5 +78,4 @@ export type TReview = {
     freelancer: number
 }
 
-export type TFreelancerPreview =
-    Omit<TFreelancer, "reviews" | "workHistory" | "paymentMethod" | "expiriens">
+export type TFreelancerPreview = Omit<TFreelancer, "reviews" | "workHistory" | "paymentMethod" | "expiriens">

@@ -10,6 +10,6 @@ type ProfileReviewsType = {
 export const ProfileReviews = (props: ProfileReviewsType) => {
     return (<ReviewsWrapper>
         <SectionTitle><h3>Отзывы</h3></SectionTitle>
-        {props?.reviews ? props?.reviews.map((review) => (<ProfileReview {...review} />)) : <p>Пока нет отзывов</p>}
+        {props?.reviews?.length ? props?.reviews.map((review) => (<ProfileReview key={review.id} {...review} />)) : <p>Пока нет отзывов</p>}
     </ReviewsWrapper>)
 }

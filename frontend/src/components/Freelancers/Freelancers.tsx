@@ -16,7 +16,7 @@ export const Freelancers = () => {
         <FreelancersPaper>
             <HeaderPage />
             <FreelancersBody>
-                {freelancers.map(freelancer => <Freelancer {...freelancer} />)}
+                {freelancers.map(freelancer => <Freelancer key={freelancer.id} {...freelancer} />)}
             </FreelancersBody>
             <Pagination />
         </FreelancersPaper>

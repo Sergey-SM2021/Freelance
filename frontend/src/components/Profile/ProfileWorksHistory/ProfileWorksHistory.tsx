@@ -5,7 +5,7 @@ import { WorksHistoryWork } from "./ProfileWorksHistoryWork/ProfileWorkHistory"
 
 type ProfileWorksHistory = {
     works: TFreelancer["workHistory"]
-} | undefined
+} | undefined | null
 
 export const ProfileWorksHistory = (props: ProfileWorksHistory) => {
     return (<WorksHistoryWrapper>
@@ -13,7 +13,7 @@ export const ProfileWorksHistory = (props: ProfileWorksHistory) => {
             <h3>История работы</h3>
         </SectionTitle>
         <WorksHistory>
-            {props?.works ? props?.works.map(work => (<WorksHistoryWork {...work} />)):"Нет завершенных работ"}
+            {props?.works?.length ? props?.works.map(work => (<WorksHistoryWork key={work.id} {...work} />)):"Нет завершенных работ"}
         </WorksHistory>
     </WorksHistoryWrapper>)
 }

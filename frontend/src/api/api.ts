@@ -14,7 +14,7 @@ export const getFreelancers = async () => (await axios.get<Array<TFreelancerApi>
 export const getPreviewFreelancers = async () => {
     const freeelancers = getFreelancers()
     const previewFreeelancers: Array<TFreelancer> = (await freeelancers).map(freelancer =>
-    ({
+    ({ 
         header: {
             name: freelancer.name,
             lastName: freelancer.lastname,
