@@ -6,7 +6,7 @@ import { Container } from "../Common.style"
 import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper, HeaderNavBG } from './Header.style'
 
 export const Header = () => {
-    const isAuth = useSelector((state:RootType)=>state.auth.isAuth)
+    const isAuth = useSelector((state: RootType) => state.auth.isAuth)
     const isIntro = useLocation().pathname.length === 1 ? true : false
     return (<HeaderWrapper>
         <HeaderTop>
@@ -25,8 +25,8 @@ export const Header = () => {
                 </HeaderGroup>
                 <HeaderGroup>
                     {isAuth ?
-                    <><NavLink to="/personalAccount">Личный кабинет</NavLink><NavLink to="/">Ава</NavLink></> :
-                    <><NavLink to="auth/signIn">Вход</NavLink><NavLink to="auth/signUp">Регистрация</NavLink></>}
+                        <><NavLink to="/personalAccount">Личный кабинет</NavLink></> :
+                        <><NavLink to="auth/signIn">Вход</NavLink><NavLink to="auth/signUp">Регистрация</NavLink></>}
                 </HeaderGroup>
             </HeaderNav>
         </HeaderNavBG>

@@ -5,12 +5,17 @@ import { RootType } from "../../store/store"
 import { HeaderPage } from "../HeaderPage/HeaderPage"
 import { useEffect } from "react"
 import { getFreelancers } from "../../store/reducers/freelancers/freelancersActions"
+import { useLocation } from "react-router-dom"
 
 export const Freelancers = () => {
     const dispatch = useDispatch()
+    const loc = useLocation().pathname
     useEffect(() => {
         dispatch(getFreelancers())
     }, [])
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [loc])
     const freelancers = useSelector((state: RootType) => (state.freelancers))
     return (<FreelancersWrapper>
         <FreelancersPaper>
