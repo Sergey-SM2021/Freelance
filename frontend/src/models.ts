@@ -27,27 +27,29 @@ export type TFreelancerApi = {
     workhistory: Array<TWorkHistory>,
 }
 
+// #TODO: TFreelancerApi => TFreelancer lost mail & password
+
 export type TFreelancer = {
     header: {
-        name: string,
-        lastName: string,
-        ava: ava,
-        specialization: string,
+        name: string | null | undefined,
+        lastName: string | null | undefined,
+        ava: ava | null | undefined,
+        specialization: string | null | undefined,
     },
     about: {
-        description: string,
-        expiriens: string,
-        price: number,
-        stack: Array<TStack>,
-        paymentMethod: string,
+        description: string | null | undefined,
+        expiriens: string | null | undefined,
+        price: number | null | undefined,
+        stack: Array<TStack> | null | undefined,
+        paymentMethod: string | null | undefined,
     },
-    portfolio: Array<TPortfolio>,
-    workHistory: Array<TWorkHistory>,
+    portfolio: Array<TPortfolio> | null | undefined,
+    workHistory: Array<TWorkHistory> | null | undefined,
     id: id,
-    reviews: Array<TReview>
+    reviews: Array<TReview> | null | undefined
     // #FIXME: these properties are not needed by a fullfreelancer
-    likes: number,
-    dislike: number,
+    likes: number | null | undefined,
+    dislike: number | null | undefined,
 }
 
 export type TPortfolio = string

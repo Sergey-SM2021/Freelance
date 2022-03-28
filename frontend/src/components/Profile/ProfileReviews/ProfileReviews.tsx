@@ -5,11 +5,11 @@ import { ReviewsWrapper } from "./ProfileReviews.style"
 
 type ProfileReviewsType = {
     reviews: TFreelancer["reviews"]
-}
+} | undefined | null
 
-export const ProfileReviews = ({ reviews }: ProfileReviewsType) => {
+export const ProfileReviews = (props: ProfileReviewsType) => {
     return (<ReviewsWrapper>
         <SectionTitle><h3>Отзывы</h3></SectionTitle>
-        {reviews.map(review => (<ProfileReview {...review} />))}
+        {props?.reviews ? props?.reviews.map((review) => (<ProfileReview {...review} />)) : <p>Пока нет отзывов</p>}
     </ReviewsWrapper>)
 }

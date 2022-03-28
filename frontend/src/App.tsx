@@ -11,17 +11,16 @@ import { Preview } from "./components/Preview"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
-import {PersonalAccount} from './components/Profile/PersonalAccount'
 
 export const App = () => {
   const routs = useRoutes([
     { path: "/specialists", element: <><Freelancers /><SideBar /> </> },
     { path: "/club", element: <><Club /><SideBar /> </> },
     { path: "/orders", element: <><Orders /><SideBar /> </> },
-    { path: "/freelancer/:id/profile", element: <><Profile /><SideBar /> </> },
+    { path: "/freelancer/:id/profile", element: <><Profile isMyProfile={false} /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
     { path: "/auth/:loc", element: <Auth /> },
-    { path: "/PersonalAccount", element: <PersonalAccount /> }
+    { path: "/PersonalAccount", element: <Profile isMyProfile={true} /> }
   ])
   return (<div>
     <Header />

@@ -52,10 +52,10 @@ export const Freelancer = ({ about, dislike, likes, header, portfolio, id }: TFr
                     {about.description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {portfolio.map((el) => <FreelancerProject src={IMG} />)}
+                    {portfolio?.length ? portfolio.map((el) => <FreelancerProject src={IMG} />) : <></>}
                 </FreelancerProjects>
                 <Skills>
-                    {about.stack.map((el) => (<Skill >{el.name}</Skill>))}
+                    {about.stack ? about.stack.map((el) => (<Skill >{el.name}</Skill>)) : <></>}
                 </Skills>
             </FreelancerContent>
         </FreelancerCard>

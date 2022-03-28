@@ -4,17 +4,16 @@ import {
     HeaderAbout, HeaderContent, HeaderName
 } from "./ProfileHeader.style"
 import bg from '../../../assets/bg.jpg'
-import avaPath from '../../../assets/man.png' 
+import avaPath from '../../../assets/man.png'
 
-type ProfileHeaderType = TFreelancer['header']
+type TProfileHeader = TFreelancer['header'] | undefined | null
 
-export const ProfileHeader = ({ ava, lastName, name, specialization }: ProfileHeaderType) => {
-
+export const ProfileHeader = (props: TProfileHeader) => {
     return (<HeaderWrapper bg={bg}>
         <Ava src={avaPath} />
         <HeaderContent>
-            <HeaderName>{name} {lastName}</HeaderName>
-            <HeaderAbout>{specialization}</HeaderAbout>
+            <HeaderName>{props?.name} {props?.lastName}</HeaderName>
+            <HeaderAbout>{props?.specialization}</HeaderAbout>
         </HeaderContent>
     </HeaderWrapper>)
 }

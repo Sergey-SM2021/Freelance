@@ -1,10 +1,8 @@
-import { TFreelancer } from "../../../../models"
+import { TFreelancer, TWorkHistory } from "../../../../models"
 import { Skill, Skills } from "../../../Common.style"
 import { WorkOrder, WorkPrice, WorkTitle, WorkWrapper } from "./ProfileWorkHistory.style"
 
-type WorksHistoryWorkType = TFreelancer["workHistory"][0]
-
-export const WorksHistoryWork = ({ name, price, freelancer, id }: WorksHistoryWorkType) => {
+export const WorksHistoryWork = ({ name, price, freelancer, id }: TWorkHistory) => {
     return (<WorkWrapper>
         <WorkOrder>
             <WorkTitle>{name}</WorkTitle>

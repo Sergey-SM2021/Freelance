@@ -3,14 +3,14 @@ import { SectionTitle } from "../../Common.style"
 import { PortfolioContainer, PortfolioWrapper, PortfolioProject } from "./ProfilePortfolio.style"
 
 type ProfilePortfolioType = {
-    portfolio:TFreelancer["portfolio"]
-}
+    portfolio: TFreelancer["portfolio"]
+} | undefined
 
-export const ProfilePortfolio = ({portfolio}: ProfilePortfolioType) => {
+export const ProfilePortfolio = (props: ProfilePortfolioType) => {
     return (<PortfolioWrapper>
         <SectionTitle><h3>Портфолио (9)</h3></SectionTitle>
         <PortfolioContainer>
-            {portfolio.map((project) => (<PortfolioProject src={project} />))}
+            {props?.portfolio?.length ? props.portfolio.map((project) => (<PortfolioProject src={project} />)) : "Нет завершённых работ"}
         </PortfolioContainer>
     </PortfolioWrapper>)
 }

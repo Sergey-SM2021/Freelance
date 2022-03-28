@@ -4,7 +4,7 @@ export enum constats {
     SETFREELANCER = "SETFREELANCER"
 }
 
-export type TAction = TSetFreelancer 
+export type TAction = TSetFreelancer
 
 export type TDispatch = any
 
@@ -15,5 +15,5 @@ export type TSetFreelancer = {
 
 export type TInitialState = {
     isAuth: boolean,
-    person: TFreelancer|null
+    person: TFreelancer 
 }
