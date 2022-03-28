@@ -1,7 +1,8 @@
-import { TAction, constats } from "./authTypes"
+import { TAction, constats, TInitialState } from "./authTypes"
 
-const initialState = {
-    isAuth: false
+const initialState: TInitialState = {
+    isAuth: false,
+    person:null
 }
 
 export const auth = (state = initialState, action: TAction) => {

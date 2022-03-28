@@ -8,9 +8,12 @@ export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
     type: constats.SETFREELANCER
 })
 
+// #TODO: setUser
+
 export const CreateUser = (mail: string, password: string, role: string) => async (dispatch: TDispatch) => {
     if (role === "freelancer") {
-        createFreelancer(mail, password)
+        const freelancer = await createFreelancer(mail, password)
+        dispatch(setFreelancer(freelancer))
     } else {
         createClient(mail, password)
     }

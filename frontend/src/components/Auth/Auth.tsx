@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { Field, Form, Formik } from 'formik'
 import { useRef } from "react"
 
@@ -34,10 +34,14 @@ export const Auth = () => {
 }
 
 export const SignIn = () => {
+    const nav = useNavigate()
     const dispatch = useDispatch()
     return (<Formik
         initialValues={{ mail: "", password: "" }}
-        onSubmit={(values) => { dispatch(getUser(values.mail, values.password)) }}>
+        onSubmit={(values) => {
+            dispatch(getUser(values.mail, values.password))
+            nav("/PersonalAccount")
+        }}>
         {(values) => (<Form>
             <Field name="mail" title="Почта" component={AuthField} />
             <Field name="password" title="Пороль" component={AuthField} />
@@ -47,6 +51,7 @@ export const SignIn = () => {
 }
 
 export const SignUp = () => {
+    const nav = useNavigate()
     const dispatch = useDispatch()
     const client = useRef<HTMLButtonElement>(null)
     const freelancer = useRef<HTMLButtonElement>(null)
@@ -73,7 +78,10 @@ export const SignUp = () => {
     return (<Formik
         validateOnBlur
         validationSchema={validationSchema}
-        onSubmit={(values) => { dispatch(CreateUser(values.mail, values.password, values.role)) }}
+        onSubmit={(values) => {
+            dispatch(CreateUser(values.mail, values.password, values.role))
+            nav("/PersonalAccount")
+        }}
         initialValues={{ mail: "", password: "", role: "" }}>
         {(values) => (<Form>
             <Field title="Email" name="mail" component={AuthField} />

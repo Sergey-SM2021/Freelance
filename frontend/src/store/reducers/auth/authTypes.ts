@@ -12,3 +12,8 @@ export type TSetFreelancer = {
     type: constats.SETFREELANCER,
     payload: TFreelancer
 }
+
+export type TInitialState = {
+    isAuth: boolean,
+    person: TFreelancer|null
+}
