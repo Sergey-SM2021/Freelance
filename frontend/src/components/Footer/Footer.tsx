@@ -7,8 +7,9 @@ import telegram from '../../assets/socialNetworks/telegram.png'
 import twitter from '../../assets/socialNetworks/twitter.png'
 
 import { useLocation } from "react-router-dom"
+import { memo } from "react"
 
-export const Footer = () => {
+export const Footer = memo(() => {
     const isIntro = useLocation().pathname.length===1?true:false
     return (<FooterWrapper>
         <Container>
@@ -34,5 +35,5 @@ export const Footer = () => {
             </FooterGrid>
         </Container>
     </FooterWrapper>)
-}
+})
 

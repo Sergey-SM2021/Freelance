@@ -7,7 +7,7 @@ import { ProfileWorksHistory } from './ProfileWorksHistory/ProfileWorksHistory'
 import { ProfileReviews } from './ProfileReviews/ProfileReviews'
 import { ProfileHeader } from './ProfileHeader/ProfileHeader'
 import { TFreelancer } from '../../models'
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useParams } from 'react-router-dom'
 import { getProfile } from '../../store/reducers/Profile/profileActions'
@@ -35,7 +35,7 @@ type TProfile = {
     isMyProfile: boolean
 }
 
-export const Profile = ({ isMyProfile }: TProfile) => {
+export const Profile = memo(({ isMyProfile }: TProfile) => {
     const freelancer = useProfile(isMyProfile)
     const loc = useLocation().pathname
     useEffect(() => {
@@ -50,4 +50,4 @@ export const Profile = ({ isMyProfile }: TProfile) => {
             <ProfileReviews reviews={freelancer.reviews} />
         </ProfilePaper>
     </ProfileWrapper>)
-}
+})

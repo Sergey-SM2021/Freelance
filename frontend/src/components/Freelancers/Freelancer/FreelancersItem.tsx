@@ -9,8 +9,9 @@ import { Skill, Skills } from "../../Common.style"
 import { TFreelancerPreview } from "../../../models"
 
 import { Link } from "react-router-dom"
+import { memo } from "react"
 
-export const Freelancer = ({ about, dislike, likes, header, portfolio, id }: TFreelancerPreview) => {
+export const Freelancer = memo(({ about, dislike, likes, header, portfolio, id }: TFreelancerPreview) => {
     return (<FreelancerWrapper>
         <FreelancerCard>
             <AvaArea>
@@ -60,4 +61,4 @@ export const Freelancer = ({ about, dislike, likes, header, portfolio, id }: TFr
             </FreelancerContent>
         </FreelancerCard>
     </FreelancerWrapper >)
-}
+})

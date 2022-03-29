@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { TFreelancer } from "../../../models"
 import { SectionTitle } from "../../Common.style"
 import { WorksHistory, WorksHistoryWrapper } from "./ProfileWorksHistory.style"
@@ -7,7 +8,7 @@ type ProfileWorksHistory = {
     works: TFreelancer["workHistory"]
 } | undefined | null
 
-export const ProfileWorksHistory = (props: ProfileWorksHistory) => {
+export const ProfileWorksHistory = memo((props: ProfileWorksHistory) => {
     return (<WorksHistoryWrapper>
         <SectionTitle>
             <h3>История работы</h3>
@@ -16,4 +17,4 @@ export const ProfileWorksHistory = (props: ProfileWorksHistory) => {
             {props?.works?.length ? props?.works.map(work => (<WorksHistoryWork key={work.id} {...work} />)):"Нет завершенных работ"}
         </WorksHistory>
     </WorksHistoryWrapper>)
-}
+})

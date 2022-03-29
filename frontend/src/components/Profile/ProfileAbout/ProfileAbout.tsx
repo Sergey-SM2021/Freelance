@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { TFreelancer } from "../../../models"
 import { SectionTitle, Skill, Skills } from "../../Common.style"
 import {
@@ -7,7 +8,7 @@ import {
 
 type ProfileAboutType = TFreelancer["about"] | undefined | null
 
-export const ProfileAbout = (props: ProfileAboutType) => {
+export const ProfileAbout = memo((props: ProfileAboutType) => {
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
@@ -36,4 +37,4 @@ export const ProfileAbout = (props: ProfileAboutType) => {
                     </Skills> : <>Ключевые навыки не указаны</>
             }
         </AboutePaper></AboutWrapper>)
-}
+})

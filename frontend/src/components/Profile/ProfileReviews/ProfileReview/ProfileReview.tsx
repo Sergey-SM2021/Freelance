@@ -2,8 +2,9 @@ import starPath from '../../../../assets/favourite.png'
 import { TReview } from "../../../../models"
 import { ReviewAva, ReviewDescription, ReviewDetails, ReviewInner, ReviewName, ReviewWrapper, Star } from './ProfileReview.style'
 import avaPath from '../../../../assets/man.png'
+import { memo } from 'react'
 
-export const ProfileReview = ({ ava, description, details, name, stars, lastName }: TReview) => {
+export const ProfileReview = memo(({ ava, description, details, name, stars, lastName }: TReview) => {
     return (<ReviewWrapper>
         <ReviewAva src={avaPath} />
         <ReviewInner>
@@ -19,4 +20,4 @@ export const ProfileReview = ({ ava, description, details, name, stars, lastName
         </ReviewInner>
         {[0, 0, 0, 0, 0].map(star => (<Star src={starPath} />))}
     </ReviewWrapper>)
-}
+})

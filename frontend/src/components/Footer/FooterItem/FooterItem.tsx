@@ -1,3 +1,5 @@
+import {memo} from 'react'
+
 import { NavLink } from "react-router-dom"
 import { FooterItem, FooterItemTitle } from "./FooterItem.style"
 
@@ -7,15 +9,15 @@ type FooterItemsType = {
     isIntro: boolean
 }
 
-export const FooterItems = ({ links, title, isIntro }: FooterItemsType) => {
+export const FooterItems = memo(({ links, title, isIntro }: FooterItemsType) => {
     return (<div>
         <FooterItemTitle>
             {title}
         </FooterItemTitle>
-        {links.map(link => (<FooterItem isIntro={isIntro}>
+        {links.map((link,i) => (<FooterItem key={i} isIntro={isIntro}>
             <NavLink to="info">
                 {link}
             </NavLink>
         </FooterItem>))}
     </div>)
-}
+})

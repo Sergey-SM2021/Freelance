@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useLocation } from "react-router-dom"
 import { RootType } from "../../store/store"
@@ -5,7 +6,7 @@ import { RootType } from "../../store/store"
 import { Container } from "../Common.style"
 import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper, HeaderNavBG } from './Header.style'
 
-export const Header = () => {
+export const Header = memo(() => {
     const isAuth = useSelector((state: RootType) => state.auth.isAuth)
     const isIntro = useLocation().pathname.length === 1 ? true : false
     return (<HeaderWrapper>
@@ -31,4 +32,4 @@ export const Header = () => {
             </HeaderNav>
         </HeaderNavBG>
     </HeaderWrapper>)
-}
+})

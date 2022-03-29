@@ -3,11 +3,11 @@ import { Freelancer } from './Freelancer/FreelancersItem'
 import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../store/store"
 import { HeaderPage } from "../HeaderPage/HeaderPage"
-import { useEffect } from "react"
+import { memo, useEffect } from "react"
 import { getFreelancers } from "../../store/reducers/freelancers/freelancersActions"
 import { useLocation } from "react-router-dom"
 
-export const Freelancers = () => {
+export const Freelancers = memo(() => {
     const dispatch = useDispatch()
     const loc = useLocation().pathname
     useEffect(() => {
@@ -26,4 +26,4 @@ export const Freelancers = () => {
             <Pagination />
         </FreelancersPaper>
     </FreelancersWrapper>)
-}
+})

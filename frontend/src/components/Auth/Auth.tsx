@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { Field, Form, Formik } from 'formik'
-import { useRef } from "react"
+import { memo, useRef } from "react"
 
 import {
     AlreadySignUp, LogoTitle, SignUpWrapper, AuthSubmit,
@@ -13,7 +13,7 @@ import { validationSchema } from "./signUpValidationSchema"
 import { useDispatch } from "react-redux"
 import { CreateUser, getUser } from "../../store/reducers/auth/authActions"
 
-export const Auth = () => {
+export const Auth = memo(() => {
     const loc = useParams().loc
     return (<SignUpWrapper>
         <SignUpInner>
@@ -31,9 +31,9 @@ export const Auth = () => {
             </SignUpMainPaper>
         </SignUpInner>
     </SignUpWrapper>)
-}
+})
 
-export const SignIn = () => {
+export const SignIn = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
     return (<Formik
@@ -48,9 +48,9 @@ export const SignIn = () => {
             <AuthSubmit type="submit">Войти</AuthSubmit>
         </Form>)}
     </Formik>)
-}
+})
 
-export const SignUp = () => {
+export const SignUp = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
     const client = useRef<HTMLButtonElement>(null)
@@ -102,4 +102,4 @@ export const SignUp = () => {
             <AuthSubmit type="submit">Зарегистрироваться</AuthSubmit>
         </Form>)}
     </Formik>)
-}
+})

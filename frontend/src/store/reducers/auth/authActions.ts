@@ -1,4 +1,5 @@
-import { createFreelancer, createClient, getClient, getFreelancer } from "../../../api/api"
+import Client from "../../../api/Client"
+import Freelancer from "../../../api/Freelancer"
 import { TFreelancer } from "../../../models"
 import { constats } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
@@ -12,18 +13,18 @@ export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
 
 export const CreateUser = (mail: string, password: string, role: string) => async (dispatch: TDispatch) => {
     if (role === "freelancer") {
-        const freelancer = await createFreelancer(mail, password)
+        const freelancer = await Freelancer.createFreelancer(mail, password)
         dispatch(setFreelancer(freelancer))
     } else {
-        createClient(mail, password)
+        Client.createClient(mail, password)
     }
 }
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
-    const client = await getClient(mail, password)
+    const client = await Client.getClient(mail, password)
     if (client.id == undefined) {
         try {
-            const freelancer = await getFreelancer(mail, password)
+            const freelancer = await Freelancer.getFreelancer(mail, password)
             dispatch(setFreelancer(freelancer))
         } catch (error) {
             if (error = 'freelancer не найден') {

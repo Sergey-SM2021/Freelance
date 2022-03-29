@@ -1,6 +1,6 @@
 import { constants, dispatchType, setFreelancersType } from "./freelancersActionsTypes"
-import * as api from '../../../api/api'
 import { TFreelancer } from "../../../models"
+import Freelancers from "../../../api/Freelancers"
 
 export const setFreelancers = (freelancers: Array<TFreelancer>): setFreelancersType => ({
     payload: freelancers,
@@ -8,6 +8,6 @@ export const setFreelancers = (freelancers: Array<TFreelancer>): setFreelancersT
 })
 
 export const getFreelancers = () => async (dispatch: dispatchType) => {
-    const freelancers = await api.getPreviewFreelancers()
+    const freelancers = await Freelancers.getPreviewFreelancers()
     dispatch(setFreelancers(freelancers))
 }

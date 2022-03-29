@@ -1,9 +1,11 @@
+import {memo} from "react"
+
 import {
     SideBarWrapper, SideBarSection,
     SideBarTitle, SideBarList, SideBarInner, SideBarItem
 } from "./SideBar.style"
 
-export const SideBar = () => {
+export const SideBar = memo(() => {
     return (<SideBarWrapper>
         <SideBarInner>
             <SideBarSection>
@@ -19,4 +21,4 @@ export const SideBar = () => {
             </SideBarSection>
         </SideBarInner>
     </SideBarWrapper>)
-}
+})
