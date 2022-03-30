@@ -16,13 +16,16 @@ export const Freelancers = memo(() => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [loc])
-    const freelancers = useSelector((state: RootType) => (state.freelancers))
+    const freelancers = useSelector((state: RootType) => (state.freelancers.freelancers))
+    const isLoading = useSelector((state: RootType) => (state.freelancers.loading))
+    const Error = useSelector((state: RootType) => (state.freelancers.error))
     return (<FreelancersWrapper>
         <FreelancersPaper>
             <HeaderPage />
-            <FreelancersBody>
-                {freelancers.map(freelancer => <Freelancer key={freelancer.id} {...freelancer} />)}
-            </FreelancersBody>
+            {isLoading ? <>Loading...</> : Error ?
+                <>Error</> : <FreelancersBody>
+                    {freelancers.map(freelancer => <Freelancer key={freelancer.id} {...freelancer} />)}
+                </FreelancersBody>}
             <Pagination />
         </FreelancersPaper>
     </FreelancersWrapper>)
