@@ -20,7 +20,8 @@ export const App = () => {
     { path: "/freelancer/:id/profile", element: <><Profile isMyProfile={false} /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
     { path: "/auth/:loc", element: <Auth /> },
-    { path: "/PersonalAccount", element: <Profile isMyProfile={true} /> }
+    { path: "/PersonalAccount", element: <Profile isMyProfile={true} /> },
+    { path: "*", element: <>404 <h1>Страница не найдена</h1></> }
   ])
   return (<div>
     <Header />

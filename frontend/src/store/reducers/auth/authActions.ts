@@ -23,34 +23,16 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
     try {
-        var { type, id } = (await User.getUser(mail, password))
+        const { type, id } = (await User.getUser(mail, password))
+        switch (type) {
+            case "freelancers":
+                const freelancerProfile = await Freelancer.getProfileFreelancer(id)
+                dispatch(setFreelancer(freelancerProfile))
+                break;
+            default:
+                break;
+        }
     } catch (error) {
         throw "Пользователь не был получен"
     }
-    switch (type) {
-        case "freelancers":
-            try {
-                const freelancerProfile = await Freelancer.getProfileFreelancer(id)
-                dispatch(setFreelancer(freelancerProfile))
-            } catch (error) {
-                throw "Не удалось получить профиль Фрилансера"
-            }
-            break;
-        default:
-            break;
-    }
-
-    // const user = await User.getUser(mail, password)
-
-    // const client = await Client.getClient(mail, password)
-    // if (client.id == undefined) {
-    //     try {
-    //         const freelancer = await Freelancer.getFreelancer(mail, password)
-    //         dispatch(setFreelancer(freelancer))
-    //     } catch (error) {
-    //         if (error = 'freelancer не найден') {
-
-    //         }
-    //     }
-    // }
 }

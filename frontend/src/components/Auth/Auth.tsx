@@ -40,9 +40,13 @@ export const SignIn = memo(() => {
     return (<Formik
         validationSchema={SignInSchema}
         initialValues={{ mail: "", password: "" }}
-        onSubmit={(values) => {
-            dispatch(getUser(values.mail, values.password))
-            nav("/PersonalAccount")
+        onSubmit={async (values) => {
+            try {
+                await dispatch(getUser(values.mail, values.password))
+                nav("/PersonalAccount")
+            } catch (error) {
+                nav("/404")
+            }
         }}>
         {(values) => (<Form>
             <Field name="mail" title="Почта" component={AuthField} />
