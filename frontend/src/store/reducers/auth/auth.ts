@@ -1,4 +1,4 @@
-import { TAction, constats, TInitialState } from "./authTypes"
+import { TAction, constants, TInitialState } from "./authTypes"
 import man from '../../../assets/man.png'
 import Project1 from '../../../assets/Projects/Project0.jpeg'
 import Project2 from '../../../assets/Projects/Project1.jpeg'
@@ -58,15 +58,18 @@ const initialState: TInitialState = {
 export const auth = (state = initialState, action: TAction) => {
     const stateCopy = { ...state }
     switch (action.type) {
-        case constats.STARTLOADING:
+        case constants.STARTLOADING:
             stateCopy.isLoading = true
             return stateCopy
-        case constats.ENDLOADING:
+        case constants.ENDLOADING:
             stateCopy.isLoading = false
             return stateCopy
-        case constats.SETFREELANCER:
+        case constants.SETFREELANCER:
             stateCopy.isAuth = true
             stateCopy.person = action.payload
+            return stateCopy
+        case constants.SETERR: 
+            stateCopy.error = action.payload
             return stateCopy
         default:
             return stateCopy

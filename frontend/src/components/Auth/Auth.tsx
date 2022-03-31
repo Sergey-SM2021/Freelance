@@ -11,9 +11,10 @@ import {
 import { AuthField } from './AuthField/AuthField'
 import { validationSchema } from "./signUpValidationSchema"
 import { useDispatch, useSelector } from "react-redux"
-import { CreateUser, getUser } from "../../store/reducers/auth/authActions"
+import { CreateUser, getUser, setError } from "../../store/reducers/auth/authActions"
 import { SignInSchema } from "./SignInValidateSchems"
 import { RootType } from "../../store/store"
+import { findAncestor } from "typescript"
 
 export const Auth = memo(() => {
     const isLoading = useSelector((state:RootType)=>(state.auth.isLoading))
@@ -39,6 +40,7 @@ export const Auth = memo(() => {
 export const SignIn = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
+    const Error = useSelector((state:RootType)=>(state.auth.error))
     return (<Formik
         validationSchema={SignInSchema}
         initialValues={{ mail: "", password: "" }}
@@ -47,10 +49,11 @@ export const SignIn = memo(() => {
                 await dispatch(getUser(values.mail, values.password))
                 nav("/PersonalAccount")
             } catch (error) {
-                nav("/404")
+                dispatch(setError("Не верный пороль и/или логин"))
             }
         }}>
         {(values) => (<Form>
+            <>{Error}</>
             <Field name="mail" title="Почта" component={AuthField} />
             <Field name="password" title="Пороль" component={AuthField} />
             <AuthSubmit type="submit">Войти</AuthSubmit>

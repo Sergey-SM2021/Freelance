@@ -1,17 +1,18 @@
 import { TFreelancer } from "../../../models"
 
-export enum constats {
+export enum constants {
     SETFREELANCER = "SETFREELANCER",
     STARTLOADING = "STARTLOADING",
-    ENDLOADING = "ENDLOADING"
+    ENDLOADING = "ENDLOADING",
+    SETERR = "SETERR"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading
+export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError
 
 export type TDispatch = any
 
 export type TSetFreelancer = {
-    type: constats.SETFREELANCER,
+    type: constants.SETFREELANCER,
     payload: TFreelancer
 }
 
@@ -23,9 +24,14 @@ export type TInitialState = {
 }
 
 export type TStartLoading = {
-    type: constats.STARTLOADING
+    type: constants.STARTLOADING
 }
 
 export type TEndLoading = {
-    type: constats.ENDLOADING
+    type: constants.ENDLOADING
+}
+
+export type TSetError = {
+    type: constants.SETERR
+    payload: string
 }

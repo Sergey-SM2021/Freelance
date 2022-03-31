@@ -2,20 +2,20 @@ import Client from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import User from "../../../api/User"
 import { TFreelancer } from "../../../models"
-import { constats, TEndLoading, TStartLoading, } from "./authTypes"
+import { constants, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
-    type: constats.STARTLOADING
+    type: constants.STARTLOADING
 })
 
 export const endLoading = (): TEndLoading => ({
-    type: constats.ENDLOADING
+    type: constants.ENDLOADING
 })
 
 export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
     payload: freelancer,
-    type: constats.SETFREELANCER
+    type: constants.SETFREELANCER
 })
 
 // #TODO: setUser
@@ -28,6 +28,11 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
         Client.createClient(mail, password)
     }
 }
+
+export const setError = (err:string):TSetError => ({ 
+    type:constants.SETERR,
+    payload:err
+})
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
     try {
@@ -42,6 +47,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
                 break;
         }
     } catch (error) {
+        
         throw "Пользователь не был получен"
     } finally {
         dispatch(endLoading())
