@@ -2,32 +2,37 @@ export type id = number
 
 export type ava = string | null
 
-export type TClientApi = {
+export interface TUserApi {
     id: number,
-    mail: string,
-    password: string
+    type: string
 }
 
-export type TFreelancerApi = {
-    name: string,
-    lastname: string,
-    ava: ava,
-    specialization: string,
-    description: string,
-    expiriens: string,
-    price: number,
-    paymentmethod: string,
-    id: id,
-    dislike: number,
-    likes: number,
-    password: string,
+export interface TUser {
+    id: number,
     mail: string,
+    password: string,
+    type: string
+}
+
+export interface TClientApi extends TUser {
+
+}
+
+export interface TFreelancerApi extends TUser {
+    name: string | null,
+    lastname: string | null,
+    ava: ava | null,
+    specialization: string | null,
+    description: string | null,
+    expiriens: string | null,
+    price: number | null,
+    paymentmethod: string | null,
+    dislike: number | null,
+    likes: number | null,
     stack: Array<TStack>,
     review: Array<TReview>,
     workhistory: Array<TWorkHistory>,
 }
-
-// #TODO: TFreelancerApi => TFreelancer lost mail & password
 
 export type TFreelancer = {
     header: {

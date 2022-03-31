@@ -1,5 +1,6 @@
 import Client from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
+import User from "../../../api/User"
 import { TFreelancer } from "../../../models"
 import { constats } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
@@ -21,15 +22,35 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
 }
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
-    const client = await Client.getClient(mail, password)
-    if (client.id == undefined) {
-        try {
-            const freelancer = await Freelancer.getFreelancer(mail, password)
-            dispatch(setFreelancer(freelancer))
-        } catch (error) {
-            if (error = 'freelancer не найден') {
-
-            }
-        }
+    try {
+        var { type, id } = (await User.getUser(mail, password))
+    } catch (error) {
+        throw "Пользователь не был получен"
     }
+    switch (type) {
+        case "freelancers":
+            try {
+                const freelancerProfile = await Freelancer.getProfileFreelancer(id)
+                dispatch(setFreelancer(freelancerProfile))
+            } catch (error) {
+                throw "Не удалось получить профиль Фрилансера"
+            }
+            break;
+        default:
+            break;
+    }
+
+    // const user = await User.getUser(mail, password)
+
+    // const client = await Client.getClient(mail, password)
+    // if (client.id == undefined) {
+    //     try {
+    //         const freelancer = await Freelancer.getFreelancer(mail, password)
+    //         dispatch(setFreelancer(freelancer))
+    //     } catch (error) {
+    //         if (error = 'freelancer не найден') {
+
+    //         }
+    //     }
+    // }
 }

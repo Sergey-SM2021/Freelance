@@ -11,7 +11,7 @@ class Freelancers {
     }
     getFreelancers = async () => {
         try {
-            const freelancers = (await this.baseURL.get<Array<TFreelancerApi>>("")).data
+            const freelancers = (await this.baseURL.get<Array<TFreelancerApi>>("all")).data
             return freelancers
         } catch (error) {
             throw "Freelancers не были получены"
@@ -50,4 +50,4 @@ class Freelancers {
     }
 }
 
-export default new Freelancers("http://localhost:8900/freelancers")
+export default new Freelancers("http://localhost:8900/freelancer/")

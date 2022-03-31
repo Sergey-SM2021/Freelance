@@ -12,6 +12,7 @@ import { AuthField } from './AuthField/AuthField'
 import { validationSchema } from "./signUpValidationSchema"
 import { useDispatch } from "react-redux"
 import { CreateUser, getUser } from "../../store/reducers/auth/authActions"
+import { SignInSchema } from "./SignInValidateSchems"
 
 export const Auth = memo(() => {
     const loc = useParams().loc
@@ -37,6 +38,7 @@ export const SignIn = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
     return (<Formik
+        validationSchema={SignInSchema}
         initialValues={{ mail: "", password: "" }}
         onSubmit={(values) => {
             dispatch(getUser(values.mail, values.password))
