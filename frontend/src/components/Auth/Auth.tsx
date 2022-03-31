@@ -10,11 +10,13 @@ import {
 } from "./Auth.style"
 import { AuthField } from './AuthField/AuthField'
 import { validationSchema } from "./signUpValidationSchema"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { CreateUser, getUser } from "../../store/reducers/auth/authActions"
 import { SignInSchema } from "./SignInValidateSchems"
+import { RootType } from "../../store/store"
 
 export const Auth = memo(() => {
+    const isLoading = useSelector((state:RootType)=>(state.auth.isLoading))
     const loc = useParams().loc
     return (<SignUpWrapper>
         <SignUpInner>
@@ -28,7 +30,7 @@ export const Auth = memo(() => {
             <SignUpMainPaper>
                 <LogoTitle>Freelance</LogoTitle>
                 {loc === "signUp" ? <Registration>Регистрация</Registration> : <Registration>Вход</Registration>}
-                {loc === "signUp" ? <SignUp /> : <SignIn />}
+                {isLoading ? 'loading' : loc === "signUp" ? <SignUp /> : <SignIn />}
             </SignUpMainPaper>
         </SignUpInner>
     </SignUpWrapper>)

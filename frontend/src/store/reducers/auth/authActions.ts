@@ -2,8 +2,16 @@ import Client from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import User from "../../../api/User"
 import { TFreelancer } from "../../../models"
-import { constats } from "./authTypes"
+import { constats, TEndLoading, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
+
+export const startLoading = (): TStartLoading => ({
+    type: constats.STARTLOADING
+})
+
+export const endLoading = (): TEndLoading => ({
+    type: constats.ENDLOADING
+})
 
 export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
     payload: freelancer,
@@ -23,6 +31,7 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
     try {
+        dispatch(startLoading())
         const { type, id } = (await User.getUser(mail, password))
         switch (type) {
             case "freelancers":
@@ -34,5 +43,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
         }
     } catch (error) {
         throw "Пользователь не был получен"
+    } finally {
+        dispatch(endLoading())
     }
 }

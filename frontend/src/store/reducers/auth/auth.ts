@@ -5,6 +5,8 @@ import Project2 from '../../../assets/Projects/Project1.jpeg'
 import Project3 from '../../../assets/Projects/Project3.jpg'
 
 const initialState: TInitialState = {
+    error: null,
+    isLoading: false,
     isAuth: false,
     person: {
         header: {
@@ -56,6 +58,12 @@ const initialState: TInitialState = {
 export const auth = (state = initialState, action: TAction) => {
     const stateCopy = { ...state }
     switch (action.type) {
+        case constats.STARTLOADING:
+            stateCopy.isLoading = true
+            return stateCopy
+        case constats.ENDLOADING:
+            stateCopy.isLoading = false
+            return stateCopy
         case constats.SETFREELANCER:
             stateCopy.isAuth = true
             stateCopy.person = action.payload
