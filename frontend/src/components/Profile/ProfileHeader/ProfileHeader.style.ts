@@ -10,6 +10,7 @@ export const HeaderAbout = styled.p`
 `
 
 export const HeaderWrapper = styled.div<{ bg: string }>`
+    position: relative;
     box-sizing:border-box ;
     padding: 20px;
     display:flex ;
@@ -31,4 +32,13 @@ export const HeaderName = styled.h2`
 
 export const Content = styled.div`
     
+`
+
+export const Settings = styled.div`
+    top: 10px;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background-color: black;
 `

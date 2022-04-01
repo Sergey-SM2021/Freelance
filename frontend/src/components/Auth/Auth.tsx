@@ -8,7 +8,7 @@ import {
     Registration, SignUpRolesWrapper, SignUpRolesInner, SignUpRolesTitle,
     SignUpRole,
 } from "./Auth.style"
-import { AuthField } from './AuthField/AuthField'
+import { MyField } from '../Field/Field'
 import { validationSchema } from "./signUpValidationSchema"
 import { useDispatch, useSelector } from "react-redux"
 import { CreateUser, getUser, setError } from "../../store/reducers/auth/authActions"
@@ -17,7 +17,7 @@ import { RootType } from "../../store/store"
 import { findAncestor } from "typescript"
 
 export const Auth = memo(() => {
-    const isLoading = useSelector((state:RootType)=>(state.auth.isLoading))
+    const isLoading = useSelector((state: RootType) => (state.auth.isLoading))
     const loc = useParams().loc
     return (<SignUpWrapper>
         <SignUpInner>
@@ -40,7 +40,7 @@ export const Auth = memo(() => {
 export const SignIn = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
-    const Error = useSelector((state:RootType)=>(state.auth.error))
+    const Error = useSelector((state: RootType) => (state.auth.error))
     return (<Formik
         validationSchema={SignInSchema}
         initialValues={{ mail: "", password: "" }}
@@ -54,8 +54,8 @@ export const SignIn = memo(() => {
         }}>
         {(values) => (<Form>
             <>{Error}</>
-            <Field name="mail" title="Почта" component={AuthField} />
-            <Field name="password" title="Пороль" component={AuthField} />
+            <Field name="mail" title="Почта" component={MyField} />
+            <Field name="password" title="Пороль" component={MyField} />
             <AuthSubmit type="submit">Войти</AuthSubmit>
         </Form>)}
     </Formik>)
@@ -95,8 +95,8 @@ export const SignUp = memo(() => {
         }}
         initialValues={{ mail: "", password: "", role: "" }}>
         {(values) => (<Form>
-            <Field title="Email" name="mail" component={AuthField} />
-            <Field title="Пороль" name="password" component={AuthField} />
+            <Field title="Email" name="mail" component={MyField} />
+            <Field title="Пороль" name="password" component={MyField} />
             <SignUpRolesWrapper>
                 <SignUpRolesTitle>
                     Роль

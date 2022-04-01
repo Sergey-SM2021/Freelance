@@ -1,8 +1,8 @@
 import { FieldProps } from "formik"
 import { FC } from "react"
-import { FieldInput, FieldTitle, FieldWrapper, Error } from "./AuthField.style"
+import { FieldInput, FieldTitle, FieldWrapper, Error } from "./Field.style"
 
-export const AuthField: FC<FieldProps & { title: string }> = ({ field, form, meta, ...props }) =>
+export const MyField: FC<FieldProps & { title: string }> = ({ field, form, meta, ...props }) =>
 (<FieldWrapper>
     <FieldTitle>{props.title}</FieldTitle>
     <FieldInput {...field}/>

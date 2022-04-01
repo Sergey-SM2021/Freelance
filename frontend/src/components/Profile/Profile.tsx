@@ -43,8 +43,8 @@ export const Profile = memo(({ isMyProfile }: TProfile) => {
     }, [loc])
     return (<ProfileWrapper>
         <ProfilePaper>
-            <ProfileHeader {...freelancer.header} />
-            <ProfileAbout {...freelancer.about} />
+            <ProfileHeader header={freelancer.header} isMyProfile={isMyProfile} />
+            <ProfileAbout about={freelancer.about}  isMyProfile={isMyProfile}/>
             <ProfileWorksHistory works={freelancer.workHistory} />
             <ProfilePortfolio portfolio={freelancer.portfolio} />
             <ProfileReviews reviews={freelancer.reviews} />

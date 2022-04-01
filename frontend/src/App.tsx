@@ -8,6 +8,7 @@ import { Freelancers } from "./components/Freelancers/Freelancers"
 import { Header } from "./components/Header/Header"
 import { Orders } from "./components/Orders"
 import { Preview } from "./components/Preview"
+import { PersonalAccountSettings } from "./components/Profile/HeaderAboutSetting"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
@@ -21,7 +22,9 @@ export const App = () => {
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
     { path: "/auth/:loc", element: <Auth /> },
     { path: "/PersonalAccount", element: <Profile isMyProfile={true} /> },
-    { path: "*", element: <>404 <h1>Страница не найдена</h1></> }
+    { path: "*", element: <>404 <h1>Страница не найдена</h1></> },
+    { path: "/PersonalAccount/setting", element: <PersonalAccountSettings /> },
+    { path: "/", element: <></> }
   ])
   return (<div>
     <Header />
