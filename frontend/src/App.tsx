@@ -8,12 +8,10 @@ import { Freelancers } from "./components/Freelancers/Freelancers"
 import { Header } from "./components/Header/Header"
 import { Orders } from "./components/Orders"
 import { Preview } from "./components/Preview"
-import { PersonalAccountSettings } from "./components/Profile/ProfileHeader/HeaderAboutSetting"
+import { ProfileSettings } from "./components/Profile/ProfileSettings/ProfileSettings"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
-import { ProfileAboutSetting } from "./components/Profile/ProfileAbout/ProfileAboutSetting"
-import { ProfileWorkHistorySettings } from "./components/Profile/ProfileWorksHistory/ProfileWorkHistorySettings"
 
 export const App = () => {
   const routs = useRoutes([
@@ -25,11 +23,7 @@ export const App = () => {
     { path: "/auth/:loc", element: <Auth /> },
     { path: "/PersonalAccount", element: <Profile isMyProfile /> },
     { path: "*", element: <>404 <h1>Страница не найдена</h1></> },
-    { path: "/PersonalAccount/setting/header", element: <PersonalAccountSettings /> },
-    { path: "/PersonalAccount/setting/about", element: <ProfileAboutSetting /> },
-    { path: "/PersonalAccount/setting/portfolio", element: <>link</> },
-    { path: "/PersonalAccount/setting/reviews", element: <>/PersonalAccount/setting/reviews</> },
-    { path: "/PersonalAccount/setting/workHistory", element: <ProfileWorkHistorySettings /> },
+    { path: "/PersonalAccount/setting", element: <ProfileSettings /> },
     { path: "/", element: <></> }
   ])
   return (<div>

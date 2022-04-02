@@ -18,7 +18,7 @@ type TProfileHeader = {
 export const ProfileHeader = memo(({ header, isMyProfile }: TProfileHeader) => {
     return (<HeaderWrapper bg={bg}>
         <Ava src={avaPath} />
-        {isMyProfile ? <Link to='setting/header'><Edit src={EditIMG}/></Link> : null}
+        {isMyProfile ? <Link to='setting'><Edit src={EditIMG}/></Link> : null}
         <HeaderContent>
             <HeaderName>{header?.name} {header?.lastName}</HeaderName>
             <HeaderAbout>{header?.specialization}</HeaderAbout>

@@ -6,7 +6,7 @@ import { Button } from "../../Common/Common.style"
 import { MyField } from "../../Field/Field"
 import { ProfilePaper, ProfileWrapper } from "../Profile.style"
 
-export const ProfileWorkHistorySettings = () => {
+export const WorkSettings = () => {
     const [currentText, setText] = useState<string>("")
     const mySelectorWorks = useSelector((state: RootType) => (state.auth.person.workHistory))
     interface IInitialValues {

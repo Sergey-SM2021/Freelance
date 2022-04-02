@@ -1,17 +1,15 @@
 import { Field } from "formik"
 import { memo } from "react"
+
 import { TFreelancer } from "../../../models"
 import { MyField } from "../../Field/Field"
-import { EditLink, SectionTitle, Skill, Skills } from "../../Common/Common.style"
+import { SectionTitle, Skill, Skills } from "../../Common/Common.style"
 import {
-    AboutWrapper, AboutePaper,
-    AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
+    AboutWrapper, AboutePaper, AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
 } from "./ProfileAbout.style"
-import { Link } from "react-router-dom"
 
 type ProfileAboutType = {
     about: TFreelancer["about"] | undefined | null,
-    isMyProfile: boolean
 }
 
 interface ISettingTitleAndDescription {
@@ -37,11 +35,10 @@ const SettingTitleAndDescription = ({ description, expiriens, lastName, name, pa
     </>)
 }
 
-export const ProfileAbout = memo(({ about, isMyProfile }: ProfileAboutType) => {
+export const ProfileAbout = memo(({ about }: ProfileAboutType) => {
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
-            { isMyProfile ? <Link to="setting/about"><EditLink /></Link>:null }
         </SectionTitle>
         <AboutePaper>
             <>

@@ -7,7 +7,7 @@ import { MyField } from '../../Field/Field'
 import { ProfilePaper, ProfileWrapper } from '../Profile.style'
 import { Button } from '../../Common/Common.style'
 
-export const ProfileAboutSetting = memo(() => {
+export const AboutSetting = memo(() => {
     const addHandler = (push: any) =>
         () => {
             push({ freelancer: id, id: 1, name: state })
@@ -37,8 +37,6 @@ export const ProfileAboutSetting = memo(() => {
     }
     return (<Formik initialValues={initialValues} onSubmit={() => { }}>
         {({ values }) => (<>
-            <ProfileWrapper>
-                <ProfilePaper isMainPage>
                     <Field component={MyField} title="Описание" value={values.description} name="description" />
                     <Field component={MyField} title="Опыт работы" value={values.expiriens} name="expiriens" />
                     <Field component={MyField} title="Способ оплаты" value={values.paymentMethod} name="paymentMethod" />
@@ -55,8 +53,6 @@ export const ProfileAboutSetting = memo(() => {
                     </>
                     )} />
                     <Button onClick={save}>Save</Button>
-                </ProfilePaper>
-            </ProfileWrapper>
         </>)}
     </Formik>)
 })

@@ -7,7 +7,6 @@ import { ReviewsWrapper } from "./ProfileReviews.style"
 
 type ProfileReviewsType = {
     reviews: TFreelancer["reviews"],
-    isMyProfile:boolean
 } | undefined | null
 
 export const ProfileReviews = memo((props: ProfileReviewsType) => {
