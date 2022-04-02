@@ -42,3 +42,10 @@ export const Settings = styled.div`
     position: absolute;
     background-color: black;
 `
+
+export const Edit = styled.img`
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 40px;
+`

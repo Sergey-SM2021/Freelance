@@ -5,12 +5,17 @@ import { TStack } from '../../../models'
 import { RootType } from '../../../store/store'
 import { MyField } from '../../Field/Field'
 import { ProfilePaper, ProfileWrapper } from '../Profile.style'
+import { Button } from '../../Common.style'
 
 export const ProfileAboutSetting = memo(() => {
+    const addHandler = (push: any) =>
+        () => {
+            push({ freelancer: id, id: 1, name: state })
+        }
     const save = () => {
         alert("Put new date...")
     }
-    const [state,setState] = useState<string>("")
+    const [state, setState] = useState<string>("")
     interface IInitialValues {
         description: string
         expiriens: string
@@ -33,7 +38,7 @@ export const ProfileAboutSetting = memo(() => {
     return (<Formik initialValues={initialValues} onSubmit={() => { }}>
         {({ values }) => (<>
             <ProfileWrapper>
-                <ProfilePaper>
+                <ProfilePaper isMainPage>
                     <Field component={MyField} title="Описание" value={values.description} name="description" />
                     <Field component={MyField} title="Опыт работы" value={values.expiriens} name="expiriens" />
                     <Field component={MyField} title="Способ оплаты" value={values.paymentMethod} name="paymentMethod" />
@@ -41,13 +46,15 @@ export const ProfileAboutSetting = memo(() => {
                     <FieldArray name='stack' render={({ remove, push }) => (<>
                         {values.stack.map((el, i) => <>
                             <Field name={`stack.${i}.name`} title="Навык" component={MyField} />
-                            <button onClick={() => { remove(i) }}>Delite</button>
+                            <button onClick={() => { remove(i) }}>Удалить</button>
                         </>)}
-                        <input value={state} onChange={(e:FormEvent<HTMLInputElement>)=>{setState(e.currentTarget.value)}}/>
-                        <button onClick={() => { push({freelancer: id, id: 1, name: state}) }}>Добавить</button>
+                        <div>
+                            <input value={state} onChange={(e: FormEvent<HTMLInputElement>) => { setState(e.currentTarget.value) }} />
+                            <button onClick={addHandler(push)}>Добавить</button>
+                        </div>
                     </>
                     )} />
-                    <button onClick={save}>Save</button>
+                    <Button onClick={save}>Save</Button>
                 </ProfilePaper>
             </ProfileWrapper>
         </>)}

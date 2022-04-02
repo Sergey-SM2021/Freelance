@@ -2,12 +2,13 @@ import { Field } from "formik"
 import { memo } from "react"
 import { TFreelancer } from "../../../models"
 import { MyField } from "../../Field/Field"
-import { SectionTitle, Skill, Skills } from "../../Common.style"
+import { Edit, SectionTitle, Skill, Skills } from "../../Common.style"
 import {
     AboutWrapper, AboutePaper,
     AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
 } from "./ProfileAbout.style"
 import { Link } from "react-router-dom"
+import edit from '../../../assets/pencil.png'
 
 type ProfileAboutType = {
     about: TFreelancer["about"] | undefined | null,
@@ -41,7 +42,7 @@ export const ProfileAbout = memo(({ about, isMyProfile }: ProfileAboutType) => {
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
-            { isMyProfile ? <Link to="setting/about">link</Link>:null }
+            { isMyProfile ? <Link to="setting/about"><Edit src={edit}/></Link>:null }
         </SectionTitle>
         <AboutePaper>
             <>

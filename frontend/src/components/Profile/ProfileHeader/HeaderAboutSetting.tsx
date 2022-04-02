@@ -9,6 +9,7 @@ import { ProfilePortfolio } from "../ProfilePortfolio/ProfilePortfolio"
 import { ProfileReviews } from "../ProfileReviews/ProfileReviews"
 import { ProfileWorksHistory } from "../ProfileWorksHistory/ProfileWorksHistory"
 import { MyField } from "../../Field/Field"
+import { Button } from "../../Common.style"
 
 interface IForm {
     header: RootType["auth"]["person"]["header"],
@@ -22,12 +23,12 @@ export const PersonalAccountSettings = memo(() => {
         initialValues={initialValues}>
         {({ values }) => (
             <ProfileWrapper>
-                <ProfilePaper>
+                <ProfilePaper isMainPage>
                 <Form>
                     <Field title="Имя" name="header.name" component={MyField}/>
                     <Field title="Фамилия" name="header.lastName" component={MyField}/>
                     <Field title="Направление" name="header.specialization" component={MyField}/>
-                    <button>Submit</button>
+                    <Button>Сохранить изменнения</Button>
                 </Form>
                 </ProfilePaper>
             </ProfileWrapper>

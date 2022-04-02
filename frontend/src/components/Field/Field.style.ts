@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const FieldWrapper = styled.div`
-    margin: 20px 0px 0px 10px;
-    width: 90%;
+    width: 100%;
 `
 
 export const FieldTitle = styled.h3`

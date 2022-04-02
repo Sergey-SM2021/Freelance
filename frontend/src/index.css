@@ -18,3 +18,7 @@ h4, h3,h2, p {
   padding: 0px;
   color:#4f6173
 }
+
+input{
+  box-sizing: border-box;
+}
