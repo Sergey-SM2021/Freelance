@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import pencil from "../assets/pencil.png"
 
 export const Container = styled.div`
     width: 90%;
@@ -36,7 +37,7 @@ export const Skills = styled.div`
     margin: 15px 0px ;
 `
 
-export const Edit = styled.img`
+export const EditLink = styled.img.attrs({src:pencil})`
     width: 31px;
 `
 

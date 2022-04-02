@@ -8,7 +8,7 @@ export const ProfileWrapper = styled.div`
 export const ProfilePaper = styled.div<{ isMainPage?: boolean }>`
     width: 100%;
     background-color: #ffffff;
-    min-height: 100vh;
+    min-height: 50vh;
     box-sizing: border-box;
     padding: ${({ isMainPage }) => (isMainPage ? "0px 10px 10px 10px" : "")};
 `

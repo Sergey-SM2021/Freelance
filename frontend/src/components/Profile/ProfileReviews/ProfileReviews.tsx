@@ -12,7 +12,7 @@ type ProfileReviewsType = {
 
 export const ProfileReviews = memo((props: ProfileReviewsType) => {
     return (<ReviewsWrapper>
-        <SectionTitle><h3>Отзывы{props?.isMyProfile ? <Link to='setting/reviews'>Link</Link>:null}</h3></SectionTitle>
+        <SectionTitle><h3>Отзывы</h3></SectionTitle>
         {props?.reviews?.length ? props?.reviews.map((review) => (<ProfileReview key={review.id} {...review} />)) : <p>Пока нет отзывов</p>}
     </ReviewsWrapper>)
 })
