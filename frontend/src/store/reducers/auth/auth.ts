@@ -40,6 +40,12 @@ const initialState: TInitialState = {
                 id: 999,
                 name: "Разработать клиентскую часть на node js",
                 price: 66000
+            },
+            {
+                freelancer: 89,
+                id: 99989,
+                name: "Серве на express js",
+                price: 67500
             }
         ],
         id: 89,

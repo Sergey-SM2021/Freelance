@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { Link } from "react-router-dom"
 import { TFreelancer } from "../../../models"
-import { EditLink, SectionTitle } from "../../Common.style"
+import { EditLink, SectionTitle } from "../../Common/Common.style"
 import { PortfolioContainer, PortfolioWrapper, PortfolioProject } from "./ProfilePortfolio.style"
 
 type ProfilePortfolioType = {

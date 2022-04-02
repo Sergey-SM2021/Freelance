@@ -2,7 +2,7 @@ import { Field } from "formik"
 import { memo } from "react"
 import { TFreelancer } from "../../../models"
 import { MyField } from "../../Field/Field"
-import { EditLink, SectionTitle, Skill, Skills } from "../../Common.style"
+import { EditLink, SectionTitle, Skill, Skills } from "../../Common/Common.style"
 import {
     AboutWrapper, AboutePaper,
     AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle

@@ -1,7 +1,7 @@
 import { memo } from "react"
-import { Link } from "react-router-dom"
+
 import { TFreelancer } from "../../../models"
-import { SectionTitle } from "../../Common.style"
+import { SectionTitle } from "../../Common/Common.style"
 import { ProfileReview } from "./ProfileReview/ProfileReview"
 import { ReviewsWrapper } from "./ProfileReviews.style"
 

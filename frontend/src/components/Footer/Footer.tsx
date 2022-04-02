@@ -1,4 +1,4 @@
-import { Container } from "../Common.style"
+import { Container } from "../Common/Common.style"
 import { FooterGrid, FooterWrapper, SocialNetwork, SocialNetworks } from "./Footer.style"
 import { FooterItems } from "./FooterItem/FooterItem"
 import vk from '../../assets/socialNetworks/vk.png'

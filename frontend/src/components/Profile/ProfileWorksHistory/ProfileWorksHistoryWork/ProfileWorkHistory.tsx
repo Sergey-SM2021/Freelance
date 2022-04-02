@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { TFreelancer, TWorkHistory } from "../../../../models"
-import { Skill, Skills } from "../../../Common.style"
+import { Skill, Skills } from "../../../Common/Common.style"
 import { WorkOrder, WorkPrice, WorkTitle, WorkWrapper } from "./ProfileWorkHistory.style"
 
 export const WorksHistoryWork = memo(({ name, price, freelancer, id }: TWorkHistory) => {

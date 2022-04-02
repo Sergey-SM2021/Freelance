@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import pencil from "../assets/pencil.png"
+import pencil from "../../assets/pencil.png"
 
 export const Container = styled.div`
     width: 90%;
@@ -42,6 +42,9 @@ export const EditLink = styled.img.attrs({src:pencil})`
 `
 
 export const Button = styled.button`
+    &:hover{
+        cursor:pointer ;
+    }
     background-color: #4abfb4;
     border: none;
     border-radius: 3px;

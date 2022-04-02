@@ -5,7 +5,7 @@ import {
 } from "./FreelancerItem.style"
 import IMG from '../../../assets/Projects/Project0.jpeg'
 import avaPath from '../../../assets/man.png'
-import { Skill, Skills } from "../../Common.style"
+import { Skill, Skills } from "../../Common/Common.style"
 import { TFreelancerPreview } from "../../../models"
 
 import { Link } from "react-router-dom"

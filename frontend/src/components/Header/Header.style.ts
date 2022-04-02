@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Container } from "../Common.style"
+import { Container } from "../Common/Common.style"
 
 export const HeaderWrapper = styled.div`
     top: 0;

@@ -9,7 +9,7 @@ import { ProfilePortfolio } from "../ProfilePortfolio/ProfilePortfolio"
 import { ProfileReviews } from "../ProfileReviews/ProfileReviews"
 import { ProfileWorksHistory } from "../ProfileWorksHistory/ProfileWorksHistory"
 import { MyField } from "../../Field/Field"
-import { Button } from "../../Common.style"
+import { Button } from "../../Common/Common.style"
 
 interface IForm {
     header: RootType["auth"]["person"]["header"],

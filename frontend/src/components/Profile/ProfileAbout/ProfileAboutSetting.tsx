@@ -5,7 +5,7 @@ import { TStack } from '../../../models'
 import { RootType } from '../../../store/store'
 import { MyField } from '../../Field/Field'
 import { ProfilePaper, ProfileWrapper } from '../Profile.style'
-import { Button } from '../../Common.style'
+import { Button } from '../../Common/Common.style'
 
 export const ProfileAboutSetting = memo(() => {
     const addHandler = (push: any) =>
