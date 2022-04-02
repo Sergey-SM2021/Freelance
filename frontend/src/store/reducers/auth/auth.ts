@@ -24,7 +24,12 @@ const initialState: TInitialState = {
                     freelancer: 89,
                     id: 77,
                     name: "Php"
-                }
+                },
+                {
+                    freelancer: 77,
+                    id: 1,
+                    name: "Html"
+                },
             ],
             paymentMethod: "Только наличными",
         },
@@ -68,7 +73,7 @@ export const auth = (state = initialState, action: TAction) => {
             stateCopy.isAuth = true
             stateCopy.person = action.payload
             return stateCopy
-        case constants.SETERR: 
+        case constants.SETERR:
             stateCopy.error = action.payload
             return stateCopy
         default:

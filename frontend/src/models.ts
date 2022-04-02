@@ -36,25 +36,25 @@ export interface TFreelancerApi extends TUser {
 
 export type TFreelancer = {
     header: {
-        name: string | null | undefined,
-        lastName: string | null | undefined,
-        ava: ava | null | undefined,
-        specialization: string | null | undefined,
+        name: string | null,
+        lastName: string | null,
+        ava: ava | null,
+        specialization: string | null,
     },
     about: {
-        description: string | null | undefined,
-        expiriens: string | null | undefined,
-        price: number | null | undefined,
-        stack: Array<TStack> | null | undefined,
-        paymentMethod: string | null | undefined,
+        description: string | null,
+        expiriens: string | null,
+        price: number | null,
+        stack: Array<TStack> | null,
+        paymentMethod: string | null,
     },
-    portfolio: Array<TPortfolio> | null | undefined,
-    workHistory: Array<TWorkHistory> | null | undefined,
+    portfolio: Array<TPortfolio> | null,
+    workHistory: Array<TWorkHistory> | null,
     id: id,
-    reviews: Array<TReview> | null | undefined
+    reviews: Array<TReview> | null
     // #FIXME: these properties are not needed by a fullfreelancer
-    likes: number | null | undefined,
-    dislike: number | null | undefined,
+    likes: number | null,
+    dislike: number | null,
 }
 
 export type TPortfolio = string

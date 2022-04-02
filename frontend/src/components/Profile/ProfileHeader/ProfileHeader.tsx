@@ -6,31 +6,20 @@ import {
 import bg from '../../../assets/bg.jpg'
 import avaPath from '../../../assets/man.png'
 import { memo } from "react"
-import { useNavigate } from "react-router-dom"
-import {MyField} from '../../Field/Field'
-import { Field, Form } from "formik"
+import { Link } from "react-router-dom"
 
 type TProfileHeader = {
     header: TFreelancer['header'] | undefined | null,
     isMyProfile: boolean,
-    setting?: boolean
 }
 
-export const ProfileHeader = memo(({ header, isMyProfile, setting }: TProfileHeader) => {
-    const nav = useNavigate()
-    const settingClick = () => {
-        nav('setting')
-    }
+export const ProfileHeader = memo(({ header, isMyProfile }: TProfileHeader) => {
     return (<HeaderWrapper bg={bg}>
-        {
-            setting ?
-                <></>:
-                <>{isMyProfile ? <Settings onClick={settingClick} /> : null}
-                    <Ava src={avaPath} />
-                    <HeaderContent>
-                        <HeaderName>{header?.name} {header?.lastName}</HeaderName>
-                        <HeaderAbout>{header?.specialization}</HeaderAbout>
-                    </HeaderContent></>
-        }
+        {isMyProfile ? <Link to='setting/header'><Settings /></Link> : null}
+        <Ava src={avaPath} />
+        <HeaderContent>
+            <HeaderName>{header?.name} {header?.lastName}</HeaderName>
+            <HeaderAbout>{header?.specialization}</HeaderAbout>
+        </HeaderContent>
     </HeaderWrapper>)
 })

@@ -45,9 +45,9 @@ export const Profile = memo(({ isMyProfile }: TProfile) => {
         <ProfilePaper>
             <ProfileHeader header={freelancer.header} isMyProfile={isMyProfile} />
             <ProfileAbout about={freelancer.about}  isMyProfile={isMyProfile}/>
-            <ProfileWorksHistory works={freelancer.workHistory} />
-            <ProfilePortfolio portfolio={freelancer.portfolio} />
-            <ProfileReviews reviews={freelancer.reviews} />
+            <ProfileWorksHistory works={freelancer.workHistory} isMyProfile={isMyProfile}/>
+            <ProfilePortfolio portfolio={freelancer.portfolio} isMyProfile={isMyProfile}/>
+            <ProfileReviews reviews={freelancer.reviews} isMyProfile={isMyProfile}/>
         </ProfilePaper>
     </ProfileWrapper>)
 })

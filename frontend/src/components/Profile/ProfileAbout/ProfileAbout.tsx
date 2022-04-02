@@ -7,10 +7,10 @@ import {
     AboutWrapper, AboutePaper,
     AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
 } from "./ProfileAbout.style"
+import { Link } from "react-router-dom"
 
 type ProfileAboutType = {
     about: TFreelancer["about"] | undefined | null,
-    setting?: TFreelancer["header"] | undefined | null,
     isMyProfile: boolean
 }
 
@@ -37,41 +37,36 @@ const SettingTitleAndDescription = ({ description, expiriens, lastName, name, pa
     </>)
 }
 
-export const ProfileAbout = memo(({ about, setting }: ProfileAboutType) => {
+export const ProfileAbout = memo(({ about, isMyProfile }: ProfileAboutType) => {
     return (<AboutWrapper>
         <SectionTitle>
             <h3>Обо мне</h3>
+            { isMyProfile ? <Link to="setting/about">link</Link>:null }
         </SectionTitle>
         <AboutePaper>
-            {setting ? <SettingTitleAndDescription
-                description={about?.description}
-                expiriens={about?.expiriens}
-                lastName={setting.lastName}
-                name={setting.name}
-                paymentMethod={about?.paymentMethod}
-                price={about?.price}
-                specialization={setting.specialization} /> :
-                <><AboutPrice>
+            <>
+                <AboutPrice>
                     <h4>Стоимость работы:</h4>
                     <p>{about?.price ? `от ${about.price} руб. за час` : ' не указано'}</p>
                 </AboutPrice>
-                    <AboutExpiriens>
-                        <h4>Профессиональный опыт:</h4>
-                        <p>{about?.expiriens ? about.expiriens : 'не указан'}</p>
-                    </AboutExpiriens>
-                    <AboutPaymentMethod>
-                        <h4>Способы оплаты:</h4>
-                        <p>{about?.paymentMethod ? about.paymentMethod : 'не указан'}</p>
-                    </AboutPaymentMethod>
-                    <AboutResume>
-                        {about?.description ? about.description : 'Нет описания'}
-                    </AboutResume>
-                    <AboutSkillTitle>Ключевые навыки:</AboutSkillTitle>
-                    {
-                        about?.stack ?
-                            <Skills>
-                                {about.stack.map((skill) => (<Skill key={skill.id}>{skill.name}</Skill>))}
-                            </Skills> : <>Ключевые навыки не указаны</>
-                    }</>}
+                <AboutExpiriens>
+                    <h4>Профессиональный опыт:</h4>
+                    <p>{about?.expiriens ? about.expiriens : 'не указан'}</p>
+                </AboutExpiriens>
+                <AboutPaymentMethod>
+                    <h4>Способы оплаты:</h4>
+                    <p>{about?.paymentMethod ? about.paymentMethod : 'не указан'}</p>
+                </AboutPaymentMethod>
+                <AboutResume>
+                    {about?.description ? about.description : 'Нет описания'}
+                </AboutResume>
+                <AboutSkillTitle>Ключевые навыки:</AboutSkillTitle>
+                {
+                    about?.stack ?
+                        <Skills>
+                            {about.stack.map((skill) => (<Skill key={skill.id}>{skill.name}</Skill>))}
+                        </Skills> : <>Ключевые навыки не указаны</>
+                }
+            </>
         </AboutePaper></AboutWrapper>)
 })
