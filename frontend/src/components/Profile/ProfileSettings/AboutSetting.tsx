@@ -4,18 +4,18 @@ import { useSelector } from 'react-redux'
 import { TStack } from '../../../models'
 import { RootType } from '../../../store/store'
 import { MyField } from '../../Field/Field'
-import { ProfilePaper, ProfileWrapper } from '../Profile.style'
 import { Button } from '../../Common/Common.style'
+import close from '../../../assets/cancel.png'
+import { Close, Input, Skill, SkillsWrapper } from './Skill.style'
 
 export const AboutSetting = memo(() => {
-    const addHandler = (push: any) =>
-        () => {
-            push({ freelancer: id, id: 1, name: state })
-        }
+    const [state, setState] = useState<string>("")
+    const changeHandler = (e: FormEvent<HTMLInputElement>) => {
+        setState(e.currentTarget.value)
+    }
     const save = () => {
         alert("Put new date...")
     }
-    const [state, setState] = useState<string>("")
     interface IInitialValues {
         description: string
         expiriens: string
@@ -35,24 +35,29 @@ export const AboutSetting = memo(() => {
             { freelancer: id, id: 0, name: "Node" },
         ]
     }
-    return (<Formik initialValues={initialValues} onSubmit={() => { }}>
+    return (<Formik initialValues={initialValues} onSubmit={() => { alert("ss") }}>
         {({ values }) => (<>
-                    <Field component={MyField} title="Описание" value={values.description} name="description" />
-                    <Field component={MyField} title="Опыт работы" value={values.expiriens} name="expiriens" />
-                    <Field component={MyField} title="Способ оплаты" value={values.paymentMethod} name="paymentMethod" />
-                    <Field component={MyField} title="цена" value={values.price} name="price" />
-                    <FieldArray name='stack' render={({ remove, push }) => (<>
-                        {values.stack.map((el, i) => <>
-                            <Field name={`stack.${i}.name`} title="Навык" component={MyField} />
-                            <button onClick={() => { remove(i) }}>Удалить</button>
-                        </>)}
-                        <div>
-                            <input value={state} onChange={(e: FormEvent<HTMLInputElement>) => { setState(e.currentTarget.value) }} />
-                            <button onClick={addHandler(push)}>Добавить</button>
-                        </div>
-                    </>
-                    )} />
-                    <Button onClick={save}>Save</Button>
+            <Field component={MyField} title="Описание" value={values.description} name="description" />
+            <Field component={MyField} title="Опыт работы" value={values.expiriens} name="expiriens" />
+            <Field component={MyField} title="Способ оплаты" value={values.paymentMethod} name="paymentMethod" />
+            <Field component={MyField} title="цена" value={values.price} name="price" />
+            <FieldArray name='stack'>
+                {({ remove, push }) => (<>
+                    <SkillsWrapper >
+                        {values.stack.map((skill, i) => (
+                            <Skill>{skill.name} <Close src={close} onClick={() => { remove(i) }} /></Skill>
+                        ))}
+                        <Input placeholder='skill' value={state} onChange={changeHandler} onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                            if (e.key === 'Enter' && state.length > 0) {
+                                push({ freelancer: id, id: 1, name: state })
+                                setState("")
+                            }
+                        }} />
+                    </SkillsWrapper>
+                </>
+                )}
+            </FieldArray>
+            <Button onClick={save}>Save</Button>
         </>)}
     </Formik>)
 })

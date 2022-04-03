@@ -4,7 +4,6 @@ import { ProfilePaper, ProfileWrapper } from "../Profile.style"
 import { PersonalAccountSettings } from "./PersanalSetting"
 import { AboutSetting } from './AboutSetting'
 import { WorkSettings } from './WorkSetting'
-import {} from './PortfolioSetting'
 
 export const ProfileSettings = memo(() => {
     return (<ProfileWrapper>
