@@ -1,10 +1,10 @@
 import { Field, Form, Formik } from "formik"
 import { memo } from "react"
 import { useSelector } from "react-redux"
+
 import { RootType } from "../../../store/store"
-import { ProfilePaper, ProfileWrapper } from "../Profile.style"
 import { MyField } from "../../Field/Field"
-import { Button, SectionTitle } from "../../Common/Common.style"
+import { Button } from "../../Common/Common.style"
 
 interface IForm {
     header: RootType["auth"]["person"]["header"],

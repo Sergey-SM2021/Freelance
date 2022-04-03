@@ -1,11 +1,12 @@
 import { FreelancersBody, FreelancersPaper, FreelancersWrapper, Pagination } from "./Freelancers.style"
 import { Freelancer } from './Freelancer/FreelancersItem'
-import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../store/store"
 import { HeaderPage } from "../HeaderPage/HeaderPage"
-import { memo, useEffect } from "react"
 import { getFreelancers } from "../../store/reducers/freelancers/freelancersActions"
+
+import { memo, useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
 export const Freelancers = memo(() => {
     const dispatch = useDispatch()

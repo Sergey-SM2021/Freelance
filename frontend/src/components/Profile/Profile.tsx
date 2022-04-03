@@ -1,3 +1,7 @@
+import { memo, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useParams } from 'react-router-dom'
+
 import { ProfileAbout } from './ProfileAbout/ProfileAbout'
 import {
     ProfilePaper, ProfileWrapper
@@ -7,9 +11,6 @@ import { ProfileWorksHistory } from './ProfileWorksHistory/ProfileWorksHistory'
 import { ProfileReviews } from './ProfileReviews/ProfileReviews'
 import { ProfileHeader } from './ProfileHeader/ProfileHeader'
 import { TFreelancer } from '../../models'
-import { memo, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
 import { getProfile } from '../../store/reducers/Profile/profileActions'
 import { RootType } from '../../store/store'
 

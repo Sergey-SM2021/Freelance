@@ -1,6 +1,6 @@
 import { memo } from "react"
 import { TFreelancer } from "../../../models"
-import { EditLink, SectionTitle } from "../../Common/Common.style"
+import { SectionTitle } from "../../Common/Common.style"
 import { PortfolioContainer, PortfolioWrapper, PortfolioProject } from "./ProfilePortfolio.style"
 
 type ProfilePortfolioType = {

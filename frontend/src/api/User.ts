@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { TUserApi } from '../models'
 
 class User {

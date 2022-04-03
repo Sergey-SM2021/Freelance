@@ -1,4 +1,5 @@
 import { memo } from "react"
+
 import { SectionTitle } from "../../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile.style"
 import { PersonalAccountSettings } from "./PersanalSetting"

@@ -1,11 +1,9 @@
 import styled from "styled-components"
 
 export const WorkOrder = styled.div`
-   
 `
 
 export const WorkPrice = styled.div`
-    
 `
 
 export const WorkWrapper = styled.div`

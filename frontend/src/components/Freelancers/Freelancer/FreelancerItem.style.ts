@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const FreelancerWrapper = styled.div`
     padding: 20px 20px 0px 20px;

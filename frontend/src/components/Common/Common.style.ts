@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import pencil from "../../assets/pencil.png"
 
 export const Container = styled.div`
     width: 90%;
@@ -35,10 +34,6 @@ export const Skill = styled.button`
 export const Skills = styled.div`
     display: flex;
     margin: 15px 0px ;
-`
-
-export const EditLink = styled.img.attrs({src:pencil})`
-    width: 31px;
 `
 
 export const Button = styled.button`

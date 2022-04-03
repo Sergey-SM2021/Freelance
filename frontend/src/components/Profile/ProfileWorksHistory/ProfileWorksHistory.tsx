@@ -1,12 +1,13 @@
 import { memo } from "react"
+
 import { TFreelancer } from "../../../models"
-import { EditLink, SectionTitle } from "../../Common/Common.style"
+import { SectionTitle } from "../../Common/Common.style"
 import { WorksHistory, WorksHistoryWrapper } from "./ProfileWorksHistory.style"
 import { WorksHistoryWork } from "./ProfileWorksHistoryWork/ProfileWorkHistory"
 
 type ProfileWorksHistory = {
     works: TFreelancer["workHistory"],
-} | undefined | null
+} | null
 
 export const ProfileWorksHistory = memo((props: ProfileWorksHistory) => {
     return (<WorksHistoryWrapper>

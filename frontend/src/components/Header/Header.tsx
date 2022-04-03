@@ -1,8 +1,8 @@
 import { memo } from "react"
 import { useSelector } from "react-redux"
 import { NavLink, useLocation } from "react-router-dom"
-import { RootType } from "../../store/store"
 
+import { RootType } from "../../store/store"
 import { Container } from "../Common/Common.style"
 import { HeaderGroup, HeaderNav, HeaderTop, HeaderWrapper, HeaderNavBG } from './Header.style'
 

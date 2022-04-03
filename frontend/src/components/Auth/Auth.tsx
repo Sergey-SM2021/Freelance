@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { CreateUser, getUser, setError } from "../../store/reducers/auth/authActions"
 import { SignInSchema } from "./SignInValidateSchems"
 import { RootType } from "../../store/store"
-import { findAncestor } from "typescript"
 
 export const Auth = memo(() => {
     const isLoading = useSelector((state: RootType) => (state.auth.isLoading))
