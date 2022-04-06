@@ -30,6 +30,13 @@ export const HeaderBody = styled.div`
     
 `
 
+export const Edit = styled.img`
+    width:50px;
+    &:hover{
+        cursor: pointer;
+    }
+`
+
 export const HeaderNav = styled.div`
     display: flex;
     justify-content:space-between ;
@@ -75,6 +82,7 @@ export const HeaderMenu = styled.ul`
     z-index: 11;
     padding: 0px;
     display: flex;
+    align-items: center;
     li{
         list-style:none ;
         margin-left: 20px;
@@ -98,12 +106,14 @@ export const HeaderAuth = styled.ul`
     z-index: 11;
     padding: 0px;
     display: flex;
+    align-items: center;
     li{
         list-style:none;
         margin-left: 20px;
         &:first-child{
             margin-left:0;
         }
+        
     }
     @media(max-width:767px){
         display: flex;

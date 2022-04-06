@@ -1,12 +1,17 @@
 import { memo, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Link, NavLink } from "react-router-dom"
+import { RootType } from "../../store/store"
 import { Container } from "../Common/Common.style"
 import {
     HeaderAuth, HeaderBody, HeaderBurger,
     HeaderMenu, HeaderNav, HeaderPopUpMenu, HeaderWrapper
 } from "./Header.style"
+import edit from '../../assets/edit1.png'
+import { Edit } from './Header.style'
 
 export const Header = memo(() => {
+    const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
     const [isActive, toggleActivite] = useState<boolean>(false)
     const toggleActiviteHandler = () => {
         toggleActivite(!isActive)
@@ -27,9 +32,9 @@ export const Header = memo(() => {
                             <li><NavLink to="club" onClick={toggleActiviteHandler}>Клуб</NavLink></li>
                         </HeaderMenu>
                         <HeaderAuth>
-                            {!9 ?
+                            {isAuth ?
                                 <li onClick={toggleActiviteHandler}>
-                                    <NavLink to="/personalAccount">Личный кабинет</NavLink>
+                                    <Link to="PersonalAccount/setting"><Edit src={edit} /></Link>
                                 </li> :
                                 <>
                                     <li onClick={toggleActiviteHandler}><NavLink to="auth/signIn">Вход</NavLink></li>
