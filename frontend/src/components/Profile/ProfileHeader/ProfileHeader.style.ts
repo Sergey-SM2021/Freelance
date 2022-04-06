@@ -10,7 +10,6 @@ export const HeaderAbout = styled.p`
 `
 
 export const HeaderWrapper = styled.div<{ bg: string }>`
-    position: relative;
     box-sizing:border-box ;
     padding: 20px;
     display:flex ;

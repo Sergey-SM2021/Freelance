@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ProfileWrapper = styled.div`
     padding: 10px 0px 10px 0px;
-    width: 70%;
+    width: 100%;
 `
 
 export const ProfilePaper = styled.div<{ isMainPage?: boolean }>`
