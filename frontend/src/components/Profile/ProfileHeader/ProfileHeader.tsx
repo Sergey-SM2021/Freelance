@@ -9,10 +9,9 @@ import { memo } from "react"
 
 type TProfileHeader = {
     header: TFreelancer['header'] | undefined | null,
-    isMyProfile: boolean,
 }
 
-export const ProfileHeader = memo(({ header, isMyProfile }: TProfileHeader) => {
+export const ProfileHeader = memo(({ header }: TProfileHeader) => {
     return (<HeaderWrapper bg={bg}>
         <Ava src={avaPath} />
         <HeaderContent>
