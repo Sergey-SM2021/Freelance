@@ -14,9 +14,6 @@ export const AboutSetting = memo(() => {
     const changeHandler = (e: FormEvent<HTMLInputElement>) => {
         setState(e.currentTarget.value)
     }
-    const save = () => {
-        alert("Put new date...")
-    }
     interface IInitialValues {
         description: string
         expiriens: string
@@ -58,7 +55,6 @@ export const AboutSetting = memo(() => {
                 </>
                 )}
             </FieldArray>
-            <Button onClick={save}>Save</Button>
         </>)}
     </Formik>)
 })

@@ -38,6 +38,8 @@ export const FreelancerDescription = styled.p`
 export const FreelancerProjects = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
 `
 
 export const FreelancerProject = styled.img`

@@ -45,7 +45,6 @@ export const WorkSettings = () => {
                         </>)}
                     </FieldArray>
                 </Form>
-                <Button onClick={handlerSave}>Сохранить</Button>
             </ProfilePaper>
         </ProfileWrapper>)}
     </Formik>)

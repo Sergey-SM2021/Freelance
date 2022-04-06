@@ -24,7 +24,6 @@ export const PersonalAccountSettings = memo(() => {
                 <Field title="Имя" name="header.name" component={MyField} />
                 <Field title="Фамилия" name="header.lastName" component={MyField} />
                 <Field title="Направление" name="header.specialization" component={MyField} />
-                <Button onClick={saveHandler}>Сохранить изменнения</Button>
             </Form>
         </>)}
     </Formik>)

@@ -22,7 +22,7 @@ export const ProfileSettings = memo(() => {
         </ProfilePaper>
         <SectionTitle>Мои работы</SectionTitle>
         <ProfilePaper isMainPage>
-            <></>
+            Добавить
         </ProfilePaper>
     </ProfileWrapper>)
 })
