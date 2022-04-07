@@ -46,7 +46,6 @@ export const SignIn = memo(() => {
         onSubmit={async (values) => {
             try {
                 await dispatch(getUser(values.mail, values.password))
-                nav("/PersonalAccount")
             } catch (error) {
                 dispatch(setError("Не верный пороль и/или логин"))
             }

@@ -10,7 +10,7 @@ class Freelancer {
     constructor(baseURL: string) {
         this.baseURL = Axios.create({ baseURL })
     }
-    getProfileFreelancer = async (id: number) => {
+    getFreelancerById = async (id: number) => {
         try {
             const profileFreelancerApi = (await this.baseURL.get<TFreelancerApi>(`/freelancer/${id}`)).data
             const profileFreelancer: TFreelancer = {
@@ -52,7 +52,7 @@ class Freelancer {
             throw "Freelancer не был создан"
         }
     }
-    getFreelancer = async (mail: string, password: string) => {
+    getFreelancerByEmailPassword = async (mail: string, password: string) => {
         try {
             const freelancer = await (await this.baseURL.get(`/freelancer?mail=${mail}&password=${password}`)).data
             return freelancer

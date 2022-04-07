@@ -12,7 +12,7 @@ class Freelancers {
     }
     getFreelancers = async () => {
         try {
-            const freelancers = (await this.baseURL.get<Array<TFreelancerApi>>("all")).data
+            const freelancers = (await this.baseURL.get<Array<TFreelancerApi>>("")).data
             return freelancers
         } catch (error) {
             throw "Freelancers не были получены"
@@ -49,6 +49,10 @@ class Freelancers {
             throw 'Не удалось получить Preview freelancer'
         }
     }
+    findFreelancersByName = async (name:string) => {
+        const freelancers = await (await this.baseURL.get(`find?name=${name}`)).data
+        return (await freelancers)
+    }
 }
 
-export default new Freelancers("http://localhost:8900/freelancer/")
+export default new Freelancers("http://localhost:8900/freelancers/")

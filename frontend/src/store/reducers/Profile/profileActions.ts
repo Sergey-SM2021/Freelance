@@ -19,7 +19,7 @@ export const compliteLoading = () => ({
 
 export const getProfile = (id: number) => (
     async (dispatch: Dispatch<actionType>) => {
-        const freelancerProfile = await Freelancer.getProfileFreelancer(id)
+        const freelancerProfile = await Freelancer.getFreelancerById(id)
         dispatch(setPofile(freelancerProfile))
     }
 )

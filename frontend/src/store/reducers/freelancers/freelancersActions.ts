@@ -31,3 +31,8 @@ export const startLoading = (): TStartLoading => ({
 export const endLoading = (): TEndLoading => ({
     type: constants.ENDLOADING
 })
+
+export const findFreelancerByName = (name:string) => async (dispatch:dispatchType) => {
+    const freelancers = await Freelancers.findFreelancersByName(name)
+    dispatch(setFreelancers(freelancers))
+}

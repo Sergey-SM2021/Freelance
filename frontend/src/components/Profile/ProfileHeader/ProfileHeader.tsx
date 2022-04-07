@@ -1,11 +1,9 @@
+import { memo } from "react"
+
 import { TFreelancer } from "../../../models"
-import {
-    Ava, HeaderWrapper,
-    HeaderAbout, HeaderContent, HeaderName, Settings
-} from "./ProfileHeader.style"
+import { Ava, HeaderWrapper, HeaderAbout, HeaderContent, HeaderName } from "./ProfileHeader.style"
 import bg from '../../../assets/bg.jpg'
 import avaPath from '../../../assets/man.png'
-import { memo } from "react"
 
 type TProfileHeader = {
     header: TFreelancer['header'] | undefined | null,

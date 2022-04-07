@@ -40,7 +40,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
         const { type, id } = (await User.getUser(mail, password))
         switch (type) {
             case "freelancers":
-                const freelancerProfile = await Freelancer.getProfileFreelancer(id)
+                const freelancerProfile = await Freelancer.getFreelancerById(id)
                 dispatch(setFreelancer(freelancerProfile))
                 break;
             default:
