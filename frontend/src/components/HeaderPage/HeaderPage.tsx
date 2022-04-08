@@ -1,22 +1,28 @@
 import { FreelancersCount, FreelancersHeader, Search, SearchIcon, SearchWarapper } from "./HeaderPage.style"
 import SearchIconPath from '../../assets/search.png'
 
-import { memo } from "react"
+import { FormEvent, memo, useState } from "react"
 import { findFreelancerByName } from "../../store/reducers/freelancers/freelancersActions"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { RootType } from "../../store/store"
 
 export const HeaderPage = memo(() => {
+    const freelancersCount = useSelector((state:RootType) => (state.freelancers.count))
+    const [searchValue, setNewSearchValue] = useState<string>("")
     const dispatch = useDispatch()
-    const SearchHandler = () => {
-        dispatch(findFreelancerByName("Юрий"))
+    const FindHandler = () => {
+        dispatch(findFreelancerByName(searchValue))
+    }
+    const SearchHandler = (e:FormEvent<HTMLInputElement>) => {
+        setNewSearchValue(e.currentTarget.value)
     }
     return (<FreelancersHeader>
         <FreelancersCount>
-            Фрилансеры (93710)
+            Фрилансеры ({freelancersCount})
         </FreelancersCount>
         <SearchWarapper >
-            <Search placeholder="Введите имя" />
-            <SearchIcon src={SearchIconPath} onClick={ SearchHandler} />
+            <Search placeholder="Введите имя" value={searchValue} onChange={SearchHandler}/>
+            <SearchIcon src={SearchIconPath} onClick={FindHandler} />
         </SearchWarapper>
     </FreelancersHeader>)
 })

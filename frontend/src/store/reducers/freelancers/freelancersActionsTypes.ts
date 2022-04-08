@@ -19,7 +19,8 @@ export type setFreelancersType = {
 export type TInitialState = {
     freelancers:Array<TFreelancer>,
     loading:boolean,
-    error:string|null
+    error:string|null,
+    count:number
 }
 
 export type TStartLoading = {

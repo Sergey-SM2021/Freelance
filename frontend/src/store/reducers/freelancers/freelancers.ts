@@ -54,7 +54,8 @@ const InitialState: TInitialState = {
                 dislike: 1
             }
         ],
-    loading: false
+    loading: false,
+    count:1
 }
 
 export const freelancers = (state = InitialState, action: actionType) => {
@@ -68,6 +69,7 @@ export const freelancers = (state = InitialState, action: actionType) => {
             return stateCopy
         case constants.SETFREELANCERS:
             stateCopy.freelancers = action.payload
+            stateCopy.count = action.payload.length
             return stateCopy
         case constants.SETERROR:
             stateCopy.error = action.payload

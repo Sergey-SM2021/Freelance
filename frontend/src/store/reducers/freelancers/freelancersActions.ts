@@ -15,7 +15,7 @@ export const setError = (error:string): TSetError => ({
 export const getFreelancers = () => async (dispatch: dispatchType) => {
     try {
         dispatch(startLoading())
-        const freelancers = await Freelancers.getPreviewFreelancers()
+        const freelancers = await Freelancers.getFreelancers()
         dispatch(setFreelancers(freelancers))
     } catch (error) {
         dispatch(setError(JSON.stringify(error)))
@@ -33,6 +33,8 @@ export const endLoading = (): TEndLoading => ({
 })
 
 export const findFreelancerByName = (name:string) => async (dispatch:dispatchType) => {
+    dispatch(startLoading())
     const freelancers = await Freelancers.findFreelancersByName(name)
     dispatch(setFreelancers(freelancers))
+    dispatch(endLoading())
 }

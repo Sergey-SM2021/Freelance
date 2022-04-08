@@ -13,15 +13,15 @@ class Freelancers {
     getFreelancers = async () => {
         try {
             const freelancers = (await this.baseURL.get<Array<TFreelancerApi>>("")).data
-            return freelancers
+            return this.getPreviewFreelancers(freelancers)
         } catch (error) {
             throw "Freelancers не были получены"
         }
     }
-    getPreviewFreelancers = async () => {
+
+    getPreviewFreelancers = (freelancers: Array<TFreelancerApi>) => {
         try {
-            const freeelancers = this.getFreelancers()
-            const previewFreeelancers: Array<TFreelancer> = (await freeelancers).map(freelancer =>
+            const previewFreeelancers: Array<TFreelancer> = freelancers.map(freelancer =>
             ({
                 header: {
                     name: freelancer.name,
@@ -49,9 +49,10 @@ class Freelancers {
             throw 'Не удалось получить Preview freelancer'
         }
     }
-    findFreelancersByName = async (name:string) => {
+
+    findFreelancersByName = async (name: string) => {
         const freelancers = await (await this.baseURL.get(`find?name=${name}`)).data
-        return (await freelancers)
+        return this.getPreviewFreelancers(freelancers)
     }
 }
 
