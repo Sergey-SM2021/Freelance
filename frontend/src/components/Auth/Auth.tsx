@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { Field, Form, Formik } from 'formik'
-import { memo, useRef } from "react"
+import { memo, useEffect, useRef } from "react"
 
 import {
     AlreadySignUp, LogoTitle, SignUpWrapper, AuthSubmit,
@@ -39,6 +39,9 @@ export const Auth = memo(() => {
 export const SignIn = memo(() => {
     const nav = useNavigate()
     const dispatch = useDispatch()
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [nav])
     const Error = useSelector((state: RootType) => (state.auth.error))
     return (<Formik
         validationSchema={SignInSchema}
@@ -62,6 +65,9 @@ export const SignIn = memo(() => {
 
 export const SignUp = memo(() => {
     const nav = useNavigate()
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [nav])
     const dispatch = useDispatch()
     const client = useRef<HTMLButtonElement>(null)
     const freelancer = useRef<HTMLButtonElement>(null)

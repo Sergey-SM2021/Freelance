@@ -16,21 +16,25 @@ type TProfile = {
 }
 
 export const Profile = memo(({ isMyProfile }: TProfile) => {
+    const isLoading = useSelector((state: RootType) => (state.profile.isLoading))
     const id = useParams().id
     const dispatch = useDispatch()
-    const freelancer = useSelector((state: RootType) => (state.profile))
+    const freelancer = useSelector((state: RootType)=> (state.profile.profile) )
     const loc = useLocation().pathname
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getProfile(Number(id)))
-    }, [loc])
+    }, [])
+    // console.log(freelancer)
     return (<ProfileWrapper>
         <ProfilePaper>
+            {isLoading ? "loading" : <>
             <ProfileHeader header={freelancer.header} />
             <ProfileAbout about={freelancer.about} />
             <ProfileWorksHistory works={freelancer.workHistory} />
             <ProfilePortfolio portfolio={freelancer.portfolio} />
             <ProfileReviews reviews={freelancer.reviews} />
+            </>}
         </ProfilePaper>
     </ProfileWrapper>)
 })
