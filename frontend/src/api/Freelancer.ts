@@ -1,4 +1,4 @@
-import { TFreelancer, TFreelancerApi } from "../models"
+import { TFreelancer, TFreelancerApi, TFreelancerProfileSetting, TFreelancerProfileSettingApi } from "../models"
 import Project1 from '../assets/Projects/Project0.jpeg'
 import Project2 from '../assets/Projects/Project1.jpeg'
 import Project3 from '../assets/Projects/Project2.jpg'
@@ -12,7 +12,7 @@ class Freelancer {
     }
     getFreelancerById = async (id: number) => {
         try {
-            const profileFreelancerApi = (await this.baseURL.get<TFreelancerApi>(`/freelancer/${id}`)).data
+            const profileFreelancerApi = (await this.baseURL.get<TFreelancerApi>(`/${id}`)).data
             const profileFreelancer: TFreelancer = {
                 header: {
                     name: profileFreelancerApi.name,
@@ -41,7 +41,7 @@ class Freelancer {
     }
     createFreelancer = async (mail: string, password: string) => {
         try {
-            this.baseURL.post('/freelancer',
+            this.baseURL.post('',
                 {
                     "mail": mail,
                     "password": password
@@ -54,12 +54,38 @@ class Freelancer {
     }
     getFreelancerByEmailPassword = async (mail: string, password: string) => {
         try {
-            const freelancer = await (await this.baseURL.get(`/freelancer?mail=${mail}&password=${password}`)).data
+            const freelancer = await (await this.baseURL.get(`?mail=${mail}&password=${password}`)).data
             return freelancer
         } catch (error) {
             throw "freelancer не найден"
         }
     }
+    convertFreelancerToApi = (freelancer: TFreelancerProfileSetting): TFreelancerProfileSettingApi => ({
+        name: freelancer.header.name,
+        lastname: freelancer.header.lastName,
+        ava: freelancer.header.ava,
+        specialization: freelancer.header.specialization,
+        description: freelancer.about.description,
+        expiriens: freelancer.about.expiriens,
+        price: freelancer.about.price,
+        paymentmethod: freelancer.about.paymentMethod,
+        stack: [],
+        review: [],
+        workhistory: [],
+        id: freelancer.id,
+        mail: "",
+        password: "",
+        type: ""
+    })
+    putFreelancer = async (freelancer: TFreelancerProfileSetting) => {
+        try {
+            const ApiFreelancer = this.convertFreelancerToApi(freelancer)
+            await this.baseURL.put(`/${ApiFreelancer.id}`,ApiFreelancer)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
-export default new Freelancer("http://localhost:8900")
+
+export default new Freelancer("http://localhost:8900/freelancer")

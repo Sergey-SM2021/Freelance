@@ -52,6 +52,7 @@ class Freelancers {
 
     findFreelancersByName = async (name: string) => {
         const freelancers = await (await this.baseURL.get(`find?name=${name}`)).data
+        console.log(freelancers)
         return this.getPreviewFreelancers(freelancers)
     }
 }

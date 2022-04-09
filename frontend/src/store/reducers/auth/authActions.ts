@@ -1,8 +1,8 @@
 import Client from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import User from "../../../api/User"
-import { TFreelancer } from "../../../models"
-import { constants, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
+import { TFreelancer, TFreelancerProfileSetting } from "../../../models"
+import { constants, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -14,8 +14,14 @@ export const endLoading = (): TEndLoading => ({
 })
 
 export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
+    // action creater
     payload: freelancer,
     type: constants.SETFREELANCER
+})
+
+export const UpdateFreelancer = (freelancer:TFreelancer):IUpdateFreelancer => ({
+    payload:freelancer,
+    type: constants.UPDATEFREELANCER
 })
 
 // #TODO: setUser
@@ -53,3 +59,10 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
         dispatch(endLoading())
     }
 }
+
+export const putFreelancer = (freelancer:TFreelancerProfileSetting) => (dispatch: TDispatch) => {
+    dispatch(startLoading()) 
+    Freelancer.putFreelancer(freelancer)
+    dispatch(endLoading())
+}
+

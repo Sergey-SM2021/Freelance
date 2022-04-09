@@ -1,6 +1,7 @@
 export type id = number
-
 export type ava = string | null
+
+// TODO: edit types!
 
 export interface TUserApi {
     id: number,
@@ -33,6 +34,10 @@ export interface TFreelancerApi extends TUser {
     review: Array<TReview>,
     workhistory: Array<TWorkHistory>,
 }
+
+export type TFreelancerProfileSettingApi = Omit<TFreelancerApi,"dislike" | "reviews" | "likes">
+
+export type TFreelancerProfileSetting = Omit<TFreelancer,"dislike" | "reviews" | "likes">
 
 export type TFreelancer = {
     header: {

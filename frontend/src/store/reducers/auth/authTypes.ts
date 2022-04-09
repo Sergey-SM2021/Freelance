@@ -4,10 +4,11 @@ export enum constants {
     SETFREELANCER = "SETFREELANCER",
     STARTLOADING = "STARTLOADING",
     ENDLOADING = "ENDLOADING",
-    SETERR = "SETERR"
+    SETERR = "SETERR",
+    UPDATEFREELANCER = "UPDATEFREELANCER"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError
+export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer
 
 export type TDispatch = any
 
@@ -34,4 +35,9 @@ export type TEndLoading = {
 export type TSetError = {
     type: constants.SETERR
     payload: string
+}
+
+export interface IUpdateFreelancer {
+    type: constants.UPDATEFREELANCER,
+    payload: TFreelancer
 }

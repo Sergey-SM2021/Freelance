@@ -1,119 +1,110 @@
-import { memo } from "react"
+import { FormEvent, memo, SyntheticEvent, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Field, FieldArray, Form, Formik } from "formik"
 
-import { SectionTitle } from "../../Common/Common.style"
+import { Button, SectionTitle } from "../../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile.style"
-import { PersonalAccountSettings } from "./PersanalSetting"
-import { AboutSetting } from './AboutSetting'
 import { WorkSettings } from './WorkSetting'
+import { MyField } from "../../Field/Field"
+import { TFreelancer, TFreelancerProfileSetting } from "../../../models"
+import { RootType } from "../../../store/store"
+import { Close, Input, Skill, SkillsWrapper } from "./Skill.style"
+import close from '../../../assets/cancel.png'
+import { putFreelancer } from "../../../store/reducers/auth/authActions"
 
 export const ProfileSettings = memo(() => {
+    const [inputSkill, setinputSkill] = useState<string>("")
+    const [completedTask, setCompletedTask] = useState<string>("")
+
+    const initialWorkValue = useSelector((state: RootType) => (state.auth.person.workHistory))
+    const initialHeaderValue = useSelector((state: RootType) => (state.auth.person.header))
+    const initialAboutValue = useSelector((state: RootType) => (state.auth.person.about))
+    const id = useSelector((state: RootType) => (state.auth.person?.id))
+    const initialPortfolioValue = useSelector((state: RootType) => (state.auth.person.portfolio))
+
+    const initialValues: TFreelancerProfileSetting = {
+        header: initialHeaderValue,
+        about: initialAboutValue,
+        portfolio: initialPortfolioValue,
+        workHistory: initialWorkValue,
+        id
+    }
+
+    const dispatch = useDispatch()
+
+    const handlerChange = (e: FormEvent<HTMLInputElement>) => {
+        setCompletedTask(e.currentTarget.value)
+    }
+
+    const changeHandler = (e: FormEvent<HTMLInputElement>) => {
+        setinputSkill(e.currentTarget.value)
+    }
+
+    const SaveHandler = (values: TFreelancerProfileSetting) => {
+        dispatch(putFreelancer(values))
+    }
+
     return (<ProfileWrapper>
-        <SectionTitle>Личные данные</SectionTitle>
-        <ProfilePaper isMainPage>
-            <PersonalAccountSettings />
-        </ProfilePaper>
-        <SectionTitle>Личные данные</SectionTitle>
-        <ProfilePaper isMainPage>
-            <AboutSetting />
-        </ProfilePaper>
-        <SectionTitle>Завершенные заказы</SectionTitle>
-        <ProfilePaper isMainPage>
-            <WorkSettings />
-        </ProfilePaper>
-        <SectionTitle>Мои работы</SectionTitle>
-        <ProfilePaper isMainPage>
-            Добавить
-        </ProfilePaper>
+        <Formik
+            initialValues={initialValues}
+            onSubmit={SaveHandler}
+        >{({ values }) => (
+            <Form>
+                <SectionTitle>Личные данные</SectionTitle>
+                <ProfilePaper isMainPage>
+                    <Field title="Имя" name="header.name" component={MyField} />
+                    <Field title="Фамилия" name="header.lastName" component={MyField} />
+                    <Field title="Направление" name="header.specialization" component={MyField} />
+                </ProfilePaper>
+                <SectionTitle>Личные данные</SectionTitle>
+                <ProfilePaper isMainPage>
+                    <Field component={MyField} title="Описание" value={values.about.description} name="about.description" />
+                    <Field component={MyField} title="Опыт работы" value={values.about.expiriens} name="about.expiriens" />
+                    <Field component={MyField} title="Способ оплаты" value={values.about.paymentMethod} name="about.paymentMethod" />
+                    <Field component={MyField} title="цена" value={values.about.price} name="about.price" />
+                    <FieldArray name='about.stack'>
+                        {({ remove, push }) => (<>
+                            <SkillsWrapper >
+                                {values.about.stack ? values.about.stack.map((skill, i) => (
+                                    <Skill>{skill.name} <Close src={close} onClick={(e: SyntheticEvent) => { remove(i); e.preventDefault() }} /></Skill>
+                                )) : <></>}
+                                <Input placeholder='skill' type="text" value={inputSkill} onChange={changeHandler} onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                                    if (e.key === 'Enter' && inputSkill.length > 0) {
+                                        push({ freelancer: id, id: 1, name: inputSkill })
+                                        setinputSkill("")
+                                        e.preventDefault();
+                                        return false;
+                                    }
+                                }} />
+                            </SkillsWrapper>
+                        </>
+                        )}
+                    </FieldArray>
+                </ProfilePaper>
+                <SectionTitle>Завершенные заказы</SectionTitle>
+                <ProfilePaper isMainPage>
+                    <FieldArray name="myWorks">
+                        {({ push, remove }) => (<>
+                            {
+                                values.workHistory?.map((work, index) => <>
+                                    <Field title="Выполненная задача" component={MyField} name={`myWorks.${index}.name`} />
+                                    <button onClick={() => { remove(index) }}>Удалить</button>
+                                </>
+                                )}
+                            <div>
+                                <input type="text" value={completedTask} onChange={handlerChange} />
+                                <button type="button" onClick={() => { push({ freelancer: id, id: 172, name: completedTask, price: 0 }) }}>Добавить</button>
+                            </div>
+                        </>)}
+                    </FieldArray>
+                </ProfilePaper>
+                <SectionTitle>Мои работы</SectionTitle>
+                <ProfilePaper isMainPage>
+                    Добавить
+                </ProfilePaper>
+                <Button>Сохранить</Button>
+            </Form>
+        )}
+        </Formik>
     </ProfileWrapper>)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { Field, Form, Formik } from "formik"
-// import { memo } from "react"
-// import { useSelector } from "react-redux"
-// import { RootType } from "../../../store/store"
-// import { ProfilePaper, ProfileWrapper } from "../Profile.style"
-// import { MyField } from "../../Field/Field"
-// import { Button } from "../../Common/Common.style"
-
-// interface IForm {
-//     header: RootType["auth"]["person"]["header"],
-// }
-
-// export const PersonalAccountSettings = memo(() => {
-//     const header = useSelector((state: RootType) => (state.auth.person.header))
-//     const initialValues: IForm = { header }
-//     const saveHandler = () => {
-//         alert("put data...")
-//     }
-//     return (<Formik
-//         onSubmit={() => { }}
-//         initialValues={initialValues}>
-//         {({ values }) => (
-//             <ProfileWrapper>
-//                 <ProfilePaper isMainPage>
-//                     <Form>
-//                         <Field title="Имя" name="header.name" component={MyField} />
-//                         <Field title="Фамилия" name="header.lastName" component={MyField} />
-//                         <Field title="Направление" name="header.specialization" component={MyField} />
-//                         <Button onClick={saveHandler}>Сохранить изменнения</Button>
-//                     </Form>
-//                 </ProfilePaper>
-//             </ProfileWrapper>
-//         )}
-//     </Formik>)
-// })
