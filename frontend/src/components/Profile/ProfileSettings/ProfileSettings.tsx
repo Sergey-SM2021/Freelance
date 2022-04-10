@@ -82,7 +82,7 @@ export const ProfileSettings = memo(() => {
                 </ProfilePaper>
                 <SectionTitle>Завершенные заказы</SectionTitle>
                 <ProfilePaper isMainPage>
-                    <FieldArray name="myWorks">
+                    <FieldArray name="workHistory">
                         {({ push, remove }) => (<>
                             {
                                 values.workHistory?.map((work, index) => <>
@@ -92,7 +92,10 @@ export const ProfileSettings = memo(() => {
                                 )}
                             <div>
                                 <input type="text" value={completedTask} onChange={handlerChange} />
-                                <button type="button" onClick={() => { push({ freelancer: id, id: 172, name: completedTask, price: 0 }) }}>Добавить</button>
+                                <button type="button" onClick={() => {
+                                    push({ freelancer: id, id: 172, name: completedTask, price: 0 })
+                                    console.log("Click")
+                                }}>Добавить</button>
                             </div>
                         </>)}
                     </FieldArray>
