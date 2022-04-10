@@ -4,9 +4,8 @@ import { Field, FieldArray, Form, Formik } from "formik"
 
 import { Button, SectionTitle } from "../../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile.style"
-import { WorkSettings } from './WorkSetting'
 import { MyField } from "../../Field/Field"
-import { TFreelancer, TFreelancerProfileSetting } from "../../../models"
+import { TFreelancerProfileSetting } from "../../../models"
 import { RootType } from "../../../store/store"
 import { Close, Input, Skill, SkillsWrapper } from "./Skill.style"
 import close from '../../../assets/cancel.png'
@@ -87,7 +86,7 @@ export const ProfileSettings = memo(() => {
                         {({ push, remove }) => (<>
                             {
                                 values.workHistory?.map((work, index) => <>
-                                    <Field title="Выполненная задача" component={MyField} name={`myWorks.${index}.name`} />
+                                    <input readOnly value={values.workHistory![index].name} />
                                     <button onClick={() => { remove(index) }}>Удалить</button>
                                 </>
                                 )}
@@ -107,4 +106,4 @@ export const ProfileSettings = memo(() => {
         )}
         </Formik>
     </ProfileWrapper>)
-})
+}) 
