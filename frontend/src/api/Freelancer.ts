@@ -69,9 +69,11 @@ class Freelancer {
         expiriens: freelancer.about.expiriens,
         price: freelancer.about.price,
         paymentmethod: freelancer.about.paymentMethod,
-        stack: [],
+        // @ts-ignore
+        stack: freelancer.about.stack,
         review: [],
-        workhistory: [],
+        // @ts-ignore
+        workhistory: freelancer.workHistory,
         id: freelancer.id,
         mail: "",
         password: "",
@@ -80,6 +82,7 @@ class Freelancer {
     putFreelancer = async (freelancer: TFreelancerProfileSetting) => {
         try {
             const ApiFreelancer = this.convertFreelancerToApi(freelancer)
+            console.log(ApiFreelancer)
             await this.baseURL.put(`/${ApiFreelancer.id}`,ApiFreelancer)
         } catch (error) {
             console.log(error)

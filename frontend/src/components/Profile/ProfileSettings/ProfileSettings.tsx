@@ -1,4 +1,4 @@
-import { FormEvent, memo, SyntheticEvent, useState } from "react"
+import { FormEvent, memo, SyntheticEvent, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Field, FieldArray, Form, Formik } from "formik"
 
@@ -10,8 +10,10 @@ import { RootType } from "../../../store/store"
 import { Close, Input, Skill, SkillsWrapper } from "./Skill.style"
 import close from '../../../assets/cancel.png'
 import { putFreelancer } from "../../../store/reducers/auth/authActions"
+import styled from "styled-components"
 
 export const ProfileSettings = memo(() => {
+    const AddComplitedWorkRef = useRef<HTMLTextAreaElement>(null)
     const [inputSkill, setinputSkill] = useState<string>("")
     const [completedTask, setCompletedTask] = useState<string>("")
 
@@ -86,14 +88,14 @@ export const ProfileSettings = memo(() => {
                         {({ push, remove }) => (<>
                             {
                                 values.workHistory?.map((work, index) => <>
-                                    <input readOnly value={values.workHistory![index].name} />
+                                    <ComplitedWork readOnly  value={values.workHistory![index].name} />
                                     <button onClick={() => { remove(index) }}>Удалить</button>
                                 </>
                                 )}
                             <div>
-                                <input type="text" value={completedTask} onChange={handlerChange} />
+                                <AddComplitedWork ref={AddComplitedWorkRef} placeholder="Сделал сайт на Тильде..."/>
                                 <button type="button" onClick={() => {
-                                    push({ freelancer: id, id: 172, name: completedTask, price: 0 })
+                                    push({ freelancer: id, id: 172, name: AddComplitedWorkRef.current?.value, price: 0 })
                                     console.log("Click")
                                 }}>Добавить</button>
                             </div>
@@ -104,9 +106,25 @@ export const ProfileSettings = memo(() => {
                 <ProfilePaper isMainPage>
                     Добавить
                 </ProfilePaper>
-                <Button>Сохранить</Button>
+                <Button type="submit">Сохранить</Button>
             </Form>
         )}
         </Formik>
     </ProfileWrapper>)
-}) 
+})
+
+const ComplitedWork = styled.textarea`
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    padding: 5px;
+    height: 100px;
+`
+
+const AddComplitedWork = styled.textarea`
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    padding: 5px;
+    height: 100px;
+`
