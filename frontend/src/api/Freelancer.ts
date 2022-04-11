@@ -82,7 +82,6 @@ class Freelancer {
     putFreelancer = async (freelancer: TFreelancerProfileSetting) => {
         try {
             const ApiFreelancer = this.convertFreelancerToApi(freelancer)
-            console.log(ApiFreelancer)
             await this.baseURL.put(`/${ApiFreelancer.id}`,ApiFreelancer)
         } catch (error) {
             console.log(error)

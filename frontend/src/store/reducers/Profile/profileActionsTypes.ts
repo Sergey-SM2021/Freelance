@@ -2,8 +2,8 @@ import { TFreelancer } from "../../../models"
 
 export enum actionTypes {
     SETPROFILE = "SETPROFILE",
-    STARTLOADING = "STARTLOADING",
-    COMPLITELOADING = "COMPLITELOADING"
+    STARTLOADING = "STARTPROFILELOADING",
+    COMPLITELOADING = "COMPLITEPROFILELOADING"
 }
 
 export interface IStartLoading {

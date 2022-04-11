@@ -4,8 +4,8 @@ export type actionType = setFreelancersType | TEndLoading | TStartLoading | TSet
 
 export enum constants {
     "SETFREELANCERS" = "SETFREELANCERS",
-    "STARTLOADING" = "STARTLOADING",
-    "ENDLOADING" = "ENDLOADING",
+    "STARTLOADING" = "STARTFREELANCERSLOADING",
+    "ENDLOADING" = "ENDFREELANCERLOADING",
     "SETERROR" = "SETERROR"
 }
 

@@ -12,18 +12,6 @@ export const setError = (error:string): TSetError => ({
     type:constants.SETERROR
 })
 
-export const getFreelancers = () => async (dispatch: dispatchType) => {
-    try {
-        dispatch(startLoading())
-        const freelancers = await Freelancers.getFreelancers()
-        dispatch(setFreelancers(freelancers))
-    } catch (error) {
-        dispatch(setError(JSON.stringify(error)))
-    } finally {
-        dispatch(endLoading())
-    }
-}
-
 export const startLoading = (): TStartLoading => ({
     type: constants.STARTLOADING
 })
@@ -37,4 +25,16 @@ export const findFreelancerByName = (name:string) => async (dispatch:dispatchTyp
     const freelancers = await Freelancers.findFreelancersByName(name)
     dispatch(setFreelancers(freelancers))
     dispatch(endLoading())
+}
+
+export const getFreelancers = () => async (dispatch: dispatchType) => {
+    try {
+        // dispatch(startLoading())
+        const freelancers = await Freelancers.getFreelancers()
+        dispatch(setFreelancers(freelancers))
+    } catch (error) {
+        dispatch(setError(JSON.stringify(error)))
+    } finally {
+        // dispatch(endLoading())
+    }
 }

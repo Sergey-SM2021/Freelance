@@ -1,8 +1,6 @@
-import { Field } from "formik"
 import { memo } from "react"
 
 import { TFreelancer } from "../../../models"
-import { MyField } from "../../Field/Field"
 import { SectionTitle, Skill, Skills } from "../../Common/Common.style"
 import {
     AboutWrapper, AboutePaper, AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle
@@ -10,29 +8,6 @@ import {
 
 type ProfileAboutType = {
     about: TFreelancer["about"] | undefined | null,
-}
-
-interface ISettingTitleAndDescription {
-    name: string | null | undefined,
-    lastName: string | null | undefined,
-    specialization: string | null | undefined,
-    description: string | null | undefined,
-    expiriens: string | null | undefined,
-    paymentMethod: string | null | undefined,
-    price: number | null | undefined
-}
-
-const SettingTitleAndDescription = ({ description, expiriens, lastName, name, paymentMethod, price, specialization }: ISettingTitleAndDescription) => {
-    return (<>
-        <Field name='header[name]' title="Имя" values={name} component={MyField} />
-        <Field name='header[lastName]' title="Фамилия" values={lastName} component={MyField} />
-        <Field name='header[specialization]' title="Специализация" values={specialization} component={MyField} />
-        <Field name='about[description]' title="Описание" values={description} component={MyField} />
-        <Field name='about[expiriens]' title="Опыт разработки" values={expiriens} component={MyField} />
-
-        <Field name='about[paymentMethod]' title="Способ оплаты" values={paymentMethod} component={MyField} />
-        <Field name='about[price]' title="Цена" values={price} component={MyField} />
-    </>)
 }
 
 export const ProfileAbout = memo(({ about }: ProfileAboutType) => {
