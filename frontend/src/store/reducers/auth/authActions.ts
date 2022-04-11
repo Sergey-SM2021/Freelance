@@ -60,9 +60,9 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
     }
 }
 
-export const putFreelancer = (freelancer:TFreelancerProfileSetting) => (dispatch: TDispatch) => {
+export const putFreelancer = (freelancer:TFreelancerProfileSetting) => async (dispatch: TDispatch) => {
     dispatch(startLoading()) 
-    Freelancer.putFreelancer(freelancer)
+    await Freelancer.putFreelancer(freelancer)
     dispatch(endLoading())
 }
 

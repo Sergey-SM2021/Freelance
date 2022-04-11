@@ -70,9 +70,11 @@ export const auth = (state = initialState, action: TAction) => {
     const stateCopy = { ...state }
     switch (action.type) {
         case constants.STARTLOADING:
+            console.log("START")
             stateCopy.isLoading = true
             return stateCopy
         case constants.ENDLOADING:
+            console.log("END")
             stateCopy.isLoading = false
             return stateCopy
         case constants.SETFREELANCER:

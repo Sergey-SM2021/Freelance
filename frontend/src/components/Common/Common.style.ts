@@ -39,6 +39,7 @@ export const Skills = styled.div`
 export const Button = styled.button`
     &:hover{
         cursor:pointer ;
+        background-color: #4ca69d;
     }
     background-color: #4abfb4;
     border: none;

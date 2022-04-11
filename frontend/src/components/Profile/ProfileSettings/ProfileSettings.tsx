@@ -1,4 +1,4 @@
-import { FormEvent, memo, SyntheticEvent, useRef, useState } from "react"
+import { FormEvent, memo, SyntheticEvent, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Field, FieldArray, Form, Formik } from "formik"
 
@@ -13,6 +13,10 @@ import { putFreelancer } from "../../../store/reducers/auth/authActions"
 import styled from "styled-components"
 
 export const ProfileSettings = memo(() => {
+    useEffect(()=>{
+        window.scroll(0,0)
+    },[])
+    const isLoading = useSelector((state: RootType)=>(state.auth.isLoading)) 
     const AddComplitedWorkRef = useRef<HTMLTextAreaElement>(null)
     const [inputSkill, setinputSkill] = useState<string>("")
     const [completedTask, setCompletedTask] = useState<string>("")
@@ -50,7 +54,8 @@ export const ProfileSettings = memo(() => {
             initialValues={initialValues}
             onSubmit={SaveHandler}
         >{({ values }) => (
-            <Form>
+                isLoading?<>loading...</>:
+                <Form>
                 <SectionTitle>Личные данные</SectionTitle>
                 <ProfilePaper isMainPage>
                     <Field title="Имя" name="header.name" component={MyField} />
@@ -96,7 +101,9 @@ export const ProfileSettings = memo(() => {
                                 <AddComplitedWork ref={AddComplitedWorkRef} placeholder="Сделал сайт на Тильде..."/>
                                 <button type="button" onClick={() => {
                                     push({ freelancer: id, id: 172, name: AddComplitedWorkRef.current?.value, price: 0 })
-                                    console.log("Click")
+                                    if(AddComplitedWorkRef.current?.value){
+                                        AddComplitedWorkRef.current.value = ""
+                                    }
                                 }}>Добавить</button>
                             </div>
                         </>)}
@@ -114,6 +121,7 @@ export const ProfileSettings = memo(() => {
 })
 
 const ComplitedWork = styled.textarea`
+    margin-top: 20px;
     width: 100%;
     box-sizing: border-box;
     resize: none;
@@ -122,6 +130,7 @@ const ComplitedWork = styled.textarea`
 `
 
 const AddComplitedWork = styled.textarea`
+    margin-top: 20px;
     width: 100%;
     box-sizing: border-box;
     resize: none;
