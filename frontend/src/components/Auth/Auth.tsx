@@ -49,7 +49,6 @@ export const SignIn = memo(() => {
         onSubmit={async (values) => {
             try {
                 await dispatch(getUser(values.mail, values.password))
-                nav("/PersonalAccount/setting")
             } catch (error) {
                 dispatch(setError("Не верный пороль и/или логин"))
             }
@@ -96,7 +95,6 @@ export const SignUp = memo(() => {
         validationSchema={validationSchema}
         onSubmit={(values) => {
             dispatch(CreateUser(values.mail, values.password, values.role))
-            nav("/PersonalAccount")
         }}
         initialValues={{ mail: "", password: "", role: "" }}>
         {(values) => (<Form>

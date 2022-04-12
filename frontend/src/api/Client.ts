@@ -25,4 +25,4 @@ class Client {
     }
 }
 
-export default new Client("http://localhost:8900/client/")
+export const ClientApi = new Client("http://localhost:8900/client/")

@@ -11,6 +11,9 @@ class User {
         const user = await (await this.baseUrl.get<TUserApi>(`?mail=${mail}&password=${password}`)).data
         return user
     }
+    createUser = async (mail: string, password: string, type: string) => {
+        await this.baseUrl.post("",{mail,password,type})
+    }
 }
 
-export default new User("http://localhost:8900/user")
+export const UserApi = new User("http://localhost:8900/user")
