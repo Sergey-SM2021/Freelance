@@ -1,4 +1,4 @@
-import { TFreelancer, TFreelancerApi, TFreelancerProfileSetting, TFreelancerProfileSettingApi } from "../types/models"
+import { TFreelancer, TFreelancerApi, TFreelancerProfileSetting, TFreelancerProfileSettingApi } from "../types/IFreelancer"
 import Project1 from '../assets/Projects/Project0.jpeg'
 import Project2 from '../assets/Projects/Project1.jpeg'
 import Project3 from '../assets/Projects/Project2.jpg'
@@ -82,7 +82,7 @@ class Freelancer {
     putFreelancer = async (freelancer: TFreelancerProfileSetting) => {
         try {
             const ApiFreelancer = this.convertFreelancerToApi(freelancer)
-            await this.baseURL.put(`/${ApiFreelancer.id}`,ApiFreelancer)
+            await this.baseURL.put(`/${ApiFreelancer.id}`, ApiFreelancer)
         } catch (error) {
             console.log(error)
         }

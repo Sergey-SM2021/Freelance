@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { TUserApi } from '../types/models'
+import { TUserApi } from '../types/IUser'
 
 class User {
     baseUrl

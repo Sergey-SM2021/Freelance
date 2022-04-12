@@ -1,4 +1,4 @@
-import { TFreelancer } from "../../../types/models"
+import { TFreelancer } from "../../../types/IFreelancer"
 
 export type actionType = setFreelancersType | TEndLoading | TStartLoading | TSetError
 

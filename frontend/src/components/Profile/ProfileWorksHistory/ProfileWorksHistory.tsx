@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-import { TFreelancer } from "../../../types/models"
+import { TFreelancer } from "../../../types/IFreelancer"
 import { SectionTitle } from "../../Common/Common.style"
 import { WorksHistory, WorksHistoryWrapper } from "./ProfileWorksHistory.style"
 import { WorksHistoryWork } from "./ProfileWorksHistoryWork/ProfileWorkHistory"

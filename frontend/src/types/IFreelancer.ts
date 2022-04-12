@@ -1,23 +1,9 @@
+import { TUser } from "./IUser"
+
 export type id = number
 export type ava = string | null
 
 // TODO: edit types!
-
-export interface TUserApi {
-    id: number,
-    type: string
-}
-
-export interface TUser {
-    id: number,
-    mail: string,
-    password: string,
-    type: string
-}
-
-export interface TClientApi extends TUser {
-
-}
 
 export interface TFreelancerApi extends TUser {
     name: string | null,
@@ -35,9 +21,9 @@ export interface TFreelancerApi extends TUser {
     workhistory: Array<TWorkHistory>,
 }
 
-export type TFreelancerProfileSettingApi = Omit<TFreelancerApi,"dislike" | "reviews" | "likes">
+export type TFreelancerProfileSettingApi = Omit<TFreelancerApi, "dislike" | "reviews" | "likes">
 
-export type TFreelancerProfileSetting = Omit<TFreelancer,"dislike" | "reviews" | "likes">
+export type TFreelancerProfileSetting = Omit<TFreelancer, "dislike" | "reviews" | "likes">
 
 export type TFreelancer = {
     header: {

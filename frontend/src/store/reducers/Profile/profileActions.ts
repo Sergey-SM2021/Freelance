@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 
-import { TFreelancer } from "../../../types/models"
+import { TFreelancer } from "../../../types/IFreelancer"
 import { actionType, actionTypes, ICompliteLoading, ISetProfile, IStartLoading } from "./profileActionsTypes"
 import Freelancer from '../../../api/Freelancer'
 

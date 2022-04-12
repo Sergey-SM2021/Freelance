@@ -5,7 +5,7 @@ import { Field, FieldArray, Form, Formik } from "formik"
 import { Button, SectionTitle } from "../../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile.style"
 import { MyField } from "../../Field/Field"
-import { TFreelancerProfileSetting } from "../../../types/models"
+import { TFreelancerProfileSetting } from "../../../types/IFreelancer"
 import { RootType } from "../../../store/store"
 import { Close, Input, Skill, SkillsWrapper } from "./Skill.style"
 import close from '../../../assets/cancel.png'
