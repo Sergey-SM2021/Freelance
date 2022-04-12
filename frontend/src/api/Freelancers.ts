@@ -1,4 +1,4 @@
-import { TFreelancer, TFreelancerApi } from "../models"
+import { TFreelancer, TFreelancerApi } from "../types/models"
 import Project1 from '../assets/Projects/Project0.jpeg'
 import Project2 from '../assets/Projects/Project1.jpeg'
 import Project3 from '../assets/Projects/Project2.jpg'

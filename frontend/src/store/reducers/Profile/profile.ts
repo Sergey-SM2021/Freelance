@@ -3,11 +3,12 @@ import Project1 from '../../../assets/Projects/Project4.jpg'
 import Project2 from '../../../assets/Projects/Project5.jpeg'
 import avaPath from '../../../assets/man.png'
 import { actionType, actionTypes } from "./profileActionsTypes"
-import { TFreelancer } from '../../../models'
+import { TFreelancer } from '../../../types/models'
 
 interface IInitState {
     profile: TFreelancer,
-    isLoading: boolean
+    isLoading: boolean,
+    whoseProfile: string
 }
 
 const initState: IInitState = {
@@ -60,7 +61,8 @@ const initState: IInitState = {
         id: 685,
         likes: 0,
     },
-    isLoading: false
+    isLoading: false,
+    whoseProfile: "freelancer"
 }
 
 export const profile = (state = initState, action: actionType):IInitState => {

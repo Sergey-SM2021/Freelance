@@ -1,7 +1,7 @@
 import { ClientApi } from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import {UserApi} from "../../../api/User"
-import { TFreelancer, TFreelancerProfileSetting } from "../../../models"
+import { TFreelancer, TFreelancerProfileSetting } from "../../../types/models"
 import { constants, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 

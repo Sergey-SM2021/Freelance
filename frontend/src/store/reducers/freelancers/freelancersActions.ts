@@ -1,5 +1,5 @@
 import { constants, dispatchType, setFreelancersType, TStartLoading, TEndLoading, TSetError } from "./freelancersActionsTypes"
-import { TFreelancer } from "../../../models"
+import { TFreelancer } from "../../../types/models"
 import Freelancers from "../../../api/Freelancers"
 
 export const setFreelancers = (freelancers: Array<TFreelancer>): setFreelancersType => ({

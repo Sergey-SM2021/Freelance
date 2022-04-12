@@ -1,4 +1,4 @@
-import { TFreelancer } from "../../../models"
+import { TFreelancer } from "../../../types/models"
 
 export enum constants {
     SETFREELANCER = "SETFREELANCER",

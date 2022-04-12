@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { TFreelancer } from "../../../models"
+import { TFreelancer } from "../../../types/models"
 import { SectionTitle } from "../../Common/Common.style"
 import { PortfolioContainer, PortfolioWrapper, PortfolioProject } from "./ProfilePortfolio.style"
 
