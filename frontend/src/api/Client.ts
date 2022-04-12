@@ -15,9 +15,9 @@ class Client {
             throw "Client не был создан"
         }
     }
-    getClient = async (mail: string, password: string) => {
+    getClientById = async (id: number) => {
         try {
-            const client = await (await this.baseURL.get(`?mail=${mail}&password=${password}`)).data
+            const client = await (await this.baseURL.get(`${id}`)).data
             return client
         } catch (error) {
             throw "Client не был найден"
