@@ -59,7 +59,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
                 break;
         }
     } catch (error) {
-
+            // Мне кажется нужно отдельно получать фрилансера и клиента 
         throw "Пользователь не был получен"
     } finally {
         dispatch(endLoading())
