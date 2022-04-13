@@ -36,11 +36,11 @@ export type TFreelancer = {
         description: string | null,
         expiriens: string | null,
         price: number | null,
-        stack: Array<TStack> | null,
+        stack: Array<TStack>,
         paymentMethod: string | null,
     },
-    portfolio: Array<TPortfolio> | null,
-    workHistory: Array<TWorkHistory> | null,
+    portfolio: Array<TPortfolio>,
+    workHistory: Array<TWorkHistory>,
     id: id,
     reviews: Array<TReview> | null
     // #FIXME: these properties are not needed by a fullfreelancer
