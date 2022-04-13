@@ -1,5 +1,5 @@
-import { TUser } from "./IUser";
-
-export interface TClientApi extends TUser {
-
+export interface TClientApi{
+    id: number,
+    mail: string,
+    password: string,
 }
