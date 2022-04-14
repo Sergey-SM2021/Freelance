@@ -10,8 +10,8 @@ import {
 import edit from '../../assets/edit1.png'
 import { Edit } from './Header.style'
 
-export const Header = memo(() => {
-    const route = useSelector((state: RootType) => {
+export const useEditProfileRoute = () => {
+    const Path = useSelector((state: RootType) => {
         switch (state.auth.type) {
             case "freelancer":
                 return "/FreelancerProfile/setting"
@@ -19,6 +19,11 @@ export const Header = memo(() => {
                 return "/ClientProfile/setting"
         }
     })
+    return Path
+}
+
+export const Header = memo(() => {
+    const route = useEditProfileRoute()
     const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
     const [isActive, toggleActivite] = useState<boolean>(false)
     const toggleActiviteHandler = () => {

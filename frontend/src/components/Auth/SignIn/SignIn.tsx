@@ -8,8 +8,10 @@ import { SignInSchema } from "./SignInValidateSchems"
 import { getUser, setError } from "../../../store/reducers/auth/authActions"
 import { MyField } from "../../Field/Field"
 import { AuthSubmit } from "../Auth.style"
+import {useEditProfileRoute} from "../../Header/Header";
 
 export const SignIn = memo(() => {
+    const Path = useEditProfileRoute()
     const nav = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -22,6 +24,7 @@ export const SignIn = memo(() => {
         onSubmit={async (values) => {
             try {
                 await dispatch(getUser(values.mail, values.password))
+                nav(Path)
             } catch (error) {
                 dispatch(setError("Не верный пороль и/или логин"))
             }

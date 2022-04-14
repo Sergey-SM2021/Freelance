@@ -53,7 +53,7 @@ export const Freelancer = memo(({ about, dislike, likes, header, portfolio, id }
                     {about.description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {portfolio?.length ? portfolio.map((el) => <FreelancerProject src={IMG} />) : <></>}
+                    {portfolio?.length ? portfolio.map((el,index) => <FreelancerProject key={index} src={IMG} />) : <></>}
                 </FreelancerProjects>
                 <Skills>
                     {about.stack ? about.stack.map((el) => (<Skill key={el.id}>{el.name}</Skill>)) : <></>}

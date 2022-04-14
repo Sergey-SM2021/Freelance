@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { Formik, Form, Field } from 'formik'
+import {Formik, Form, Field, FormikValues} from 'formik'
 import { validationSchema } from "./signUpValidationSchema"
 import { CreateUser } from "../../../store/reducers/auth/authActions"
 import { MyField } from "../../Field/Field"
@@ -35,12 +35,15 @@ export const SignUp = memo(() => {
             freelancer.current.style.background = '#ecf3f8'
         }
     }
+
+    const formSubmitHandler = (values:FormikValues) => {
+        dispatch(CreateUser(values.mail, values.password, values.role))
+    }
+
     return (<Formik
         validateOnBlur
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-            dispatch(CreateUser(values.mail, values.password, values.role))
-        }}
+        onSubmit={formSubmitHandler}
         initialValues={{ mail: "", password: "", role: "" }}>
         {(values) => (<Form>
             <Field title="Email" name="mail" component={MyField} />

@@ -29,12 +29,12 @@ export const findFreelancerByName = (name:string) => async (dispatch:dispatchTyp
 
 export const getFreelancers = () => async (dispatch: dispatchType) => {
     try {
-        // dispatch(startLoading())
+        dispatch(startLoading())
         const freelancers = await Freelancers.getFreelancers()
         dispatch(setFreelancers(freelancers))
     } catch (error) {
         dispatch(setError(JSON.stringify(error)))
     } finally {
-        // dispatch(endLoading())
+        dispatch(endLoading())
     }
 }

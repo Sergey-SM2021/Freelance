@@ -43,9 +43,15 @@ export const UpdateFreelancer = (freelancer: TFreelancer): IUpdateFreelancer => 
 // #TODO: setUser
 
 export const CreateUser = (mail: string, password: string, role: string) => async (dispatch: TDispatch) => {
-    // dispatch(startLoading)
-    UserApi.createUser(mail, password, role)
-    // dispatch(endLoading)
+    dispatch(startLoading)
+    try {
+        await UserApi.createUser(mail, password, role)
+        alert("Пользовотель был создан")
+    } catch (e) {
+        alert("Пользовотель не был создан")
+    }finally {
+        dispatch(endLoading)
+    }
 }
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
