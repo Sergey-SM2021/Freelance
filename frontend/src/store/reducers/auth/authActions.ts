@@ -1,8 +1,9 @@
 import { ClientApi } from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
-import {UserApi} from "../../../api/User"
+import { UserApi } from "../../../api/User"
+import { TClientApi } from "../../../types/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../types/IFreelancer"
-import { constants, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
+import { constants, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -12,6 +13,21 @@ export const startLoading = (): TStartLoading => ({
 export const endLoading = (): TEndLoading => ({
     type: constants.ENDLOADING
 })
+
+export const setError = (err: string): TSetError => ({
+    type: constants.SETERR,
+    payload: err
+})
+// standart actions
+
+export const setClientProfile = (client: TClientApi): ISetClientProfile => ({
+    // action creater
+    type: constants.SETCLIENTPROFILE,
+    payLoad: client
+})
+
+// client 
+
 
 export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
     // action creater
@@ -28,14 +44,9 @@ export const UpdateFreelancer = (freelancer: TFreelancer): IUpdateFreelancer => 
 
 export const CreateUser = (mail: string, password: string, role: string) => async (dispatch: TDispatch) => {
     // dispatch(startLoading)
-    UserApi.createUser(mail,password,role)
+    UserApi.createUser(mail, password, role)
     // dispatch(endLoading)
 }
-
-export const setError = (err: string): TSetError => ({
-    type: constants.SETERR,
-    payload: err
-})
 
 export const getUser = (mail: string, password: string) => async (dispatch: TDispatch) => {
     try {
@@ -48,14 +59,12 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
                 break
             case "client":
                 const Client = await ClientApi.getClientById(id)
-                // dispatch(setProfileClient)
-                dispatch(setFreelancer(Client))
+                dispatch(setClientProfile(Client))
                 break
             default:
                 console.log(type)
         }
     } catch (error) {
-            // Мне кажется нужно отдельно получать фрилансера и клиента 
         throw "Пользователь не был получен"
     } finally {
         dispatch(endLoading())

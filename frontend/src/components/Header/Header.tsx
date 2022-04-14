@@ -11,6 +11,14 @@ import edit from '../../assets/edit1.png'
 import { Edit } from './Header.style'
 
 export const Header = memo(() => {
+    const route = useSelector((state: RootType) => {
+        switch (state.auth.type) {
+            case "freelancer":
+                return "/FreelancerProfile/setting"
+            default:
+                return "/ClientProfile/setting"
+        }
+    })
     const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
     const [isActive, toggleActivite] = useState<boolean>(false)
     const toggleActiviteHandler = () => {
@@ -34,7 +42,7 @@ export const Header = memo(() => {
                         <HeaderAuth>
                             {isAuth ?
                                 <li onClick={toggleActiviteHandler}>
-                                    <Link to="PersonalAccount/setting"><Edit src={edit} /></Link>
+                                    <Link to={route}><Edit src={edit} /></Link>
                                 </li> :
                                 <>
                                     <li onClick={toggleActiviteHandler}><NavLink to="auth/signIn">Вход</NavLink></li>

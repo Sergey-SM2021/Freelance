@@ -63,7 +63,8 @@ const initialState: TInitialState = {
         ],
         likes: 8,
         dislike: 1
-    }
+    },
+    type: "freelancer"
 }
 
 export const auth = (state = initialState, action: TAction) => {
@@ -76,11 +77,18 @@ export const auth = (state = initialState, action: TAction) => {
             stateCopy.isLoading = false
             return stateCopy
         case constants.SETFREELANCER:
+            stateCopy.type = "freelancer"
             stateCopy.isAuth = true
             stateCopy.person = action.payload
             return stateCopy
         case constants.SETERR:
+            // don't SETERR / SETERROR
             stateCopy.error = action.payload
+            return stateCopy
+        case constants.SETCLIENTPROFILE:
+            stateCopy.isAuth = true
+            stateCopy.type = "client"
+            stateCopy.person = action.payLoad
             return stateCopy
         default:
             return stateCopy

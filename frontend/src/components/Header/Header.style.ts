@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+const BurgerColor = "#fff"
+
 export const HeaderWrapper = styled.div`
     a{
         text-decoration: none;
@@ -55,7 +57,7 @@ export const HeaderBurger = styled.div`
         position: absolute;
         width: 100%;
         height: 2px;
-        background-color: #000;
+        background-color: ${BurgerColor};
         top: 10px;
         left: 0px;
     }
@@ -64,7 +66,7 @@ export const HeaderBurger = styled.div`
         position: absolute;
         width: 100%;
         height: 2px;
-        background-color: #000;
+        background-color: ${BurgerColor};
         left: 0px;
     }
     &::before{

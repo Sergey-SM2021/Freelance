@@ -45,7 +45,7 @@ export type TFreelancer = {
     reviews: Array<TReview> | null
     // #FIXME: these properties are not needed by a fullfreelancer
     likes: number | null,
-    dislike: number | null,
+    dislike: number | null
 }
 
 export type TPortfolio = string

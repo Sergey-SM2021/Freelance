@@ -1,3 +1,4 @@
+import { TClientApi } from "../../../types/IClient"
 import { TFreelancer } from "../../../types/IFreelancer"
 
 export enum constants {
@@ -5,10 +6,11 @@ export enum constants {
     STARTLOADING = "STARTLOADING",
     ENDLOADING = "ENDLOADING",
     SETERR = "SETERR",
-    UPDATEFREELANCER = "UPDATEFREELANCER"
+    UPDATEFREELANCER = "UPDATEFREELANCER",
+    SETCLIENTPROFILE = "SETCLIENTPROFILE"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer
+export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile
 
 export type TDispatch = any
 
@@ -19,9 +21,11 @@ export type TSetFreelancer = {
 
 export type TInitialState = {
     isAuth: boolean,
-    person: TFreelancer,
+    // don't person / profile
+    person: Partial<TFreelancer & TClientApi>,
     isLoading: boolean,
-    error: string | null
+    error: string | null,
+    type: string
 }
 
 export type TStartLoading = {
@@ -40,4 +44,9 @@ export type TSetError = {
 export interface IUpdateFreelancer {
     type: constants.UPDATEFREELANCER,
     payload: TFreelancer
+}
+
+export interface ISetClientProfile {
+    type: constants.SETCLIENTPROFILE,
+    payLoad: TClientApi
 }
