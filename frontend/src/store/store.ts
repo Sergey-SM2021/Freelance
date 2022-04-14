@@ -3,11 +3,13 @@ import { freelancers } from './reducers/freelancers/freelancers'
 import thunk from 'redux-thunk'
 import { profile } from './reducers/Profile/profile'
 import { auth } from '../store/reducers/auth/auth'
+import {ordersReducer} from './reducers/orders/ordersReducer'
 
 const rootReducer = combineReducers({
     freelancers,
     profile,
-    auth
+    auth,
+    orders: ordersReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk) )

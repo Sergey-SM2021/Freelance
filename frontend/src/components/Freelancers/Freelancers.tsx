@@ -19,7 +19,6 @@ export const Freelancers = memo(() => {
     }, [loc])
     const freelancers = useSelector((state: RootType) => (state.freelancers.freelancers))
     const isLoading = useSelector((state: RootType) => (state.freelancers.loading))
-    console.log(isLoading)
     const Error = useSelector((state: RootType) => (state.freelancers.error))
     return (<FreelancersWrapper>
         <FreelancersPaper>

@@ -2,11 +2,10 @@ import { Route, Routes, useRoutes } from "react-router-dom"
 
 import { RouteBG, RouteWrapper } from "./App.style"
 import { Auth } from "./components/Auth/Auth"
-import { Club } from "./components/Club"
 import { Footer } from "./components/Footer/Footer"
 import { Freelancers } from "./components/Freelancers/Freelancers"
 import { Header } from "./components/Header/Header"
-import { Orders } from "./components/Orders"
+import { Orders } from "./components/Orders/Orders"
 import { Preview } from "./components/Preview"
 import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
@@ -17,7 +16,6 @@ import { ClientProfileSettings } from "./components/EditProfile/ClientProfileSet
 export const App = () => {
   const routs = useRoutes([
     { path: "/specialists", element: <><Freelancers /><SideBar /> </> },
-    { path: "/club", element: <><Club /><SideBar /> </> },
     { path: "/orders", element: <><Orders /><SideBar /> </> },
     { path: "/freelancer/:id/profile", element: <><Profile /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
