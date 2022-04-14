@@ -1,5 +1,4 @@
 import { FreelancersCount, FreelancersHeader } from "./HeaderPage.style"
-// import SearchIconPath from '../../assets/search.png'
 import {Search} from '../Search/Search'
 import { FormEvent, memo, useState } from "react"
 import { findFreelancerByName } from "../../store/reducers/freelancers/freelancersActions"
@@ -16,6 +15,6 @@ export const HeaderPage = memo(() => {
         <FreelancersCount>
             Фрилансеры ({freelancersCount})
         </FreelancersCount>
-        <Search onFilter={FindHandler} onFind={FindHandler}/>
+        <Search placeholder="Сергий" onFilter={FindHandler} onFind={FindHandler}/>
     </FreelancersHeader>)
 })

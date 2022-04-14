@@ -1,6 +1,9 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+import { fadeInLeft } from 'react-animations'
+const bounceAnimation = keyframes`${fadeInLeft}`
 
 export const FreelancersWrapper = styled.div`
+    animation: 1s ${bounceAnimation};
     padding: 10px 0px 10px 0px;
     width: auto;
     box-sizing: border-box;

@@ -38,11 +38,7 @@ export const SearchFind = styled.img`
   }
 `
 
-export const SearchFilter = styled.img`
-  width: 40px;
-  margin-left: 10px;
-  &:hover{
-    cursor: pointer;
-  }
+export const SearchFilter = styled(SearchFind)`
+  
 `
 
