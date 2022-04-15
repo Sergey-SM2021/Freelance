@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-import { TFreelancer } from "../../../types/IFreelancer"
+import { TFreelancer } from "../../../models/IFreelancer"
 import { SectionTitle, Skill, Skills } from "../../Common/Common.style"
 import {
     AboutWrapper, AboutePaper, AboutPrice, AboutExpiriens, AboutPaymentMethod, AboutResume, AboutSkillTitle

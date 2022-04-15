@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-import { TFreelancer } from "../../../types/IFreelancer"
+import { TFreelancer } from "../../../models/IFreelancer"
 import { Ava, HeaderWrapper, HeaderAbout, HeaderContent, HeaderName } from "./ProfileHeader.style"
 import bg from '../../../assets/bg.jpg'
 import avaPath from '../../../assets/man.png'

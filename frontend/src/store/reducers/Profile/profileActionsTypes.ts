@@ -1,4 +1,4 @@
-import { TFreelancer } from "../../../types/IFreelancer"
+import { TFreelancer } from "../../../models/IFreelancer"
 
 export enum actionTypes {
     SETPROFILE = "SETPROFILE",

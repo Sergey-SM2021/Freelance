@@ -1,5 +1,5 @@
 import starPath from '../../../../assets/favourite.png'
-import { TReview } from "../../../../types/IFreelancer"
+import { TReview } from "../../../../models/IFreelancer"
 import { ReviewAva, ReviewDescription, ReviewDetails, ReviewInner, ReviewName, ReviewWrapper, Star } from './ProfileReview.style'
 import avaPath from '../../../../assets/man.png'
 import { memo } from 'react'

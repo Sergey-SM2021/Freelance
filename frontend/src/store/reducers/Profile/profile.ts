@@ -3,7 +3,7 @@ import Project1 from '../../../assets/Projects/Project4.jpg'
 import Project2 from '../../../assets/Projects/Project5.jpeg'
 import avaPath from '../../../assets/man.png'
 import { actionType, actionTypes } from "./profileActionsTypes"
-import { TFreelancer } from '../../../types/IFreelancer'
+import { TFreelancer } from '../../../models/IFreelancer'
 
 interface IInitState {
     profile: TFreelancer,

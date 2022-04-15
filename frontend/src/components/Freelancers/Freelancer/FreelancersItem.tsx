@@ -6,7 +6,7 @@ import {
 import IMG from '../../../assets/Projects/Project0.jpeg'
 import avaPath from '../../../assets/man.png'
 import { Skill, Skills } from "../../Common/Common.style"
-import { TFreelancerPreview } from "../../../types/IFreelancer"
+import { TFreelancerPreview } from "../../../models/IFreelancer"
 
 import { Link } from "react-router-dom"
 import { memo } from "react"

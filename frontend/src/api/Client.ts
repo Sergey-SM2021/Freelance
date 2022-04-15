@@ -1,5 +1,5 @@
 import Axios from "axios"
-import { TClientApi } from "../types/IClient"
+import { TClientApi } from "../models/IClient"
 
 class Client {
     baseURL

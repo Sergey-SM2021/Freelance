@@ -1,12 +1,12 @@
-import { memo } from "react"
-import Order from "./Order/Order";
-import {IOrder} from "../../store/reducers/orders/ordersTypes";
-import {OrdersWrapper} from "./Orders.style";
+import {memo, useEffect} from "react"
+
+import Order from "./OrdersItem/Order"
+import {OrdersWrapper} from "./Orders.style"
+import {useSelector} from "react-redux"
+import {RootType} from "../../store/store"
 
 export const Orders = memo(() => {
-    const orders:Array<IOrder> = [
-        {views:9,price:8978,skills:["Nest"],name:"baclkend"},
-        {views:9,price:8978,skills:["Nest"],name:"baclkend"}
-    ]
+    const orders = useSelector((state:RootType)=>(state.orders.orders))
+    useEffect(()=>{},[window.scrollTo(0, 0)])
     return (<OrdersWrapper>{orders.map(order => <Order {...order}/>)}</OrdersWrapper>)
 })

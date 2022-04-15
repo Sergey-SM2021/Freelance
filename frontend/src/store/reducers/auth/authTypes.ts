@@ -1,5 +1,5 @@
-import { TClientApi } from "../../../types/IClient"
-import { TFreelancer } from "../../../types/IFreelancer"
+import { TClientApi } from "../../../models/IClient"
+import { TFreelancer } from "../../../models/IFreelancer"
 
 export enum constants {
     SETFREELANCER = "SETFREELANCER",

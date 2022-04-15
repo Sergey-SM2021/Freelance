@@ -40,7 +40,7 @@ export const Header = memo(() => {
                         <HeaderMenu>
                             <li><NavLink to="orders" onClick={toggleActiviteHandler}>Заказы</NavLink></li>
                             <li><NavLink to="specialists" onClick={toggleActiviteHandler}>Специалисты</NavLink></li>
-                            <li><NavLink to="project" onClick={toggleActiviteHandler}>Проеты</NavLink></li>
+                            <li><NavLink to="project" onClick={toggleActiviteHandler}>Проекты</NavLink></li>
                         </HeaderMenu>
                         <HeaderAuth>
                             {isAuth ?

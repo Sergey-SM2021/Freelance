@@ -1,9 +1,4 @@
-export interface IOrder {
-    name: string,
-    price: number,
-    skills: Array<string> ,
-    views: number
-}
+import {IOrder} from "../../../models/IOrder"
 
 export interface IOrdersReducer{
     orders:Array<IOrder>

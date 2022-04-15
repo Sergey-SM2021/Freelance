@@ -12,18 +12,20 @@ import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
 import { FreelancerProfileSettings } from "./components/EditProfile/FreelancerProfileSetting/FreelancerProfileSettings"
 import { ClientProfileSettings } from "./components/EditProfile/ClientProfileSetting/ClientProfileSettings"
+import {OrderOverview} from "./components/OrderOverview/OrderOverview"
 
 export const App = () => {
   const routs = useRoutes([
-    { path: "/specialists", element: <><Freelancers /><SideBar /> </> },
-    { path: "/orders", element: <><Orders /><SideBar /> </> },
+    { path: "/specialists", element: <Freelancers /> },
+    { path: "/orders", element: <Orders /> },
     { path: "/freelancer/:id/profile", element: <><Profile /><SideBar /> </> },
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
     { path: "/auth/:loc", element: <Auth /> },
     { path: "*", element: <>404 <h1>Страница не найдена</h1></> },
     { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },
     { path: "/ClientProfile/setting", element: <ClientProfileSettings /> },
-    { path: "/", element: <></> }
+    { path: "/", element: <></> },
+    { path: "/orderOverview/:id", element: <OrderOverview/> }
   ])
   return (<div>
     <Header />

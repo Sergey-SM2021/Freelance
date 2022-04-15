@@ -3,7 +3,7 @@ import { TUser } from "./IUser"
 export type id = number
 export type ava = string | null
 
-// TODO: edit types!
+// TODO: edit models!
 
 export interface TFreelancerApi extends TUser {
     name: string | null,

@@ -1,8 +1,8 @@
 import { ClientApi } from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
-import { TClientApi } from "../../../types/IClient"
-import { TFreelancer, TFreelancerProfileSetting } from "../../../types/IFreelancer"
+import { TClientApi } from "../../../models/IClient"
+import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
 import { constants, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 

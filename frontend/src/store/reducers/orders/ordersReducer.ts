@@ -6,7 +6,8 @@ const initialState: IOrdersReducer = {
             name:"Разработать копию Хабр фриланса",
             price:100000,
             skills:[],
-            views:89
+            views:89,
+            id:9986
         }
     ]
 }
