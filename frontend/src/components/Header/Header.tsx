@@ -14,8 +14,10 @@ export const useEditProfileRoute = () => {
     const Path = useSelector((state: RootType) => {
         switch (state.auth.type) {
             case "freelancer":
+                console.log("/FreelancerProfile/setting")
                 return "/FreelancerProfile/setting"
             default:
+                console.log("/ClientProfile/setting")
                 return "/ClientProfile/setting"
         }
     })
