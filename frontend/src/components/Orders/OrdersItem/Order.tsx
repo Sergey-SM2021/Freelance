@@ -9,11 +9,13 @@ import { Skill, Skills } from "../../Common/Common.style"
 import money from '../../../assets/payment.png'
 import { IOrder } from "../../../models/IOrder"
 
-const Order = ({ price, skills, views, name, id }: IOrder) => {
+type TProps = Omit<IOrder,"description" | "sphereOfActivity">
+
+const Order = ({ price, skills, views, title, id }: TProps) => {
     return (<OrderWrapper>
         <OrderInner>
             <OrderInfoSection>
-                <OrderTitle><Link to={`/orderOverview/${id}`}>{name}</Link></OrderTitle>
+                <OrderTitle><Link to={`/orderOverview/${id}`}>{title}</Link></OrderTitle>
                 <OrderViews>{views} просмотр</OrderViews>
                 <Skills>{skills.map((skill: string) => <Skill >{skill}</Skill>)}</Skills>
             </OrderInfoSection>

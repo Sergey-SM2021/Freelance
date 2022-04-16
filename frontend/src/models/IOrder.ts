@@ -1,7 +1,9 @@
 export interface IOrder {
-    name: string,
+    title:string,
     price: number,
-    skills: Array<string> ,
+    skills: Array<string>,
     views: number,
-    id: number
+    id: number,
+    description: string,
+    sphereOfActivity: string
 }

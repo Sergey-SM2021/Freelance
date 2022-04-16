@@ -1,12 +1,12 @@
 import { TClientApi } from "../../../models/IClient"
-import { IOrderOverview } from "../../../models/IOrderOverview"
+import { IOrder } from "../../../models/IOrder"
 import { constants, IEndLoading, ISetOrders, IStartLoading } from "./orderOverviewReducerTypes"
 
 export const StartLoading = (): IStartLoading => ({ type: constants.STARTORDEROVERVIEWLOADING })
 
 export const EndLoading = (): IEndLoading => ({ type: constants.ENDORDEROVERVIEWLOADING })
 
-export const SetOrder = (order: IOrderOverview, client: TClientApi): ISetOrders => ({
+export const SetOrder = (order: IOrder, client: TClientApi): ISetOrders => ({
     type: constants.SETORDEROVERVIEW,
     payload: {
         client,
@@ -17,9 +17,10 @@ export const SetOrder = (order: IOrderOverview, client: TClientApi): ISetOrders 
 const client: TClientApi = {
     id: 89,
     mail: "srtsamn@!ashsj",
-    password: "jjhcxhj"
+    password: "jjhcxhj",
+    orders:[]
 }
-const order: IOrderOverview =
+const order: IOrder =
 {
     description: `
     But I must explain to you how all this mistaken idea of denouncing pleasure
@@ -37,7 +38,8 @@ const order: IOrderOverview =
     price: 89878,
     skills: ["Orm", "Java"],
     title: "React",
-    views: 128
+    views: 128,
+    sphereOfActivity:"backend"
 }
 
 export const fetchOrderOverview = () => async (dispatch: any) => {
