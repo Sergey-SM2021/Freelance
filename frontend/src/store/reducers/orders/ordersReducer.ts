@@ -1,17 +1,24 @@
-import {TOrdersAction, IOrdersReducer} from "./ordersTypes";
+import { TOrdersAction, IOrdersReducer, constants } from "./ordersTypes"
 
 const initialState: IOrdersReducer = {
-    orders:[
-        {
-            name:"Разработать копию Хабр фриланса",
-            price:100000,
-            skills:[],
-            views:89,
-            id:9986
-        }
-    ]
+    orders: [],
+    error: null,
+    isLoading: false
 }
 
-export const ordersReducer = (state = initialState,action:TOrdersAction) => {
-    return {...state}
+export const ordersReducer = (state = initialState, action: TOrdersAction) => {
+    let stateCopy = { ...state }
+    switch (action.type) {
+        case constants.STARTORDERSLOADING:
+            stateCopy.isLoading = true
+            return stateCopy
+        case constants.ENDORDERSLOADING:
+            stateCopy.isLoading = false
+            return stateCopy
+        case constants.SETORDERS:
+            stateCopy.orders = action.payload
+            return stateCopy
+        default:
+            return stateCopy
+    }
 }

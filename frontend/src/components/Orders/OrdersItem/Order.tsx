@@ -5,7 +5,7 @@ import {
     OrderMonyIcon, OrderPrice, OrderPriceSection,
     OrderTitle, OrderViews, OrderWrapper
 } from './Order.style'
-import { Skill } from "../../Common/Common.style"
+import { Skill, Skills } from "../../Common/Common.style"
 import money from '../../../assets/payment.png'
 import { IOrder } from "../../../models/IOrder"
 
@@ -15,7 +15,7 @@ const Order = ({ price, skills, views, name, id }: IOrder) => {
             <OrderInfoSection>
                 <OrderTitle><Link to={`/orderOverview/${id}`}>{name}</Link></OrderTitle>
                 <OrderViews>{views} просмотр</OrderViews>
-                {skills.map((skill: string) => <Skill >{skill}</Skill>)}
+                <Skills>{skills.map((skill: string) => <Skill >{skill}</Skill>)}</Skills>
             </OrderInfoSection>
             <OrderPriceSection>
                 <OrderMonyIcon src={money} alt="деньги" />

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import exp from "constants";
 
 export const OrderWrapper = styled.div`
   background: #fff;
