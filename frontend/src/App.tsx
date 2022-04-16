@@ -11,6 +11,7 @@ import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
 import {OrderOverview} from "./components/OrderOverview/OrderOverview"
+import { FreelancerProfileSettings } from "./components/EditProfile/EditFreelancerProfile"
 
 export const App = () => {
   const routs = useRoutes([
@@ -21,7 +22,8 @@ export const App = () => {
     { path: "/auth/:loc", element: <Auth /> },
     { path: "*", element: <>404 <h1>Страница не найдена</h1></> },
     { path: "/", element: <></> },
-    { path: "/orderOverview/:id", element: <OrderOverview/> }
+    { path: "/orderOverview/:id", element: <OrderOverview/> },
+    { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings/> },
   ])
   return (<div>
     <Header />

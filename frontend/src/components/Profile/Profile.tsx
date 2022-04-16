@@ -19,26 +19,21 @@ export const Profile = memo(() => {
         window.scrollTo(0, 0)
         dispatch(getProfile(Number(id)))
     }, [])
-    return (<ProfileWrapper>
-        <ProfilePaper>
-            <>
-                {
-                    isLoading ? "loading..." : <FreelancerProfile />
-                }
-            </>
-        </ProfilePaper>
-    </ProfileWrapper>)
+    return (
+        isLoading ? <>"loading..."</> : <FreelancerProfile />)
 })
 
 export const FreelancerProfile = () => {
     const freelancer = useSelector((state: RootType) => (state.profile.profile))
     return (
-        <>
-            <ProfileHeader header={freelancer.header} />
-            <ProfileAbout about={freelancer.about} />
-            <ProfileWorksHistory works={freelancer.workHistory} />
-            <ProfilePortfolio portfolio={freelancer.portfolio} />
-            <ProfileReviews reviews={freelancer.reviews} />
-        </>
+        <ProfileWrapper>
+            <ProfilePaper>
+                <ProfileHeader header={freelancer.header} />
+                <ProfileAbout about={freelancer.about} />
+                <ProfileWorksHistory works={freelancer.workHistory} />
+                <ProfilePortfolio portfolio={freelancer.portfolio} />
+                <ProfileReviews reviews={freelancer.reviews} />
+            </ProfilePaper>
+        </ProfileWrapper>
     )
 }
