@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const OrderOverviewWrapper = styled.div`
-  background: #fff;
   width: 100%;
+  height: 100%;
   margin: 10px 0;
+  display:flex;
+  justify-content: space-between;
 `
 
 export const OrderOverviewInner = styled.div`
@@ -35,4 +37,10 @@ export const OrderOverviewFeedback = styled.textarea`
     height: 50vh;
     width: 100%;
     box-sizing: border-box;
+`
+
+export const OrderOverviewContent = styled.div`
+    flex-wrap: wrap;
+    height: 100%;
+    background: #fff;
 `

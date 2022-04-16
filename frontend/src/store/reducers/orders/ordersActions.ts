@@ -1,5 +1,5 @@
 import { IOrder } from './../../../models/IOrder'
-import { constants, IEndLoading, ISetOrders, IStartLoading } from "./ordersTypes";
+import { constants, IEndLoading, ISetOrders, IStartLoading } from "./ordersTypes"
 
 export const StartLoading = (): IStartLoading => ({
     type: constants.STARTORDERSLOADING
@@ -31,7 +31,10 @@ const orders = [{
 
 export const fetchOrders = () => async (dispatch: any) => {
     dispatch(StartLoading())
-    dispatch(SetOrders(orders))
-    dispatch(EndLoading())
+    setTimeout(() => {
+        dispatch(SetOrders(orders))
+        dispatch(EndLoading())
+    }, 1000)
+
 }
 

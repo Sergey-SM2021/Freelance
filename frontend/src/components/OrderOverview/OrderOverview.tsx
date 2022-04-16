@@ -1,41 +1,51 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../store/store"
 import {
     OrderOverviewAdditionalInfo,
+    OrderOverviewContent,
     OrderOverviewDescription, OrderOverviewFeedback, OrderOverviewInner, OrderOverviewPrice, OrderOverviewTitle,
     OrderOverviewViews, OrderOverviewWrapper
 } from "./OrderOverview.style"
 import { Button, SectionTitle, Skill, Skills } from "../Common/Common.style"
-import { SyntheticEvent, useState } from "react"
+import { SyntheticEvent, useEffect, useState } from "react"
+import { fetchOrderOverview } from "../../store/reducers/orderOverview/OrderOverviewAction"
+import { OrderOverviewClientProfile } from "./ClientProfile/ClientProfile"
 
 export const OrderOverview = () => {
-    const { id, skills, description, views, price, title } = useSelector((state: RootType) => (state.orderOverview.order))
+    const dispatch = useDispatch()
+    const order = useSelector((state: RootType) => (state.orderOverview.order))
+    const isLoading = useSelector((state: RootType) => (state.orderOverview.isLoading))
+    const Error = useSelector((state: RootType) => (state.orderOverview.error))
     const [FeedbackValue, setFeedbackValue] = useState<string>("")
     const handleFeedbackChange = (e: SyntheticEvent<HTMLTextAreaElement>) => {
         setFeedbackValue(e.currentTarget.value)
     }
     const handlerSubmit = (e: SyntheticEvent<HTMLButtonElement>) => {
         alert(JSON.stringify(FeedbackValue))
-        //send feedback
     }
-    return (
+    useEffect(() => {
+        dispatch(fetchOrderOverview())
+    }, [])
+    return (isLoading ? <>Loading...</> : Error ? <>{Error}</> :
         <OrderOverviewWrapper>
-            <OrderOverviewInner>
-                <OrderOverviewTitle>{title}</OrderOverviewTitle>
-                <OrderOverviewAdditionalInfo>
-                    <OrderOverviewPrice>{price} руб. за проект</OrderOverviewPrice>
-                    <OrderOverviewViews>{views} просмотров</OrderOverviewViews>
-                </OrderOverviewAdditionalInfo>
-                <Skills>{skills.map((skill: string) => <Skill >{skill}</Skill>)}</Skills>
-                <OrderOverviewDescription>
-                    {description}
-                </OrderOverviewDescription>
-            </OrderOverviewInner>
-            <SectionTitle>Ваш отклик на заказ</SectionTitle>
-            <OrderOverviewInner>
-                <OrderOverviewFeedback value={FeedbackValue} onChange={handleFeedbackChange} />
-                <Button onClick={handlerSubmit}>Отозваться</Button>
-            </OrderOverviewInner>
-        </OrderOverviewWrapper>
-    );
+            <OrderOverviewContent>
+                <OrderOverviewInner>
+                    <OrderOverviewTitle>{order?.title}</OrderOverviewTitle>
+                    <OrderOverviewAdditionalInfo>
+                        <OrderOverviewPrice>{order?.price} руб. за проект</OrderOverviewPrice>
+                        <OrderOverviewViews>{order?.views} просмотров</OrderOverviewViews>
+                    </OrderOverviewAdditionalInfo>
+                    <Skills>{order?.skills.map((skill: string) => <Skill >{skill}</Skill>)}</Skills>
+                    <OrderOverviewDescription>
+                        {order?.description}
+                    </OrderOverviewDescription>
+                </OrderOverviewInner>
+                <SectionTitle>Ваш отклик на заказ</SectionTitle>
+                <OrderOverviewInner>
+                    <OrderOverviewFeedback value={FeedbackValue} onChange={handleFeedbackChange} />
+                    <Button onClick={handlerSubmit}>Отозваться</Button>
+                </OrderOverviewInner>
+            </OrderOverviewContent>
+            <OrderOverviewClientProfile/>
+        </OrderOverviewWrapper>)
 };
