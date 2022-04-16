@@ -6,7 +6,7 @@ import {
     OrderOverviewViews, OrderOverviewWrapper
 } from "./OrderOverview.style"
 import {Button, SectionTitle, Skill, Skills} from "../Common/Common.style"
-import {SyntheticEvent, useState} from "react";
+import {SyntheticEvent, useState} from "react"
 
 export const OrderOverview = () => {
     const {id,skills,name,description,views,price,title,phone} = useSelector((state:RootType)=>(state.orderOverview.order))
@@ -26,7 +26,7 @@ export const OrderOverview = () => {
                     <OrderOverviewPrice>{price} руб. за проект</OrderOverviewPrice>
                     <OrderOverviewViews>{views} просмотров</OrderOverviewViews>
                 </OrderOverviewAdditionalInfo>
-                <Skills>{skills.map(skill => <Skill >{skill}</Skill>)}</Skills>
+                <Skills>{skills.map((skill:string) => <Skill >{skill}</Skill>)}</Skills>
                 <OrderOverviewDescription>
                     {description}
                 </OrderOverviewDescription>

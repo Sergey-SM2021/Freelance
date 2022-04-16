@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import { profile } from './reducers/Profile/profile'
 import { auth } from '../store/reducers/auth/auth'
 import {ordersReducer} from './reducers/orders/ordersReducer'
-import {orderOverviewReducer} from "./reducers/orderOverview/orderOverviewReducer";
+import {orderOverviewReducer} from "./reducers/orderOverview/orderOverviewReducer"
 
 const rootReducer = combineReducers({
     freelancers,

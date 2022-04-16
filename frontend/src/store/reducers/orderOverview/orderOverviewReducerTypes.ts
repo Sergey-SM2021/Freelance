@@ -1,5 +1,5 @@
-import {IOrderOverview} from "../../../models/IOrderOverview";
-import {TClientApi} from "../../../models/IClient";
+import {IOrderOverview} from "../../../models/IOrderOverview"
+import {TClientApi} from "../../../models/IClient"
 
 export interface IOrderReducerInitialState{
     order: IOrderOverview,
