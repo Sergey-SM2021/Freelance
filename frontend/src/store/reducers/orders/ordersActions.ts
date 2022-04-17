@@ -16,7 +16,8 @@ export const SetOrders = (orders: Array<IOrder>): ISetOrders => ({
 
 const orders: Array<IOrder> = [{
     price: 100000,
-    skills: ["Nest", "Angular"],
+    skills: [{id:87665,name:"Nuxt",order:9986},
+    {id:5625,name:"Nest",order:9986}],
     views: 89,
     id: 9986,
     description: `
@@ -37,7 +38,7 @@ const orders: Array<IOrder> = [{
 },
 {
     price: 100000,
-    skills: ["Nest", "Angular"],
+    skills: [{id:87665,name:"Nuxt",order:9986}],
     views: 89,
     id: 9986,
     description: `

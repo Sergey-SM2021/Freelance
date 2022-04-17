@@ -15,7 +15,7 @@ export const OrderInner = styled.div`
   height: 100%;
   width: 100%;
   justify-content: space-between;
-  padding: 16px;
+  padding: 10px;
 `
 
 export const OrderInfoSection = styled.div`

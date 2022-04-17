@@ -1,7 +1,6 @@
 import { FormEvent, memo, SyntheticEvent, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Field, FieldArray, Form, Formik } from "formik"
-import styled from "styled-components"
 
 import { Button, SectionTitle } from "../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile/Profile.style"
@@ -10,6 +9,7 @@ import { TFreelancerProfileSetting } from "../../models/IFreelancer"
 import { RootType } from "../../store/store"
 import close from '../../assets/cancel.png'
 import { putFreelancer } from "../../store/reducers/auth/authActions"
+import { AddComplitedWork, Close, ComplitedWork, Input, Skill, SkillsWrapper } from "./EditFreelancerProfile.style"
 
 export const FreelancerProfileSettings = memo(() => {
 
@@ -22,8 +22,7 @@ export const FreelancerProfileSettings = memo(() => {
     const [inputSkill, setinputSkill] = useState<string>("")
     const [completedTask, setCompletedTask] = useState<string>("")
 
-    const initialWorkValue = useSelector((state: RootType) =>
-    {
+    const initialWorkValue = useSelector((state: RootType) => {
         if (state.auth.person.workHistory) {
             return state.auth.person.workHistory
         } else {
@@ -166,54 +165,3 @@ export const FreelancerProfileSettings = memo(() => {
         </Formik>
     </ProfileWrapper>)
 })
-
-export const SkillsWrapper = styled.div`
-    margin: 10px 0 0 0;
-    display:flex;
-    gap: 10px;
-    width: 100%;
-    flex-wrap: wrap;
-`
-
-export const Input = styled.input`
-    width: 150px;
-    box-sizing: border-box;
-    border: none;
-    flex-grow: 1;
-    &:focus{
-        outline:none;
-    }
-    padding: 0 6px;
-`
-
-export const Skill = styled.button`
-    height: 27px;
-    border-radius: 9px;
-    border: solid black 1px;
-    display: flex;
-    align-items: center;
-`
-
-export const Close = styled.img`
-    margin-left: 5px;
-    width: 20px;
-    height: 20px;
-`
-
-export const ComplitedWork = styled.textarea`
-    margin-top: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
-    padding: 5px;
-    height: 100px;
-`
-
-export const AddComplitedWork = styled.textarea`
-    margin-top: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    resize: none;
-    padding: 5px;
-    height: 100px;
-`

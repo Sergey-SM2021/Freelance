@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import Order from "./OrdersItem/Order"
+import {Order} from "../OrderPreview/Order"
 import { OrdersWrapper } from "./Orders.style"
 import { RootType } from "../../store/store"
 import { fetchOrders } from "../../store/reducers/orders/ordersActions"

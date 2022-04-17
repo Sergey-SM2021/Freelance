@@ -18,7 +18,9 @@ const client: TClientApi = {
     id: 89,
     mail: "srtsamn@!ashsj",
     password: "jjhcxhj",
-    orders:[]
+    orders:[],
+    name:null,
+    phone:null
 }
 const order: IOrder =
 {
@@ -36,7 +38,10 @@ const order: IOrder =
     `,
     id: 898,
     price: 89878,
-    skills: ["Orm", "Java"],
+    skills: [
+        {id:87665,name:"Redux",order:898},
+        {id:5625,name:"Angular",order:898}
+    ],
     title: "React",
     views: 128,
     sphereOfActivity:"backend"

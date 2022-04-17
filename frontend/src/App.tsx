@@ -12,7 +12,7 @@ import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
 import { OrderOverview } from "./components/OrderOverview/OrderOverview"
 import { FreelancerProfileSettings } from "./components/EditProfile/EditFreelancerProfile"
-import { ClientProfileSettings } from "./components/EditProfile/EditClientProfile"
+import { EditClientProfile } from "./components/EditProfile/EditClientProfile/EditClientProfile"
 
 export const App = () => {
   const routs = useRoutes([
@@ -25,7 +25,7 @@ export const App = () => {
     { path: "/", element: <></> },
     { path: "/orderOverview/:id", element: <OrderOverview /> },
     { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },
-    { path: "/ClientProfile/setting", element: <ClientProfileSettings /> }
+    { path: "/ClientProfile/setting", element: <EditClientProfile /> }
   ])
   return (<div>
     <Header />

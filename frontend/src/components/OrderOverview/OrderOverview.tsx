@@ -35,7 +35,7 @@ export const OrderOverview = () => {
                         <OrderOverviewPrice>{order?.price} руб. за проект</OrderOverviewPrice>
                         <OrderOverviewViews>{order?.views} просмотров</OrderOverviewViews>
                     </OrderOverviewAdditionalInfo>
-                    <Skills>{order?.skills.map((skill: string) => <Skill >{skill}</Skill>)}</Skills>
+                    <Skills>{order?.skills.map((skill) => <Skill >{skill.name}</Skill>)}</Skills>
                     <OrderOverviewDescription>
                         {order?.description}
                     </OrderOverviewDescription>
