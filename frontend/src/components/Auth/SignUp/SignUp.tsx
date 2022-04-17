@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import {Formik, Form, Field, FormikValues} from 'formik'
 import { validationSchema } from "./signUpValidationSchema"
 import { CreateUser } from "../../../store/reducers/auth/authActions"
-import { MyField } from "../../Field/Field"
+import { MyField } from "../../Field/MyField/Field"
 import { AuthSubmit, SignUpRole, SignUpRolesInner, SignUpRolesTitle, SignUpRolesWrapper } from "../Auth.style"
 
 export const SignUp = memo(() => {

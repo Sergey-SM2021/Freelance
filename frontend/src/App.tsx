@@ -27,7 +27,7 @@ export const App = () => {
     { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },
     { path: "/ClientProfile/setting", element: <EditClientProfile /> }
   ])
-  return (<div>
+  return (<>
     <Header />
     <RouteBG>
       <RouteWrapper>
@@ -38,5 +38,5 @@ export const App = () => {
       <Route path="/" element={<Preview />} />
     </Routes>
     <Footer />
-  </div>)
+  </>)
 }

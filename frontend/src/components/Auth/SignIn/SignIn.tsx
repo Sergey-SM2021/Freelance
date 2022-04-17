@@ -6,7 +6,7 @@ import { Formik, Form, Field } from 'formik'
 import { RootType } from "../../../store/store"
 import { SignInSchema } from "./SignInValidateSchems"
 import { getUser, setError } from "../../../store/reducers/auth/authActions"
-import { MyField } from "../../Field/Field"
+import { MyField } from "../../Field/MyField/Field"
 import { AuthSubmit } from "../Auth.style"
 import { useEditProfileRoute } from "../../Header/Header";
 

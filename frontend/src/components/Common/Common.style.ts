@@ -49,3 +49,7 @@ export const Button = styled.button`
     min-width: 100px;
     margin: 10px 0px 0px 0px ;
 `
+
+export const FieldTitle = styled.h3`
+    
+`

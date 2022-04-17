@@ -6,13 +6,13 @@ import {
     EditClientProfileWrapper, EditProfileContent, EditProfileInner, EditProfilePriceRangeWrapper
 } from "./EditClientProfile.style"
 import man from '../../../assets/man.png'
-import { MyField } from "../../Field/Field"
+import { MyField } from "../../Field/MyField/Field"
 import { TClientApi } from "../../../models/IClient"
 import { useNavigate } from "react-router-dom"
 import { Button, SectionTitle } from "../../Common/Common.style"
 import { INewOrder } from "../../../models/IOrder"
-import { MyRange } from "../../Field/Range"
-import { MyTextArea } from "../../Field/TextArea"
+import { MyRange } from "../../Field/MyRange/Range"
+import { MyTextArea } from "../../Field/MyTextArea/TextArea"
 import { Order } from "../../OrderPreview/Order"
 import { SkillList } from "../../SkillList/SkillList"
 
@@ -60,7 +60,7 @@ export const EditClientProfile = () => {
                 `,
                 id: 898,
                 price: 89878,
-                skills: [{id:0,name:".Net",order:id}],
+                skills: [{ id: 0, name: ".Net", order: id }],
                 title: "React",
                 views: 128,
                 sphereOfActivity: "backend"
@@ -81,7 +81,7 @@ export const EditClientProfile = () => {
         newOrder: {
             description: "",
             price: 0,
-            skills: [{id:0,name:".Net",order:id}],
+            skills: [{ id: 0, name: ".Net", order: id }],
             sphereOfActivity: "",
             title: ""
         }
@@ -108,9 +108,7 @@ export const EditClientProfile = () => {
                     <EditClientProfileBlock>
                         <Field name="newOrder.title" title="Название" component={MyField} />
                         <Field name="newOrder.description" title="Описание заказа" component={MyTextArea} />
-                        <FieldArray name="newOrder.skills">{
-                            ({ push, remove }) => (<SkillList obj={{order:id}} push={push} remove={remove} skills={values.newOrder.skills}/>)
-                        }</FieldArray>
+                        <SkillList obj={{ order: id }} name="newOrder.skills" skills={values.newOrder.skills} />)
                         <EditProfilePriceRangeWrapper>
                             <Field name="newOrder.price" title={"Цена проекта"} component={MyRange} />
                         </EditProfilePriceRangeWrapper>

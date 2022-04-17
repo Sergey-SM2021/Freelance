@@ -1,7 +1,8 @@
 import { FieldProps } from "formik"
 import { FC, memo } from "react"
+import { FieldTitle } from "../../Common/Common.style"
 
-import { FieldInput, FieldTitle, FieldWrapper, Error } from "./Field.style"
+import { FieldInput, FieldWrapper, Error } from "./Field.style"
 
 export const MyField: FC<FieldProps & { title: string }> = memo(({ field, form, meta, ...props }) => {
     return (<FieldWrapper>

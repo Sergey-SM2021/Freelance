@@ -5,10 +5,6 @@ export const FieldWrapper = styled.div`
     margin-bottom: 10px;
 `
 
-export const FieldTitle = styled.h3`
-    
-`
-
 export const FieldInput = styled.input`
     width: 100%;
     height: 30px;

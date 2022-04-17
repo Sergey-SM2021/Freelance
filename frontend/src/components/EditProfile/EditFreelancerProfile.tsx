@@ -1,15 +1,15 @@
-import { FormEvent, memo, SyntheticEvent, useEffect, useRef, useState } from "react"
+import { memo, useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Field, FieldArray, Form, Formik } from "formik"
 
 import { Button, SectionTitle } from "../Common/Common.style"
 import { ProfilePaper, ProfileWrapper } from "../Profile/Profile.style"
-import { MyField } from "../Field/Field"
+import { MyField } from "../Field/MyField/Field"
 import { TFreelancerProfileSetting } from "../../models/IFreelancer"
 import { RootType } from "../../store/store"
-import close from '../../assets/cancel.png'
 import { putFreelancer } from "../../store/reducers/auth/authActions"
-import { AddComplitedWork, Close, ComplitedWork, Input, Skill, SkillsWrapper } from "./EditFreelancerProfile.style"
+import { AddComplitedWork, ComplitedWork } from "./EditFreelancerProfile.style"
+import { SkillList } from "../SkillList/SkillList"
 
 export const FreelancerProfileSettings = memo(() => {
 
@@ -19,8 +19,6 @@ export const FreelancerProfileSettings = memo(() => {
 
     const isLoading = useSelector((state: RootType) => (state.auth.isLoading))
     const AddComplitedWorkRef = useRef<HTMLTextAreaElement>(null)
-    const [inputSkill, setinputSkill] = useState<string>("")
-    const [completedTask, setCompletedTask] = useState<string>("")
 
     const initialWorkValue = useSelector((state: RootType) => {
         if (state.auth.person.workHistory) {
@@ -83,14 +81,6 @@ export const FreelancerProfileSettings = memo(() => {
 
     const dispatch = useDispatch()
 
-    const handlerChange = (e: FormEvent<HTMLInputElement>) => {
-        setCompletedTask(e.currentTarget.value)
-    }
-
-    const changeHandler = (e: FormEvent<HTMLInputElement>) => {
-        setinputSkill(e.currentTarget.value)
-    }
-
     const SaveHandler = (values: TFreelancerProfileSetting) => {
         dispatch(putFreelancer(values))
     }
@@ -114,24 +104,7 @@ export const FreelancerProfileSettings = memo(() => {
                         <Field component={MyField} title="Опыт работы" value={values.about.expiriens} name="about.expiriens" />
                         <Field component={MyField} title="Способ оплаты" value={values.about.paymentMethod} name="about.paymentMethod" />
                         <Field component={MyField} title="цена" value={values.about.price} name="about.price" />
-                        <FieldArray name='about.stack'>
-                            {({ remove, push }) => (<>
-                                <SkillsWrapper >
-                                    {values.about.stack ? values.about.stack.map((skill, i) => (
-                                        <Skill>{skill.name} <Close src={close} onClick={(e: SyntheticEvent) => { remove(i); e.preventDefault() }} /></Skill>
-                                    )) : <></>}
-                                    <Input placeholder='skill' type="text" value={inputSkill} onChange={changeHandler} onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                                        if (e.key === 'Enter' && inputSkill.length > 0) {
-                                            push({ freelancer: id, id: 1, name: inputSkill })
-                                            setinputSkill("")
-                                            e.preventDefault();
-                                            return false;
-                                        }
-                                    }} />
-                                </SkillsWrapper>
-                            </>
-                            )}
-                        </FieldArray>
+                        <SkillList obj={{ freelancer: id }} name="about.stack" skills={values.about.stack} />
                     </ProfilePaper>
                     <SectionTitle>Завершенные заказы</SectionTitle>
                     <ProfilePaper isMainPage>
