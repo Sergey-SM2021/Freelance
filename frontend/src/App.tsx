@@ -13,6 +13,7 @@ import { SideBar } from "./components/SideBar/SideBar"
 import { OrderOverview } from "./components/OrderOverview/OrderOverview"
 import { FreelancerProfileSettings } from "./components/EditProfile/EditFreelancerProfile"
 import { EditClientProfile } from "./components/EditProfile/EditClientProfile/EditClientProfile"
+import { MyOrderPage } from "./components/MyOrderPage/MyOrderPage"
 
 export const App = () => {
   const routs = useRoutes([
@@ -25,7 +26,8 @@ export const App = () => {
     { path: "/", element: <></> },
     { path: "/orderOverview/:id", element: <OrderOverview /> },
     { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },
-    { path: "/ClientProfile/setting", element: <EditClientProfile /> }
+    { path: "/ClientProfile/setting", element: <EditClientProfile /> },
+    { path: "/myOrder/:id", element: <MyOrderPage /> }
   ])
   return (<>
     <Header />

@@ -34,7 +34,7 @@ const orders: Array<IOrder> = [{
     In hac habitasse platea dictumst. Quisque eget erat lectus. Donec convallis velit quis lacinia convallis. Nulla pellentesque,
     dolor ac consequat semper, purus dui dictum sapien, in egestas sem sem nec magna.`,
     sphereOfActivity: "Frontend",
-    title: "Разработать копию Хабр фриланса",
+    title: "Разработать копию Хабр фриланса",feedbacks:[]
 },
 {
     price: 100000,
@@ -55,7 +55,7 @@ const orders: Array<IOrder> = [{
     In hac habitasse platea dictumst. Quisque eget erat lectus. Donec convallis velit quis lacinia convallis. Nulla pellentesque,
     dolor ac consequat semper, purus dui dictum sapien, in egestas sem sem nec magna.`,
     sphereOfActivity: "Frontend",
-    title: "Разработать копию Хабр фриланса",
+    title: "Разработать копию Хабр фриланса",feedbacks:[]
 }]
 
 export const fetchOrders = () => async (dispatch: any) => {

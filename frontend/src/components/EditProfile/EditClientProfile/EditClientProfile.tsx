@@ -10,11 +10,47 @@ import { MyField } from "../../Field/MyField/Field"
 import { TClientApi } from "../../../models/IClient"
 import { useNavigate } from "react-router-dom"
 import { Button, SectionTitle } from "../../Common/Common.style"
-import { INewOrder } from "../../../models/IOrder"
+import { INewOrder, IOrder } from "../../../models/IOrder"
 import { MyRange } from "../../Field/MyRange/Range"
 import { MyTextArea } from "../../Field/MyTextArea/TextArea"
 import { Order } from "../../OrderPreview/Order"
 import { SkillList } from "../../SkillList/SkillList"
+
+const ORDERS: Array<IOrder> = [
+    {
+        description: "",
+        feedbacks: [
+            {
+                freelancer: {
+                    id: 8989,
+                    mail: "gshgsah@ghsa",
+                    password: "898jjk",
+                    type: "freelancer",
+                    name: null,
+                    lastname: null,
+                    ava: null,
+                    specialization: null,
+                    description: null,
+                    expiriens: null,
+                    price: null,
+                    paymentmethod: null,
+                    dislike: null,
+                    likes: null,
+                    stack: [],
+                    review: [],
+                    workhistory:[],
+                },
+                message: ""
+            }
+        ],
+        id: 907,
+        price: 8888,
+        skills: [{ id: 778, name: ".Net", order: 907 }],
+        sphereOfActivity: "",
+        title: "Js project",
+        views: 89
+    }
+]
 
 export const EditClientProfile = () => {
     const nav = useNavigate()
@@ -44,28 +80,7 @@ export const EditClientProfile = () => {
     })
     const { name, orders, phone } = useSelector((state: RootType) => ({
         name: state.auth.person.name ? state.auth.person.name : "",
-        orders: state.auth.person.orders ? state.auth.person.orders : [
-            {
-                description: `
-                But I must explain to you how all this mistaken idea of denouncing pleasure
-                and praising pain was born and I will give you
-                a complete account of the system, and expound the actual teachings of the great explorer of the truth
-                the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,
-                because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences 
-                that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
-                because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. 
-                To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?
-                But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences,
-                or one who avoids a pain that produces no resultant pleasure?
-                `,
-                id: 898,
-                price: 89878,
-                skills: [{ id: 0, name: ".Net", order: id }],
-                title: "React",
-                views: 128,
-                sphereOfActivity: "backend"
-            }
-        ],
+        orders: state.auth.person.orders ? state.auth.person.orders : [],
         phone: state.auth.person.phone ? state.auth.person.phone : ""
     }))
     interface IInitialValues extends TClientApi {
@@ -75,7 +90,7 @@ export const EditClientProfile = () => {
         id,
         mail,
         name,
-        orders,
+        orders: ORDERS,
         password: password,
         phone,
         newOrder: {
@@ -83,7 +98,8 @@ export const EditClientProfile = () => {
             price: 0,
             skills: [{ id: 0, name: ".Net", order: id }],
             sphereOfActivity: "",
-            title: ""
+            title: "",
+            feedbacks: []
         }
     }
     const HandlerSubmit = (values: FormikValues) => {
@@ -103,12 +119,12 @@ export const EditClientProfile = () => {
                         <Field title="Телефон" name="phone" component={MyField} />
                     </EditProfileContent>
                     <SectionTitle>Существующие заказы</SectionTitle>
-                    {values.orders.map(order => <Order {...order} />)}
+                    {values.orders.map(order => <Order {...order} isMyOrder={true} />)}
                     <SectionTitle>Разместить заказ</SectionTitle>
                     <EditClientProfileBlock>
                         <Field name="newOrder.title" title="Название" component={MyField} />
                         <Field name="newOrder.description" title="Описание заказа" component={MyTextArea} />
-                        <SkillList obj={{ order: id }} name="newOrder.skills" skills={values.newOrder.skills} />)
+                        <SkillList obj={{ order: id }} name="newOrder.skills" skills={values.newOrder.skills} />
                         <EditProfilePriceRangeWrapper>
                             <Field name="newOrder.price" title={"Цена проекта"} component={MyRange} />
                         </EditProfilePriceRangeWrapper>
