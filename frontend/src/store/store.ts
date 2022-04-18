@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     auth,
     orders: ordersReducer,
     orderOverview: orderOverviewReducer,
-    myOrder 
+    myOrder
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk) )
