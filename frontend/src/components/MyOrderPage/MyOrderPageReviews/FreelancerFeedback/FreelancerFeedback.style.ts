@@ -46,5 +46,6 @@ export const FeedbackNameLink = styled.div`
 `
 
 export const Approve = styled.img`
+    margin-top: 20px;
     width: 70px;
 `

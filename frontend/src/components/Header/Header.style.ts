@@ -49,7 +49,8 @@ export const HeaderNav = styled.div`
 export const HeaderBurger = styled.div`
     display: none;
     @media(max-width:767px){
-        z-index:11;
+    z-index:11;
+    cursor: pointer;
     display:block ;
     width: 30px;
     height: 22px;

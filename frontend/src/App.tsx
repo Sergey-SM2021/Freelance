@@ -23,6 +23,7 @@ export const App = () => {
     { path: "/freelancer/:id/reviews", element: <><Reviews /><SideBar /> </> },
     { path: "/auth/:loc", element: <Auth /> },
     { path: "*", element: <>404 <h1>Страница не найдена</h1></> },
+    { path: "/error", element: <>Упс! что-то пошло не так</> },
     { path: "/", element: <></> },
     { path: "/orderOverview/:id", element: <OrderOverview /> },
     { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },

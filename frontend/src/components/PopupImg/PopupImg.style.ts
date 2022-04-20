@@ -33,6 +33,10 @@ export const PopupImgSmall = styled.img`
         cursor:pointer;
         height: 130px;
         animation: 1s ${bounceAnimation};
+        @media(max-width:767px){
+            animation: none;
+            height: 120px;
+        }
     }
 `
 
@@ -41,5 +45,6 @@ export const PopupSmallImgWrapper = styled.div`
 `
 
 export const PopupWrapper = styled.div`
-    
+    display: flex;
+    justify-content: center;
 `
