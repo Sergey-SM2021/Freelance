@@ -43,6 +43,9 @@ export const FreelancerProjects = styled.div`
 `
 
 export const FreelancerProject = styled.img`
+    &:hover{
+        
+    }
     height: 120px;
 `
 
@@ -90,4 +93,18 @@ export const Like = styled.div`
 export const ReviewsInner = styled.div`
     display: flex;
     justify-content: space-around;
+`
+
+export const FullImg = styled.img`
+    
+`
+
+export const FullImgWrapper = styled.div<{ isVisable: boolean }>`
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    background-color: black;
+    visibility: ${({ isVisable }) => (isVisable ? "visible" : "hidden")};
 `

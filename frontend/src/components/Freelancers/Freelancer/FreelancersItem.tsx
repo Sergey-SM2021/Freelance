@@ -1,12 +1,13 @@
 import {
     Ava, AvaArea, DisLike, FreelancerCard, FreelancerContent, FreelancerDescription,
     FreelancerHeader, FreelancerName, FreelancerProject, FreelancerProjects,
-    FreelancerWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
+    FreelancerWrapper, FullImg, FullImgWrapper, Like, Price, PricePer, Reviews, ReviewsInner, Secialization
 } from "./FreelancerItem.style"
 import IMG from '../../../assets/Projects/Project0.jpeg'
 import avaPath from '../../../assets/man.png'
 import { Skill, Skills } from "../../Common/Common.style"
 import { TFreelancerPreview } from "../../../models/IFreelancer"
+import { PopupImg } from '../../PopupImg/PopupImg'
 
 import { Link } from "react-router-dom"
 import { memo } from "react"
@@ -53,10 +54,10 @@ export const Freelancer = memo(({ about, dislike, likes, header, portfolio, id }
                     {about.description}
                 </FreelancerDescription>
                 <FreelancerProjects>
-                    {portfolio?.length ? portfolio.map((el,index) => <FreelancerProject key={index} src={IMG} />) : <></>}
+                    {portfolio?.length && portfolio.map((el, index) => <PopupImg key={index} src={IMG} />)}
                 </FreelancerProjects>
                 <Skills>
-                    {about.stack ? about.stack.map((el) => (<Skill key={el.id}>{el.name}</Skill>)) : <></>}
+                    {about.stack && about.stack.map((el) => (<Skill key={el.id}>{el.name}</Skill>))}
                 </Skills>
             </FreelancerContent>
         </FreelancerCard>
