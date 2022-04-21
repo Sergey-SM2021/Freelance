@@ -18,6 +18,9 @@ export const ordersReducer = (state = initialState, action: TOrdersAction) => {
         case constants.SETORDERS:
             stateCopy.orders = action.payload
             return stateCopy
+        case constants.SETERROR:
+            stateCopy.error = action.payload
+            return stateCopy
         default:
             return stateCopy
     }

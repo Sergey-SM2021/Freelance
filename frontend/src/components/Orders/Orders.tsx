@@ -5,6 +5,7 @@ import {Order} from "../OrderPreview/Order"
 import { OrdersWrapper } from "./Orders.style"
 import { RootType } from "../../store/store"
 import { fetchOrders } from "../../store/reducers/orders/ordersActions"
+import { Navigate } from "react-router-dom"
 
 export const Orders = memo(() => {
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export const Orders = memo(() => {
         dispatch(fetchOrders())
     }, [])
     return (
-        isLoading ? <>Loading...</> : Error ? <>{Error}</> :
+        isLoading ? <>Loading...</> : Error ? <Navigate to="/Error"/> :
             <OrdersWrapper>{orders.map(order => <Order {...order} />)}</OrdersWrapper>
     )
 })
