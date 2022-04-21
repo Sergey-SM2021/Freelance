@@ -17,3 +17,9 @@ export const FooterItem = styled.p<{ isIntro: boolean }>`
         }
     }
 `
+
+export const FooterItemWrapper = styled.div`
+    display:flex ;
+    flex-direction:column ;
+    align-items:center ;
+`

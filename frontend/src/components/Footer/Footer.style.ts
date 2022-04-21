@@ -13,6 +13,7 @@ export const FooterGrid = styled.div`
 
 export const SocialNetworks = styled.div`
     display: flex;
+    justify-content:center ;
 `
 
 export const SocialNetwork = styled.img`

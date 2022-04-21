@@ -25,9 +25,7 @@ export const Footer = memo(() => {
                 </div>
                 <SocialNetworks>
                     <SocialNetwork src={vk}/>
-                    <SocialNetwork src={facebook}/>
                     <SocialNetwork src={telegram}/>
-                    <SocialNetwork src={twitter}/>
                 </SocialNetworks>
                 <div>
                     @Sergiy
