@@ -1,3 +1,5 @@
+import { ISetError } from './orderOverviewReducerTypes'
+import { OrderApi } from "../../../api/OrderApi"
 import { TClientApi } from "../../../models/IClient"
 import { IOrder } from "../../../models/IOrder"
 import { constants, IEndLoading, ISetOrders, IStartLoading } from "./orderOverviewReducerTypes"
@@ -5,6 +7,9 @@ import { constants, IEndLoading, ISetOrders, IStartLoading } from "./orderOvervi
 export const StartLoading = (): IStartLoading => ({ type: constants.STARTORDEROVERVIEWLOADING })
 
 export const EndLoading = (): IEndLoading => ({ type: constants.ENDORDEROVERVIEWLOADING })
+
+export const SetError: (err: string) => ISetError
+    = (err) => ({ payload: err, type: constants.SETERROR })
 
 export const SetOrder = (order: IOrder, client: TClientApi): ISetOrders => ({
     type: constants.SETORDEROVERVIEW,
@@ -18,41 +23,20 @@ const client: TClientApi = {
     id: 89,
     mail: "srtsamn@!ashsj",
     password: "jjhcxhj",
-    orders:[],
-    name:null,
-    phone:null
-}
-const order: IOrder =
-{
-    description: `
-    But I must explain to you how all this mistaken idea of denouncing pleasure
-    and praising pain was born and I will give you
-    a complete account of the system, and expound the actual teachings of the great explorer of the truth
-    the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,
-    because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences 
-    that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
-    because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. 
-    To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?
-    But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences,
-    or one who avoids a pain that produces no resultant pleasure?
-    `,
-    id: 898,
-    price: 89878,
-    skills: [
-        {id:87665,name:"Redux",order:898},
-        {id:5625,name:"Angular",order:898}
-    ],
-    title: "React",
-    views: 128,
-    sphereOfActivity:"backend",
-    feedbacks:[],
-    clientId:786
+    orders: [],
+    name: null,
+    phone: null
 }
 
-export const fetchOrderOverview = () => async (dispatch: any) => {
+
+export const fetchOrderOverview = (id: number) => async (dispatch: any) => {
     dispatch(StartLoading())
-    setTimeout(() => {
-        dispatch(SetOrder(order, client))
+    try {
+        const Order = await OrderApi.getOrder(id)
+        dispatch(SetOrder(Order, client))
+    } catch (error) {
+        dispatch(SetError("Не удалось получить заказ"))
+    } finally {
         dispatch(EndLoading())
-    }, 1000)
+    }
 }

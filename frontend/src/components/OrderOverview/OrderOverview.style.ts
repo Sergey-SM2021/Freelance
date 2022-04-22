@@ -40,7 +40,9 @@ export const OrderOverviewFeedback = styled.textarea`
 `
 
 export const OrderOverviewContent = styled.div`
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     background: #fff;
+    flex-grow: 1;
 `

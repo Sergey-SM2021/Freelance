@@ -4,7 +4,13 @@ import { TClientApi } from "../../../models/IClient"
 export enum constants {
     STARTORDEROVERVIEWLOADING = "STARTORDEROVERVIEWLOADING",
     ENDORDEROVERVIEWLOADING = "ENDORDEROVERVIEWLOADING",
-    SETORDEROVERVIEW = "SETORDEROVERVIEW"
+    SETORDEROVERVIEW = "SETORDEROVERVIEW",
+    SETERROR = "SETERROR"
+}
+// i mast make shared type for set error & start/end loading
+export interface ISetError {
+    payload: string,
+    type: constants.SETERROR
 }
 
 export interface IStartLoading {
@@ -23,7 +29,7 @@ export interface ISetOrders {
     type: constants.SETORDEROVERVIEW
 }
 
-export type actionType = IStartLoading | IEndLoading | ISetOrders
+export type actionType = IStartLoading | IEndLoading | ISetOrders | ISetError
 
 export interface IOrderReducerInitialState {
     order: IOrder | null,

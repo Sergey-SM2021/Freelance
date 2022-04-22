@@ -24,7 +24,7 @@ export const OrderOverview = () => {
         alert(JSON.stringify(FeedbackValue))
     }
     useEffect(() => {
-        dispatch(fetchOrderOverview())
+        dispatch(fetchOrderOverview(899))
     }, [])
     return (isLoading ? <>Loading...</> : Error ? <>{Error}</> :
         <OrderOverviewWrapper>
