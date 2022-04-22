@@ -12,10 +12,10 @@ import { ISkill } from "../../models/IOrder"
 type TProps = {
     title: string,
     price: number,
-    skills: Array<ISkill>,
     views: number,
     id: number,
-    isMyOrder?: boolean
+    isMyOrder?: boolean,
+    skills: Array<ISkill>,
 }
 
 export const Order = ({ price, skills, views, title, id, isMyOrder }: TProps) => {

@@ -45,7 +45,8 @@ const order: IOrder =
     title: "React",
     views: 128,
     sphereOfActivity:"backend",
-    feedbacks:[]
+    feedbacks:[],
+    clientId:786
 }
 
 export const fetchOrderOverview = () => async (dispatch: any) => {

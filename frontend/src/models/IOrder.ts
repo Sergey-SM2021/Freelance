@@ -3,12 +3,13 @@ import { TFreelancerApi } from "./IFreelancer"
 export interface IOrder {
     title: string,
     price: number,
-    skills: Array<ISkill>,
     views: number,
     id: number,
     description: string,
     sphereOfActivity: string,
+    skills: Array<ISkill>,
     feedbacks: Array<IFeedback>
+    clientId: number
 }
 
 export interface IFeedback {

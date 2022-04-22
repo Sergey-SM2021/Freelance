@@ -38,7 +38,7 @@ const ORDERS: Array<IOrder> = [
                     likes: null,
                     stack: [],
                     review: [],
-                    workhistory:[],
+                    workhistory: [],
                 },
                 message: ""
             }
@@ -48,7 +48,8 @@ const ORDERS: Array<IOrder> = [
         skills: [{ id: 778, name: ".Net", order: 907 }],
         sphereOfActivity: "",
         title: "Js project",
-        views: 89
+        views: 89,
+        clientId: 90
     }
 ]
 
@@ -99,7 +100,8 @@ export const EditClientProfile = () => {
             skills: [{ id: 0, name: ".Net", order: id }],
             sphereOfActivity: "",
             title: "",
-            feedbacks: []
+            feedbacks: [],
+            clientId: id
         }
     }
     const HandlerSubmit = (values: FormikValues) => {

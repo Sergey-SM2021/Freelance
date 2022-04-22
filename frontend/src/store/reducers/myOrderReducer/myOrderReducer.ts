@@ -2,6 +2,7 @@ import { MyOrderInitialState } from "./myOrderReducerTypes"
 
 const InitialState: MyOrderInitialState = {
     Order: {
+        clientId: 7876,
         description: `
         On the other hand, we denounce with righteous indignation
         and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment,
