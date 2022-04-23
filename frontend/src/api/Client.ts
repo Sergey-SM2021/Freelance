@@ -1,5 +1,6 @@
 import Axios from "axios"
 import { TClientApi } from "../models/IClient"
+import { IOrder } from "../models/IOrder"
 
 class Client {
     baseURL
@@ -35,6 +36,15 @@ class Client {
             this.baseURL.put(`update/${client.id}`, client)
         } catch (error) {
             throw "Не удалось обновить client"
+        }
+    }
+
+    createOrder: (newOrder: IOrder) => void = async (newOrder) => {
+        try {
+            console.log(newOrder)
+            await this.baseURL.post<void>("createOrder", newOrder)
+        } catch (error) {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer } from "../../../models/IFreelancer"
+import { IOrder } from "../../../models/IOrder"
 
 export enum constants {
     SETFREELANCER = "SETFREELANCER",
@@ -7,10 +8,11 @@ export enum constants {
     ENDLOADING = "ENDLOADING",
     SETERR = "SETERR",
     UPDATEFREELANCER = "UPDATEFREELANCER",
-    SETCLIENTPROFILE = "SETCLIENTPROFILE"
+    SETCLIENTPROFILE = "SETCLIENTPROFILE",
+    CREATEORDER = "CREATENEWORDER"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile
+export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder
 
 export type TDispatch = any
 
@@ -49,4 +51,9 @@ export interface IUpdateFreelancer {
 export interface ISetClientProfile {
     type: constants.SETCLIENTPROFILE,
     payLoad: TClientApi
+}
+
+export interface ICreateOrder {
+    type: constants.CREATEORDER,
+    payLoad: IOrder
 }

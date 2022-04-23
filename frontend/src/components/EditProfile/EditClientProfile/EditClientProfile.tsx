@@ -16,6 +16,7 @@ import { MyTextArea } from "../../Field/MyTextArea/TextArea"
 import { Order } from "../../OrderPreview/Order"
 import { SkillList } from "../../SkillList/SkillList"
 import { putClient } from "../../../store/reducers/auth/authActions"
+import { AddOrder } from "./addOrder/AddOrder"
 
 const ORDERS: Array<IOrder> = [
     {
@@ -113,7 +114,7 @@ export const EditClientProfile = () => {
     }
 
     return (<EditClientProfileWrapper>
-        <Formik initialValues={initialValues} onSubmit={HandlerSubmit}>{({ values }) => (
+        <Formik initialValues={initialValues} onSubmit={HandlerSubmit}>{({ values }) => (<>
             <Form>
                 <EditProfileInner>
                     <EditClientProfileHeader>
@@ -123,21 +124,15 @@ export const EditClientProfile = () => {
                     <EditProfileContent>
                         <Field title="Имя" name="name" component={MyField} />
                         <Field title="Телефон" name="phone" component={MyField} />
+                        <Button>Сохранить изменения</Button>
                     </EditProfileContent>
                     <SectionTitle>Существующие заказы</SectionTitle>
                     {values.orders.map(order => <Order {...order} isMyOrder={true} />)}
                     <SectionTitle>Разместить заказ</SectionTitle>
-                    <EditClientProfileBlock>
-                        <Field name="newOrder.title" title="Название" component={MyField} />
-                        <Field name="newOrder.description" title="Описание заказа" component={MyTextArea} />
-                        <SkillList obj={{ order: id }} name="newOrder.skills" skills={values.newOrder.skills} />
-                        <EditProfilePriceRangeWrapper>
-                            <Field name="newOrder.price" title={"Цена проекта"} component={MyRange} />
-                        </EditProfilePriceRangeWrapper>
-                        <Button>alert</Button>
-                    </EditClientProfileBlock>
                 </EditProfileInner>
             </Form>
+            <AddOrder id={id} />
+        </>
         )}
         </Formik>
     </EditClientProfileWrapper>)

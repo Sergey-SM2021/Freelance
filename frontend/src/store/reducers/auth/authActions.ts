@@ -1,9 +1,10 @@
+import { IOrder } from './../../../models/IOrder';
 import { ClientApi } from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
-import { constants, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
+import { constants, ICreateOrder, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -38,6 +39,11 @@ export const setFreelancer = (freelancer: TFreelancer): TSetFreelancer => ({
 export const UpdateFreelancer = (freelancer: TFreelancer): IUpdateFreelancer => ({
     payload: freelancer,
     type: constants.UPDATEFREELANCER
+})
+
+export const CreateOrder = (order: IOrder): ICreateOrder => ({
+    type: constants.CREATEORDER,
+    payLoad: order
 })
 
 // #TODO: setUser
@@ -90,7 +96,15 @@ export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => 
         await ClientApi.updateClient(client)
     } catch (error) {
         dispatch(setError("Не удалось обновить клиента"))
-    } finally{
+    } finally {
         dispatch(endLoading())
+    }
+}
+
+export const createOrder = (order: IOrder) => async (dispatch: TDispatch) => {
+    try {
+        ClientApi.createOrder(order)
+    } catch (error) {
+        // dispatch(Не удалось создать фрилансера)
     }
 }

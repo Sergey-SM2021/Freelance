@@ -28,7 +28,7 @@ export const SkillList = ({ skills, obj, name }: ISkillList) => {
                             <Close src={close} onClick={(e: SyntheticEvent) => { remove(i); e.preventDefault() }} />
                         </Skill>))
                     }
-                        < Input placeholder='skill' type="text" value={Value} onChange={changeHandler} onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                        < Input placeholder='Добаить навык' type="text" value={Value} onChange={changeHandler} onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
                             if (e.key === 'Enter' && Value.length > 0) {
                                 push({ ...obj, name: Value })
                                 setValue("")
