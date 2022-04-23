@@ -33,10 +33,10 @@ export const FreelancerProfileSettings = memo(() => {
             return state.auth.person.header
         } else {
             return {
-                name: null,
-                lastName: null,
-                ava: null,
-                specialization: null
+                name: "",
+                lastName: "",
+                ava: "",
+                specialization: ""
             }
         }
     })
@@ -46,11 +46,11 @@ export const FreelancerProfileSettings = memo(() => {
             return state.auth.person.about
         } else {
             return ({
-                description: null,
-                expiriens: null,
-                price: null,
+                description: "",
+                expiriens: "",
+                price: 0,
                 stack: [],
-                paymentMethod: null,
+                paymentMethod: "",
             })
         }
     })
@@ -98,7 +98,7 @@ export const FreelancerProfileSettings = memo(() => {
                         <Field title="Фамилия" name="header.lastName" component={MyField} />
                         <Field title="Направление" name="header.specialization" component={MyField} />
                     </ProfilePaper>
-                    <SectionTitle>Личные данные</SectionTitle>
+                    <SectionTitle>Обо мне</SectionTitle>
                     <ProfilePaper isMainPage>
                         <Field component={MyField} title="Описание" value={values.about.description} name="about.description" />
                         <Field component={MyField} title="Опыт работы" value={values.about.expiriens} name="about.expiriens" />

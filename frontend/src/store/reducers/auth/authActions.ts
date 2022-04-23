@@ -84,10 +84,17 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
 }
 
 export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (dispatch: TDispatch) => {
-    // Нужно добавить Error handling
     dispatch(startLoading())
-    await Freelancer.putFreelancer(freelancer)
-    dispatch(endLoading())
+    try {
+        await Freelancer.putFreelancer(freelancer)
+        const freelancerProfile = await Freelancer.getFreelancerById(freelancer.id)
+        dispatch(setFreelancer(freelancerProfile))
+    } catch {
+        alert("Не удалось обновить профиль")
+    }
+    finally {
+        dispatch(endLoading())
+    }
 }
 
 export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => {

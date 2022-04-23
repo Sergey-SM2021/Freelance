@@ -68,7 +68,7 @@ class Freelancer {
                 const ApiFreelancer = this.convertFreelancerToApi(freelancer)
                 await this.baseURL.put(`/${ApiFreelancer.id}`, ApiFreelancer)
             } catch (error) {
-                console.log(error)
+                throw error
             }
         }
 }
