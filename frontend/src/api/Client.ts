@@ -20,7 +20,7 @@ class Client {
             }
         }
 
-    getClientById : (id: number) => Promise<TClientApi> 
+    getClientById: (id: number) => Promise<TClientApi>
         = async (id) => {
             try {
                 const client = await (await this.baseURL.get<TClientApi>(`${id}`)).data
@@ -29,6 +29,14 @@ class Client {
                 throw "Client не был найден"
             }
         }
+
+    updateClient: (client: TClientApi) => void = (client) => {
+        try {
+            this.baseURL.put(`update/${client.id}`, client)
+        } catch (error) {
+            throw "Не удалось обновить client"
+        }
+    }
 }
 
 export const ClientApi = new Client("http://localhost:8900/client/")

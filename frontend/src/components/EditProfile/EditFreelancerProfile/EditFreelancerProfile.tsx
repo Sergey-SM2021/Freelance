@@ -2,14 +2,14 @@ import { memo, useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Field, FieldArray, Form, Formik } from "formik"
 
-import { Button, SectionTitle } from "../Common/Common.style"
-import { ProfilePaper, ProfileWrapper } from "../Profile/Profile.style"
-import { MyField } from "../Field/MyField/Field"
-import { TFreelancerProfileSetting } from "../../models/IFreelancer"
-import { RootType } from "../../store/store"
-import { putFreelancer } from "../../store/reducers/auth/authActions"
+import { Button, SectionTitle } from "../../Common/Common.style"
+import { ProfilePaper, ProfileWrapper } from "../../Profile/Profile.style"
+import { MyField } from "../../Field/MyField/Field"
+import { TFreelancerProfileSetting } from "../../../models/IFreelancer"
+import { RootType } from "../../../store/store"
+import { putFreelancer } from "../../../store/reducers/auth/authActions"
 import { AddComplitedWork, ComplitedWork } from "./EditFreelancerProfile.style"
-import { SkillList } from "../SkillList/SkillList"
+import { SkillList } from "../../SkillList/SkillList"
 
 export const FreelancerProfileSettings = memo(() => {
 

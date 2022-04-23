@@ -49,7 +49,7 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
         alert("Пользовотель был создан")
     } catch (e) {
         alert("Пользовотель не был создан")
-    }finally {
+    } finally {
         dispatch(endLoading)
     }
 }
@@ -78,8 +78,19 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
 }
 
 export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (dispatch: TDispatch) => {
+    // Нужно добавить Error handling
     dispatch(startLoading())
     await Freelancer.putFreelancer(freelancer)
     dispatch(endLoading())
 }
 
+export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => {
+    dispatch(startLoading())
+    try {
+        await ClientApi.updateClient(client)
+    } catch (error) {
+        dispatch(setError("Не удалось обновить клиента"))
+    } finally{
+        dispatch(endLoading())
+    }
+}

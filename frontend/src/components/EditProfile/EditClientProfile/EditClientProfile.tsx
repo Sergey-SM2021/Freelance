@@ -1,5 +1,5 @@
-import { Field, FieldArray, Form, Formik, FormikValues } from "formik"
-import { useSelector } from "react-redux"
+import { Field, Form, Formik, FormikValues } from "formik"
+import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../../store/store"
 import {
     EditClientProfileAva, EditClientProfileBlock, EditClientProfileEmail, EditClientProfileHeader,
@@ -15,6 +15,7 @@ import { MyRange } from "../../Field/MyRange/Range"
 import { MyTextArea } from "../../Field/MyTextArea/TextArea"
 import { Order } from "../../OrderPreview/Order"
 import { SkillList } from "../../SkillList/SkillList"
+import { putClient } from "../../../store/reducers/auth/authActions"
 
 const ORDERS: Array<IOrder> = [
     {
@@ -54,6 +55,7 @@ const ORDERS: Array<IOrder> = [
 ]
 
 export const EditClientProfile = () => {
+    const dispatch = useDispatch()
     const nav = useNavigate()
     const id = useSelector((state: RootType) => {
         if (state.auth.person.id) {
@@ -105,7 +107,9 @@ export const EditClientProfile = () => {
         }
     }
     const HandlerSubmit = (values: FormikValues) => {
-        alert(JSON.stringify(values))
+        console.log(values)
+        // @ts-ignore
+        dispatch(putClient(values))
     }
 
     return (<EditClientProfileWrapper>
