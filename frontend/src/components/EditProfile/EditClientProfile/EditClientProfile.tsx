@@ -75,10 +75,6 @@ export const EditClientProfile = () => {
         dispatch(putClient(values))
     }
 
-    useEffect(()=>{
-        console.log(initialValues)
-    },[])
-
     return (<EditClientProfileWrapper>
         <Formik initialValues={initialValues} onSubmit={HandlerSubmit}>{({ values }) => (<>
             <Form>

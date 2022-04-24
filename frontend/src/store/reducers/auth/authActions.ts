@@ -101,7 +101,8 @@ export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (d
 export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => {
     dispatch(startLoading())
     try {
-        await ClientApi.updateClient(client)
+        ClientApi.updateClient(client)
+        dispatch(setClientProfile(client))
         alert("Профиль был обновлён")
     } catch (error) {
         dispatch(setError("Не удалось обновить клиента"))

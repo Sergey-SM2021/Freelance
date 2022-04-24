@@ -88,9 +88,7 @@ export const auth = (state = initialState, action: TAction) => {
         case constants.SETCLIENTPROFILE:
             stateCopy.isAuth = true
             stateCopy.type = "client"
-            console.log(action.payLoad.orders)
             stateCopy.person = action.payLoad
-            debugger
             return stateCopy
         default:
             return stateCopy

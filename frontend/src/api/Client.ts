@@ -25,7 +25,6 @@ class Client {
         = async (id) => {
             try {
                 const client = await (await this.baseURL.get<TClientApi>(`${id}`)).data
-                debugger
                 return client
             } catch (error) {
                 throw "Client не был найден"
