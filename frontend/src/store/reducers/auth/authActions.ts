@@ -77,7 +77,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
                 console.log(type)
         }
     } catch (error) {
-        throw "Пользователь не был получен"
+        alert("Не удалось войти")
     } finally {
         dispatch(endLoading())
     }
@@ -101,6 +101,7 @@ export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => 
     dispatch(startLoading())
     try {
         await ClientApi.updateClient(client)
+        alert("Профиль был обновлён")
     } catch (error) {
         dispatch(setError("Не удалось обновить клиента"))
     } finally {

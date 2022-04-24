@@ -1,59 +1,25 @@
-import { Field, Form, Formik, FormikValues } from "formik"
+import { Field, Form, Formik } from "formik"
+import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+
 import { RootType } from "../../../store/store"
 import {
-    EditClientProfileAva, EditClientProfileBlock, EditClientProfileEmail, EditClientProfileHeader,
-    EditClientProfileWrapper, EditProfileContent, EditProfileInner, EditProfilePriceRangeWrapper
+    EditClientProfileAva, EditClientProfileEmail, EditClientProfileHeader,
+    EditClientProfileWrapper, EditProfileContent, EditProfileInner
 } from "./EditClientProfile.style"
 import man from '../../../assets/man.png'
 import { MyField } from "../../Field/MyField/Field"
 import { TClientApi } from "../../../models/IClient"
-import { useNavigate } from "react-router-dom"
 import { Button, SectionTitle } from "../../Common/Common.style"
-import { INewOrder, IOrder } from "../../../models/IOrder"
-import { MyRange } from "../../Field/MyRange/Range"
-import { MyTextArea } from "../../Field/MyTextArea/TextArea"
+import { INewOrder } from "../../../models/IOrder"
 import { Order } from "../../OrderPreview/Order"
-import { SkillList } from "../../SkillList/SkillList"
 import { putClient } from "../../../store/reducers/auth/authActions"
 import { AddOrder } from "./addOrder/AddOrder"
+import { useEffect } from "react"
 
-const ORDERS: Array<IOrder> = [
-    {
-        description: "",
-        feedbacks: [
-            {
-                freelancer: {
-                    id: 8989,
-                    mail: "gshgsah@ghsa",
-                    password: "898jjk",
-                    type: "freelancer",
-                    name: null,
-                    lastname: null,
-                    ava: null,
-                    specialization: null,
-                    description: null,
-                    expiriens: null,
-                    price: null,
-                    paymentmethod: null,
-                    dislike: null,
-                    likes: null,
-                    stack: [],
-                    review: [],
-                    workhistory: [],
-                },
-                message: ""
-            }
-        ],
-        id: 907,
-        price: 8888,
-        skills: [{ id: 778, name: ".Net", order: 907 }],
-        sphereOfActivity: "",
-        title: "Js project",
-        views: 89,
-        clientId: 90
-    }
-]
+interface IInitialValues extends TClientApi {
+    newOrder: INewOrder,
+}
 
 export const EditClientProfile = () => {
     const dispatch = useDispatch()
@@ -87,31 +53,31 @@ export const EditClientProfile = () => {
         orders: state.auth.person.orders ? state.auth.person.orders : [],
         phone: state.auth.person.phone ? state.auth.person.phone : ""
     }))
-    interface IInitialValues extends TClientApi {
-        newOrder: INewOrder,
-    }
+
     const initialValues: IInitialValues = {
         id,
         mail,
         name,
-        orders: ORDERS,
+        orders: orders,
         password: password,
         phone,
         newOrder: {
             description: "",
             price: 0,
-            skills: [{ id: 0, name: ".Net", order: id }],
+            skills: [],
             sphereOfActivity: "",
             title: "",
             feedbacks: [],
             clientId: id
         }
     }
-    const HandlerSubmit = (values: FormikValues) => {
-        console.log(values)
-        // @ts-ignore
+    const HandlerSubmit = (values: IInitialValues) => {
         dispatch(putClient(values))
     }
+
+    useEffect(()=>{
+        console.log(initialValues)
+    },[])
 
     return (<EditClientProfileWrapper>
         <Formik initialValues={initialValues} onSubmit={HandlerSubmit}>{({ values }) => (<>

@@ -25,7 +25,7 @@ export const Order = ({ price, skills, views, title, id, isMyOrder }: TProps) =>
             <OrderInfoSection>
                 <OrderTitle><Link to={path}>{title}</Link></OrderTitle>
                 <OrderViews>{views} просмотр</OrderViews>
-                <Skills>{skills.map((skill) => <Skill >{skill.name}</Skill>)}</Skills>
+                {/* <Skills>{skills.map((skill) => <Skill >{skill.name}</Skill>)}</Skills> */}
             </OrderInfoSection>
             <OrderPriceSection>
                 <OrderMonyIcon src={money} alt="деньги" />
