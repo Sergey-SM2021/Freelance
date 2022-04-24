@@ -8,10 +8,8 @@ import { SignInSchema } from "./SignInValidateSchems"
 import { getUser, setError } from "../../../store/reducers/auth/authActions"
 import { MyField } from "../../Field/MyField/Field"
 import { AuthSubmit } from "../Auth.style"
-import { useEditProfileRoute } from "../../Header/Header";
 
 export const SignIn = memo(() => {
-    const Path = useEditProfileRoute()
     const nav = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -19,7 +17,7 @@ export const SignIn = memo(() => {
     }, [nav])
     const Error = useSelector((state: RootType) => (state.auth.error))
     const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
-    return (isAuth?<Navigate to={Path}/> :
+    return (isAuth ? <Navigate to={"/MyProfile"} /> :
         <Formik
             validationSchema={SignInSchema}
             initialValues={{ mail: "", password: "" }}

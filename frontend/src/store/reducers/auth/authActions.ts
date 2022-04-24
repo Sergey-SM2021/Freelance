@@ -52,6 +52,7 @@ export const CreateUser = (mail: string, password: string, role: string) => asyn
     dispatch(startLoading)
     try {
         await UserApi.createUser(mail, password, role)
+        dispatch(getUser(mail, password))
         alert("Пользовотель был создан")
     } catch (e) {
         alert("Пользовотель не был создан")

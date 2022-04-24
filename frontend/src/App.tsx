@@ -11,9 +11,8 @@ import { Profile } from "./components/Profile/Profile"
 import { Reviews } from "./components/Reviews"
 import { SideBar } from "./components/SideBar/SideBar"
 import { OrderOverview } from "./components/OrderOverview/OrderOverview"
-import { FreelancerProfileSettings } from "./components/EditProfile/EditFreelancerProfile/EditFreelancerProfile"
-import { EditClientProfile } from "./components/EditProfile/EditClientProfile/EditClientProfile"
 import { MyOrderPage } from "./components/MyOrderPage/MyOrderPage"
+import { MyProfile } from "./components/MyProfile"
 
 export const App = () => {
   const routs = useRoutes([
@@ -26,8 +25,7 @@ export const App = () => {
     { path: "/error", element: <>Упс! что-то пошло не так</> },
     { path: "/", element: <></> },
     { path: "/orderOverview/:id", element: <OrderOverview /> },
-    { path: "/FreelancerProfile/setting", element: <FreelancerProfileSettings /> },
-    { path: "/ClientProfile/setting", element: <EditClientProfile /> },
+    { path: "/MyProfile", element: <MyProfile /> },
     { path: "/myOrder/:id", element: <MyOrderPage /> }
   ])
   return (<>

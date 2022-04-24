@@ -10,22 +10,7 @@ import {
 import edit from '../../assets/edit1.png'
 import { Edit } from './Header.style'
 
-export const useEditProfileRoute = () => {
-    const Path = useSelector((state: RootType) => {
-        switch (state.auth.type) {
-            case "freelancer":
-                console.log("/FreelancerProfile/setting")
-                return "/FreelancerProfile/setting"
-            default:
-                console.log("/ClientProfile/setting")
-                return "/ClientProfile/setting"
-        }
-    })
-    return Path
-}
-
 export const Header = memo(() => {
-    const route = useEditProfileRoute()
     const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
     const [isActive, toggleActivite] = useState<boolean>(false)
     const toggleActiviteHandler = () => {
@@ -47,7 +32,7 @@ export const Header = memo(() => {
                         <HeaderAuth>
                             {isAuth ?
                                 <li onClick={toggleActiviteHandler}>
-                                    <Link to={route}><Edit src={edit} /></Link>
+                                    <Link to={"/MyProfile"}><Edit src={edit} /></Link>
                                 </li> :
                                 <>
                                     <li onClick={toggleActiviteHandler}><NavLink to="auth/signIn">Вход</NavLink></li>

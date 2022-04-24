@@ -1,20 +1,23 @@
 import { memo, useEffect, useRef } from "react"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import {Formik, Form, Field, FormikValues} from 'formik'
+import { useDispatch, useSelector } from "react-redux"
+import { Formik, Form, Field, FormikValues } from 'formik'
+
+import { Navigate } from 'react-router-dom'
 import { validationSchema } from "./signUpValidationSchema"
 import { CreateUser } from "../../../store/reducers/auth/authActions"
 import { MyField } from "../../Field/MyField/Field"
 import { AuthSubmit, SignUpRole, SignUpRolesInner, SignUpRolesTitle, SignUpRolesWrapper } from "../Auth.style"
+import { RootType } from "../../../store/store"
 
 export const SignUp = memo(() => {
-    const nav = useNavigate()
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [nav])
+    }, [])
+
     const dispatch = useDispatch()
     const client = useRef<HTMLButtonElement>(null)
     const freelancer = useRef<HTMLButtonElement>(null)
+    const isAuth = useSelector((state: RootType) => (state.auth.isAuth))
 
     const clientHandler = (state: any) => () => {
         state.values.role = "client"
@@ -36,32 +39,33 @@ export const SignUp = memo(() => {
         }
     }
 
-    const formSubmitHandler = (values:FormikValues) => {
+    const formSubmitHandler = (values: FormikValues) => {
         dispatch(CreateUser(values.mail, values.password, values.role))
     }
 
-    return (<Formik
-        validateOnBlur
-        validationSchema={validationSchema}
-        onSubmit={formSubmitHandler}
-        initialValues={{ mail: "", password: "", role: "" }}>
-        {(values) => (<Form>
-            <Field title="Email" name="mail" component={MyField} />
-            <Field title="Пороль" name="password" component={MyField} />
-            <SignUpRolesWrapper>
-                <SignUpRolesTitle>
-                    Роль
-                </SignUpRolesTitle>
-                <SignUpRolesInner>
-                    <SignUpRole ref={client} type="button" onClick={clientHandler(values)}>
-                        Заказчик
-                    </SignUpRole>
-                    <SignUpRole ref={freelancer} type="button" onClick={freelancerHandler(values)}>
-                        Фрилансер
-                    </SignUpRole>
-                </SignUpRolesInner>
-            </SignUpRolesWrapper>
-            <AuthSubmit type="submit">Зарегистрироваться</AuthSubmit>
-        </Form>)}
-    </Formik>)
+    return (isAuth ? <Navigate to={"/MyProfile"} /> :
+        <Formik
+            validateOnBlur
+            validationSchema={validationSchema}
+            onSubmit={formSubmitHandler}
+            initialValues={{ mail: "", password: "", role: "" }}>
+            {(values) => (<Form>
+                <Field title="Email" name="mail" component={MyField} />
+                <Field title="Пороль" name="password" component={MyField} />
+                <SignUpRolesWrapper>
+                    <SignUpRolesTitle>
+                        Роль
+                    </SignUpRolesTitle>
+                    <SignUpRolesInner>
+                        <SignUpRole ref={client} type="button" onClick={clientHandler(values)}>
+                            Заказчик
+                        </SignUpRole>
+                        <SignUpRole ref={freelancer} type="button" onClick={freelancerHandler(values)}>
+                            Фрилансер
+                        </SignUpRole>
+                    </SignUpRolesInner>
+                </SignUpRolesWrapper>
+                <AuthSubmit type="submit">Зарегистрироваться</AuthSubmit>
+            </Form>)}
+        </Formik>)
 })
