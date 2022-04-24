@@ -15,7 +15,7 @@ import { INewOrder } from "../../../models/IOrder"
 import { Order } from "../../OrderPreview/Order"
 import { putClient } from "../../../store/reducers/auth/authActions"
 import { AddOrder } from "./addOrder/AddOrder"
-import { useEffect } from "react"
+import { ValidateSchema } from "./ValidateSchema"
 
 interface IInitialValues extends TClientApi {
     newOrder: INewOrder,
@@ -76,7 +76,11 @@ export const EditClientProfile = () => {
     }
 
     return (<EditClientProfileWrapper>
-        <Formik initialValues={initialValues} onSubmit={HandlerSubmit}>{({ values }) => (<>
+        <Formik
+            validationSchema={ValidateSchema}
+            initialValues={initialValues}
+            onSubmit={HandlerSubmit}
+        >{({ values }) => (<>
             <Form>
                 <EditProfileInner>
                     <EditClientProfileHeader>
