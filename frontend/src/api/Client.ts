@@ -31,20 +31,19 @@ class Client {
             }
         }
 
-    updateClient: (client: TClientApi) => void = (client) => {
+    updateClient: (client: TClientApi) => Promise<void> = async (client) => {
         try {
-            this.baseURL.put(`update/${client.id}`, client)
+            await this.baseURL.put(`update/${client.id}`, client)
         } catch (error) {
             throw "Не удалось обновить client"
         }
     }
 
-    createOrder: (newOrder: IOrder) => void = async (newOrder) => {
+    createOrder: (newOrder: IOrder) => Promise<void> = async (newOrder: IOrder) => {
         try {
-            console.log(newOrder)
-            await this.baseURL.post<void>("createOrder", newOrder)
+            await this.baseURL.post("createOrder", newOrder)
         } catch (error) {
-
+            throw "Не удалось создать заказ"
         }
     }
 }

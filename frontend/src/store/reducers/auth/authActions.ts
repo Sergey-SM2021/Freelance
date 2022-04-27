@@ -101,7 +101,7 @@ export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (d
 export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => {
     dispatch(startLoading())
     try {
-        ClientApi.updateClient(client)
+        await ClientApi.updateClient(client)
         dispatch(setClientProfile(client))
         alert("Профиль был обновлён")
     } catch (error) {
@@ -112,9 +112,14 @@ export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => 
 }
 
 export const createOrder = (order: IOrder) => async (dispatch: TDispatch) => {
+    dispatch(startLoading())
     try {
-        ClientApi.createOrder(order)
+        await ClientApi.createOrder(order)
+        alert("заказ был успешно создан")
     } catch (error) {
-        // dispatch(Не удалось создать фрилансера)
+        dispatch(setError("Не удалось обновить клиента"))
+    }
+    finally {
+        dispatch(endLoading())
     }
 }

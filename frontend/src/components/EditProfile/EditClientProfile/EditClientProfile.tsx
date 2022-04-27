@@ -71,6 +71,7 @@ export const EditClientProfile = () => {
             clientId: id
         }
     }
+    
     const HandlerSubmit = (values: IInitialValues) => {
         dispatch(putClient(values))
     }
