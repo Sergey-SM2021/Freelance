@@ -3,6 +3,7 @@ import { OrderApi } from "../../../api/OrderApi"
 import { TClientApi } from "../../../models/IClient"
 import { IOrder } from "../../../models/IOrder"
 import { constants, IEndLoading, ISetOrders, IStartLoading } from "./orderOverviewReducerTypes"
+import FreelancerApi from '../../../api/Freelancer'
 
 export const StartLoading = (): IStartLoading => ({ type: constants.STARTORDEROVERVIEWLOADING })
 
@@ -36,6 +37,19 @@ export const fetchOrderOverview = (id: number) => async (dispatch: any) => {
         dispatch(SetOrder(Order, client))
     } catch (error) {
         dispatch(SetError("Не удалось получить заказ"))
+    } finally {
+        dispatch(EndLoading())
+    }
+}
+
+export const SendFeedback = (feedback: string, freelancerId: number, orderId: number) => async (dispatch: any) => {
+    dispatch(StartLoading())
+    try {
+        await FreelancerApi.sendFeedback(feedback, freelancerId, orderId)
+        alert("feedback был добавлен")
+    } catch (error) {
+        dispatch(SetError(JSON.stringify(error)))
+        alert("Не удалось добавить feedback")
     } finally {
         dispatch(EndLoading())
     }

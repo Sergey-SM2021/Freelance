@@ -13,7 +13,6 @@ interface TProps {
 }
 
 export const MyOrderPageOrder = ({ title, description, sphereOfActivity, price, skills, views }: TProps) => {
-    debugger
     return (<OrderWrapper>
         <OrderInner>
             <SectionTitle>О заказе</SectionTitle>

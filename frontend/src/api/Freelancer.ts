@@ -71,6 +71,10 @@ class Freelancer {
                 throw error
             }
         }
+
+    sendFeedback: (feedback: string, freelancerId: number, orderId: number) => Promise<void> = async (feedback, freelancerId, orderId) => {
+        await this.baseURL.post("/feedback", { feedback, freelancerId, orderId })
+    }
 }
 
 

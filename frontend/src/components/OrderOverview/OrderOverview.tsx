@@ -1,4 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
+import { SyntheticEvent, useEffect, useState } from "react"
+
 import { RootType } from "../../store/store"
 import {
     OrderOverviewAdditionalInfo,
@@ -7,24 +10,27 @@ import {
     OrderOverviewViews, OrderOverviewWrapper
 } from "./OrderOverview.style"
 import { Button, SectionTitle, Skill, Skills } from "../Common/Common.style"
-import { SyntheticEvent, useEffect, useState } from "react"
-import { fetchOrderOverview } from "../../store/reducers/orderOverview/OrderOverviewAction"
+import { fetchOrderOverview, SendFeedback } from "../../store/reducers/orderOverview/OrderOverviewAction"
 import { OrderOverviewClientProfile } from "./ClientProfile/ClientProfile"
 
 export const OrderOverview = () => {
+    const { id } = useParams()
     const dispatch = useDispatch()
     const order = useSelector((state: RootType) => (state.orderOverview.order))
     const isLoading = useSelector((state: RootType) => (state.orderOverview.isLoading))
     const Error = useSelector((state: RootType) => (state.orderOverview.error))
     const [FeedbackValue, setFeedbackValue] = useState<string>("")
+    const profileId = useSelector((state: RootType) => state.auth.person.id)
     const handleFeedbackChange = (e: SyntheticEvent<HTMLTextAreaElement>) => {
         setFeedbackValue(e.currentTarget.value)
     }
     const handlerSubmit = (e: SyntheticEvent<HTMLButtonElement>) => {
-        alert(JSON.stringify(FeedbackValue))
+        // @ts-ignore
+        dispatch(SendFeedback(FeedbackValue, profileId, order?.id))
     }
     useEffect(() => {
-        dispatch(fetchOrderOverview(899))
+        // @ts-ignore
+        dispatch(fetchOrderOverview(parseInt(id)))
     }, [])
     return (isLoading ? <>Loading...</> : Error ? <>{Error}</> :
         <OrderOverviewWrapper>
@@ -46,6 +52,6 @@ export const OrderOverview = () => {
                     <Button onClick={handlerSubmit}>Отозваться</Button>
                 </OrderOverviewInner>
             </OrderOverviewContent>
-            <OrderOverviewClientProfile/>
+            <OrderOverviewClientProfile />
         </OrderOverviewWrapper>)
 };

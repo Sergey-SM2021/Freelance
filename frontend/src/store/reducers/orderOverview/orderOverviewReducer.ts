@@ -19,7 +19,6 @@ export const orderOverviewReducer = (state = defaultState, action: actionType) =
         case constants.SETORDEROVERVIEW:
             stateCopy.order = action.payload.order
             stateCopy.client = action.payload.client
-            debugger
             return stateCopy
         case constants.SETERROR:
             stateCopy.error = action.payload
