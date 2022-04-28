@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Button } from "../Common/Common.style"
 
 export const OrderWrapper = styled.div`
   background: #fff;
@@ -7,6 +8,7 @@ export const OrderWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  border-radius: 13px;
 `
 
 export const OrderInner = styled.div`

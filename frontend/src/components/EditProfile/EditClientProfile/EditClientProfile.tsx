@@ -1,27 +1,36 @@
 import { Field, Form, Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
+import { memo, useState } from "react"
 
 import { RootType } from "../../../store/store"
 import {
     EditClientProfileAva, EditClientProfileEmail, EditClientProfileHeader,
-    EditClientProfileWrapper, EditProfileContent, EditProfileInner
+    EditClientProfileList,
+    EditClientProfileWrapper, EditProfileContent, EditProfileInner, WatchMore
 } from "./EditClientProfile.style"
 import man from '../../../assets/man.png'
 import { MyField } from "../../Field/MyField/Field"
-import { TClientApi } from "../../../models/IClient"
 import { Button, SectionTitle } from "../../Common/Common.style"
 import { INewOrder } from "../../../models/IOrder"
 import { Order } from "../../OrderPreview/Order"
-import { putClient } from "../../../store/reducers/auth/authActions"
+import { getOrders, putClient } from "../../../store/reducers/auth/authActions"
 import { AddOrder } from "./addOrder/AddOrder"
 import { ValidateSchema } from "./ValidateSchema"
+import { TClientApi } from "../../../models/IClient"
 
-interface IInitialValues extends TClientApi {
+
+interface IInitialValues {
     newOrder: INewOrder,
+    id: number,
+    mail: string,
+    password: string,
+    name: string | null,
+    phone: string | null
 }
 
-export const EditClientProfile = () => {
+export const EditClientProfile = memo(() => {
+    const [pageSize, setPageSize] = useState<number>(6)
     const dispatch = useDispatch()
     const nav = useNavigate()
     const id = useSelector((state: RootType) => {
@@ -32,6 +41,10 @@ export const EditClientProfile = () => {
             return 0
         }
     })
+    const handlerPagination = () => {
+        dispatch(getOrders(pageSize, id))
+        setPageSize(pageSize + 3);
+    }
     const mail = useSelector((state: RootType) => {
         if (state.auth.person.mail) {
             return state.auth.person.mail
@@ -40,6 +53,9 @@ export const EditClientProfile = () => {
             return ""
         }
     })
+
+    const orders = useSelector((state: RootType) => state.auth.person.orders ? state.auth.person.orders : [])
+
     const password = useSelector((state: RootType) => {
         if (state.auth.person.password) {
             return state.auth.person.password
@@ -48,17 +64,17 @@ export const EditClientProfile = () => {
             return ""
         }
     })
-    const { name, orders, phone } = useSelector((state: RootType) => ({
+
+    const { name, phone, isLoading } = useSelector((state: RootType) => ({
         name: state.auth.person.name ? state.auth.person.name : "",
-        orders: state.auth.person.orders ? state.auth.person.orders : [],
-        phone: state.auth.person.phone ? state.auth.person.phone : ""
+        phone: state.auth.person.phone ? state.auth.person.phone : "",
+        isLoading: state.auth.isLoading
     }))
 
     const initialValues: IInitialValues = {
         id,
         mail,
         name,
-        orders: orders,
         password: password,
         phone,
         newOrder: {
@@ -71,12 +87,13 @@ export const EditClientProfile = () => {
             clientId: id
         }
     }
-    
-    const HandlerSubmit = (values: IInitialValues) => {
+
+    const HandlerSubmit = (values: Pick<TClientApi, "name" | "phone">) => {
+        // @ts-ignore
         dispatch(putClient(values))
     }
 
-    return (<EditClientProfileWrapper>
+    return (!isLoading ? <EditClientProfileWrapper>
         <Formik
             validationSchema={ValidateSchema}
             initialValues={initialValues}
@@ -93,14 +110,17 @@ export const EditClientProfile = () => {
                         <Field title="Телефон" name="phone" component={MyField} />
                         <Button>Сохранить изменения</Button>
                     </EditProfileContent>
-                    <SectionTitle>Существующие заказы</SectionTitle>
-                    {values.orders.map(order => <Order {...order} isMyOrder={true} />)}
-                    <SectionTitle>Разместить заказ</SectionTitle>
                 </EditProfileInner>
             </Form>
+            <SectionTitle>Разместить заказ</SectionTitle>
             <AddOrder id={id} />
+            <SectionTitle>Существующие заказы</SectionTitle>
         </>
         )}
         </Formik>
-    </EditClientProfileWrapper>)
-}
+        <EditClientProfileList>
+            {orders.map(order => <Order {...order} isMyOrder={true} />)}
+        </EditClientProfileList>
+        <WatchMore onClick={handlerPagination}>Загрузить ещё</WatchMore>
+    </EditClientProfileWrapper> : <>Loading</>)
+})

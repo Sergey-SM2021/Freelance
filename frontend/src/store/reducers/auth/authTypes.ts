@@ -9,12 +9,18 @@ export enum constants {
     SETERR = "SETERR",
     UPDATEFREELANCER = "UPDATEFREELANCER",
     SETCLIENTPROFILE = "SETCLIENTPROFILE",
-    CREATEORDER = "CREATENEWORDER"
+    CREATEORDER = "CREATENEWORDER",
+    SETORDERS = "SETMYORDERS"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder
+export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder | TSetOrders
 
 export type TDispatch = any
+
+export type TSetOrders = {
+    payload: Array<IOrder>,
+    type: constants.SETORDERS
+}
 
 export type TSetFreelancer = {
     type: constants.SETFREELANCER,

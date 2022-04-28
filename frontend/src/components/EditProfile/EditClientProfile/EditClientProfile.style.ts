@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../Common/Common.style";
 
 export const EditClientProfileWrapper = styled.div`
     width: 100%;
@@ -42,4 +43,14 @@ export const EditProfileInner = styled.div`
 export const EditClientProfileBlock = styled.div`
     box-sizing: border-box;
     padding: 0px 10px 10px 10px;
+`
+
+export const EditClientProfileList = styled.div`
+    background-color: #eeeeee;
+    box-sizing: border-box;
+    padding: 10px;
+`
+
+export const WatchMore = styled(Button)`
+    width: 100%;
 `

@@ -90,6 +90,9 @@ export const auth = (state = initialState, action: TAction) => {
             stateCopy.type = "client"
             stateCopy.person = action.payLoad
             return stateCopy
+        case constants.SETORDERS:
+            stateCopy.person.orders = action.payload
+            return stateCopy
         default:
             return stateCopy
     }

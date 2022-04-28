@@ -5,6 +5,5 @@ import { FreelancerProfileSettings } from "./EditProfile/EditFreelancerProfile/E
 
 export const MyProfile = () => {
     const ProfileType = useSelector((state: RootType) => (state.auth.type))
-    const isLoading = useSelector((state: RootType) => (state.auth.isLoading))
-    return (isLoading ? <>Loading...</> : ProfileType === "freelancer" ? <FreelancerProfileSettings /> : <EditClientProfile />)
+    return (ProfileType === "freelancer" ? <FreelancerProfileSettings /> : <EditClientProfile />)
 }

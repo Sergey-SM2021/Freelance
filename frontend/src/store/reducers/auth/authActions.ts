@@ -4,7 +4,7 @@ import Freelancer from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
-import { constants, ICreateOrder, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TStartLoading, } from "./authTypes"
+import { constants, ICreateOrder, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TSetOrders, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -90,6 +90,7 @@ export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (d
         await Freelancer.putFreelancer(freelancer)
         const freelancerProfile = await Freelancer.getFreelancerById(freelancer.id)
         dispatch(setFreelancer(freelancerProfile))
+        alert("Профиль был успешно обнавлён")
     } catch {
         alert("Не удалось обновить профиль")
     }
@@ -120,6 +121,36 @@ export const createOrder = (order: IOrder) => async (dispatch: TDispatch) => {
         dispatch(setError("Не удалось обновить клиента"))
     }
     finally {
+        dispatch(endLoading())
+    }
+}
+
+export const setOrders = (orders: Array<IOrder>): TSetOrders => ({
+    payload: orders,
+    type: constants.SETORDERS
+})
+
+// export const getOrders = () => async (dispatch: any) => {
+//     dispatch(startLoading())
+//     // dispatch(endLoading())
+//     // try {
+//         await new Promise((resolve) => { setTimeout(() => { resolve("") }, 1000) })
+//         // dispatch(setOrders(orders))
+//         dispatch(endLoading())
+//     // } catch (error) {
+//         // dispatch(setError("Не удалось получить заказы"))
+//         // dispatch(endLoading())
+//     // }
+// }
+
+export const getOrders = (сount: number, userId: number) => async (dispatch: any) => {
+    dispatch(startLoading())
+    try {
+        const orders = await ClientApi.getOrders(сount, userId)
+        dispatch(setOrders(orders))
+    } catch (error) {
+        dispatch(setError("Не удалось получить заказы"))
+    } finally {
         dispatch(endLoading())
     }
 }

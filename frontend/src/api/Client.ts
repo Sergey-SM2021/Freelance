@@ -46,6 +46,16 @@ class Client {
             throw "Не удалось создать заказ"
         }
     }
+
+    getOrders: (count: number, userId: number) => Promise<Array<IOrder>> = async (count, userId) => {
+        try {
+            const newOrders = await (await this.baseURL.get<Array<IOrder>>(`orders/${count}/${userId}`)).data
+            console.log(newOrders)
+            return newOrders
+        } catch (error) {
+            throw "Не удалось загрузить заказы"
+        }
+    }
 }
 
 export const ClientApi = new Client("http://localhost:8900/client/")
