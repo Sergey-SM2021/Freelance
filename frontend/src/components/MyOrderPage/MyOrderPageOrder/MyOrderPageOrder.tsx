@@ -13,16 +13,17 @@ interface TProps {
 }
 
 export const MyOrderPageOrder = ({ title, description, sphereOfActivity, price, skills, views }: TProps) => {
+    debugger
     return (<OrderWrapper>
         <OrderInner>
             <SectionTitle>О заказе</SectionTitle>
             <OrderContent>
                 <OrderHeader>
-                    <OrderTitle>{title}/{sphereOfActivity}</OrderTitle>
+                    <OrderTitle>{title}{sphereOfActivity}</OrderTitle>
                     <OrderViews>{views}</OrderViews>
                 </OrderHeader>
                 <OrderPrice><h4>Цена:</h4>{price}₽</OrderPrice>
-                <Skills>{skills.map(skill => (<Skill >{skill.name}</Skill>))}</Skills>
+                {/* <Skills>{skills.map(skill => (<Skill >{skill.name}</Skill>))}</Skills> */}
                 <OrderDescription>{description}</OrderDescription>
             </OrderContent>
         </OrderInner>

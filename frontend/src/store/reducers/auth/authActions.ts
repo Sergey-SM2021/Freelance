@@ -4,7 +4,7 @@ import Freelancer from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
-import { constants, ICreateOrder, ISetClientProfile, IUpdateFreelancer, TEndLoading, TSetError, TSetOrders, TStartLoading, } from "./authTypes"
+import { constants, ICreateOrder, ISetClientProfile, ISetMyOrder, IUpdateFreelancer, TEndLoading, TSetError, TSetOrders, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -130,19 +130,6 @@ export const setOrders = (orders: Array<IOrder>): TSetOrders => ({
     type: constants.SETORDERS
 })
 
-// export const getOrders = () => async (dispatch: any) => {
-//     dispatch(startLoading())
-//     // dispatch(endLoading())
-//     // try {
-//         await new Promise((resolve) => { setTimeout(() => { resolve("") }, 1000) })
-//         // dispatch(setOrders(orders))
-//         dispatch(endLoading())
-//     // } catch (error) {
-//         // dispatch(setError("Не удалось получить заказы"))
-//         // dispatch(endLoading())
-//     // }
-// }
-
 export const getOrders = (сount: number, userId: number) => async (dispatch: any) => {
     dispatch(startLoading())
     try {
@@ -153,4 +140,20 @@ export const getOrders = (сount: number, userId: number) => async (dispatch: an
     } finally {
         dispatch(endLoading())
     }
+}
+
+const setMyOrder = (myOrder: IOrder): ISetMyOrder => ({
+    payload: myOrder,
+    type: constants.SETMYORDER
+})
+
+export const getMyOrder = (id: number) => async (dispatch: any) => {
+    dispatch(startLoading())
+    try {
+        const order = await ClientApi.getOrder(id)
+        dispatch(setMyOrder(order))
+    } catch (error) {
+
+    }
+    dispatch(endLoading())
 }

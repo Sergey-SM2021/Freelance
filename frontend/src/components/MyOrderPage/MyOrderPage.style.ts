@@ -12,6 +12,7 @@ export const MyOrderPageInner = styled.div`
     width: 100%;
     height: 100%;
     justify-content: space-between;
+    min-height: 100%;
 `
 
 export const MyOrderPageTitle = styled.h3`

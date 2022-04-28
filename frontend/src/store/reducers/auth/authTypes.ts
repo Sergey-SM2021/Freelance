@@ -1,4 +1,4 @@
-import { TClientApi } from "../../../models/IClient"
+import { TClient, TClientApi } from "../../../models/IClient"
 import { TFreelancer } from "../../../models/IFreelancer"
 import { IOrder } from "../../../models/IOrder"
 
@@ -10,10 +10,16 @@ export enum constants {
     UPDATEFREELANCER = "UPDATEFREELANCER",
     SETCLIENTPROFILE = "SETCLIENTPROFILE",
     CREATEORDER = "CREATENEWORDER",
-    SETORDERS = "SETMYORDERS"
+    SETORDERS = "SETMYORDERS",
+    SETMYORDER = "SETMYORDER"
 }
 
-export type TAction = TSetFreelancer | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder | TSetOrders
+export type ISetMyOrder = {
+    type: constants.SETMYORDER,
+    payload: IOrder
+}
+
+export type TAction = TSetFreelancer | ISetMyOrder | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder | TSetOrders
 
 export type TDispatch = any
 
@@ -30,7 +36,7 @@ export type TSetFreelancer = {
 export type TInitialState = {
     isAuth: boolean,
     // don't person / profile
-    person: Partial<TFreelancer & TClientApi>,
+    person: Partial<TFreelancer & TClient>,
     isLoading: boolean,
     error: string | null,
     type: string

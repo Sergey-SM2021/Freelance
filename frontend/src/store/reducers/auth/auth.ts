@@ -93,6 +93,11 @@ export const auth = (state = initialState, action: TAction) => {
         case constants.SETORDERS:
             stateCopy.person.orders = action.payload
             return stateCopy
+        case constants.SETMYORDER:
+            debugger
+            stateCopy.person.myOrder = action.payload
+            debugger
+            return stateCopy
         default:
             return stateCopy
     }

@@ -23,7 +23,5 @@ export enum constants {
 // export type actionType = IStartLoading | IEndLoading | ISetOrders
 
 export interface MyOrderInitialState {
-    Order: IOrder,
-    error: string | null,
-    isLoading: boolean
+    
 }

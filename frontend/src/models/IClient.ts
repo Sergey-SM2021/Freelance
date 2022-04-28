@@ -6,5 +6,9 @@ export interface TClientApi {
     password: string,
     orders: Array<IOrder>,
     name: string | null,
-    phone: string | null 
+    phone: string | null
+}
+
+export interface TClient extends TClientApi {
+    myOrder: IOrder
 }
