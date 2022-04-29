@@ -9,6 +9,7 @@ import { MyRange } from "../../../Field/MyRange/Range"
 import { MyTextArea } from "../../../Field/MyTextArea/TextArea"
 import { SkillList } from "../../../SkillList/SkillList"
 import { AddOrderWrapper } from "./AddOrder.style"
+import { shema } from "./AddOrderValidation"
 
 type TProps = {
     id: number
@@ -16,8 +17,8 @@ type TProps = {
 
 export const AddOrder = ({ id }: TProps) => {
     const dispatch = useDispatch()
-
-    const handlerSubmit = (values: IOrder) => {
+    // @ts-ignore
+    const handlerSubmit = (values: FormikValues) => {
         dispatch(createOrder(values))
     }
 
@@ -34,7 +35,7 @@ export const AddOrder = ({ id }: TProps) => {
     }
 
     return (
-        <Formik initialValues={initialValues} onSubmit={handlerSubmit}>
+        <Formik initialValues={initialValues} onSubmit={handlerSubmit} validationSchema={shema}>
             {({ values }) => (
                 <Form>
                     <AddOrderWrapper>

@@ -11,7 +11,8 @@ export enum constants {
     SETCLIENTPROFILE = "SETCLIENTPROFILE",
     CREATEORDER = "CREATENEWORDER",
     SETORDERS = "SETMYORDERS",
-    SETMYORDER = "SETMYORDER"
+    SETMYORDER = "SETMYORDER",
+    ADDORDERINTOMYORDERS = "ADDORDERINTOMYORDERS"
 }
 
 export type ISetMyOrder = {
@@ -19,7 +20,7 @@ export type ISetMyOrder = {
     payload: IOrder
 }
 
-export type TAction = TSetFreelancer | ISetMyOrder | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder | TSetOrders
+export type TAction = TSetFreelancer | ISetMyOrder | TStartLoading | TEndLoading | TSetError | IUpdateFreelancer | ISetClientProfile | ICreateOrder | TSetOrders | IAddOrderIntoMyOrders
 
 export type TDispatch = any
 
@@ -66,5 +67,10 @@ export interface ISetClientProfile {
 
 export interface ICreateOrder {
     type: constants.CREATEORDER,
+    payLoad: IOrder
+}
+
+export interface IAddOrderIntoMyOrders {
+    type: constants.ADDORDERINTOMYORDERS,
     payLoad: IOrder
 }

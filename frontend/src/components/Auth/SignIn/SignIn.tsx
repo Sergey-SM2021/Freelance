@@ -23,6 +23,7 @@ export const SignIn = memo(() => {
             initialValues={{ mail: "", password: "" }}
             onSubmit={(values) => {
                 try {
+                    // #FIXME: вынести в отдельную функцыю
                     dispatch(getUser(values.mail, values.password))
                 } catch (error) {
                     dispatch(setError("Не верный пороль и/или логин"))

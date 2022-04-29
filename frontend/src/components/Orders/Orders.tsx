@@ -17,7 +17,7 @@ export const Orders = memo(() => {
         dispatch(fetchOrders())
     }, [])
     return (
-        isLoading ? <>Loading...</> : Error ? <Navigate to="/Error"/> :
-            <OrdersWrapper>{orders.map(order => <Order {...order} />)}</OrdersWrapper>
+        isLoading ? <>Loading...</> : Error ? <Navigate to="/Error"/> : orders.length ?  
+            <OrdersWrapper>{orders.map(order => <Order {...order} />)}</OrdersWrapper> : <>Пока нет заказов</>
     )
 })

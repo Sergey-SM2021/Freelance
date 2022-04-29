@@ -5,7 +5,7 @@ import Freelancer from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
-import { constants, ICreateOrder, ISetClientProfile, ISetMyOrder, IUpdateFreelancer, TEndLoading, TSetError, TSetOrders, TStartLoading, } from "./authTypes"
+import { constants, IAddOrderIntoMyOrders, ICreateOrder, ISetClientProfile, ISetMyOrder, IUpdateFreelancer, TEndLoading, TSetError, TSetOrders, TStartLoading, } from "./authTypes"
 import { TDispatch, TSetFreelancer } from "./authTypes"
 
 export const startLoading = (): TStartLoading => ({
@@ -113,10 +113,16 @@ export const putClient = (client: TClientApi) => async (dispatch: TDispatch) => 
     }
 }
 
+const addOrderIntoMyOrders = (order:IOrder): IAddOrderIntoMyOrders => ({
+    payLoad:order,
+    type:constants.ADDORDERINTOMYORDERS
+})
+
 export const createOrder = (order: IOrder) => async (dispatch: TDispatch) => {
     dispatch(startLoading())
     try {
         await ClientApi.createOrder(order)
+        dispatch(addOrderIntoMyOrders(order))
         alert("заказ был успешно создан")
     } catch (error) {
         dispatch(setError("Не удалось обновить клиента"))
@@ -134,6 +140,7 @@ export const setOrders = (orders: Array<IOrder>): TSetOrders => ({
 export const getOrders = (сount: number, userId: number) => async (dispatch: any) => {
     dispatch(startLoading())
     try {
+        // Перенести getOrders с ClientApi на orders api
         const orders = await ClientApi.getOrders(сount, userId)
         dispatch(setOrders(orders))
     } catch (error) {

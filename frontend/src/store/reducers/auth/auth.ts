@@ -96,6 +96,12 @@ export const auth = (state = initialState, action: TAction) => {
         case constants.SETMYORDER:
             stateCopy.person.myOrder = action.payload
             return stateCopy
+        case constants.ADDORDERINTOMYORDERS:
+            // @ts-ignore
+            const newOrders = [action.payLoad, ...stateCopy.person.orders]
+            stateCopy.person.orders = newOrders
+            debugger
+            return stateCopy
         default:
             return stateCopy
     }

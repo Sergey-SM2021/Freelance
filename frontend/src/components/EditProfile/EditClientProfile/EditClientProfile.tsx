@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { memo, useState } from "react"
 
@@ -18,7 +18,6 @@ import { getOrders, putClient } from "../../../store/reducers/auth/authActions"
 import { AddOrder } from "./addOrder/AddOrder"
 import { ValidateSchema } from "./ValidateSchema"
 import { TClientApi } from "../../../models/IClient"
-
 
 interface IInitialValues {
     newOrder: INewOrder,
@@ -88,12 +87,14 @@ export const EditClientProfile = memo(() => {
         }
     }
 
+    const err = useSelector((state: RootType) => state.auth.error)
+
     const HandlerSubmit = (values: Pick<TClientApi, "name" | "phone">) => {
         // @ts-ignore
         dispatch(putClient(values))
     }
 
-    return (!isLoading ? <EditClientProfileWrapper>
+    return (!isLoading ? err? <Navigate to="/Error"/> : <EditClientProfileWrapper>
         <Formik
             validationSchema={ValidateSchema}
             initialValues={initialValues}
