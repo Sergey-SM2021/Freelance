@@ -34,7 +34,8 @@ class Order {
     }
     getOrder: (id: number) => Promise<IOrder> = async (id) => {
         try {
-            return await (await this.path.get<IOrder>(`${id}`)).data
+            const r = await (await this.path.get<IOrder>(`${id}`)).data
+            return r
         } catch (error) {
             throw error
         }

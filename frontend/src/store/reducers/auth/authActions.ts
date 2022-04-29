@@ -1,3 +1,4 @@
+import { OrderApi } from './../../../api/OrderApi';
 import { IOrder } from './../../../models/IOrder';
 import { ClientApi } from "../../../api/Client"
 import Freelancer from "../../../api/Freelancer"
@@ -150,7 +151,7 @@ const setMyOrder = (myOrder: IOrder): ISetMyOrder => ({
 export const getMyOrder = (id: number) => async (dispatch: any) => {
     dispatch(startLoading())
     try {
-        const order = await ClientApi.getOrder(id)
+        const order = await OrderApi.getOrder(id)
         dispatch(setMyOrder(order))
     } catch (error) {
 

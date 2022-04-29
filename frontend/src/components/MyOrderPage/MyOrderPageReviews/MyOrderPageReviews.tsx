@@ -12,7 +12,7 @@ export const MyOrderPageReviews = ({ feedbacks }: TProps) => {
         <SectionTitle>Отзывы</SectionTitle>
         <ReviewFeedbacks>
             {!feedbacks.length && <>Пока нет отзывов</>}
-            {feedbacks.map(feedback => <FreelancerFeedback freelancer={feedback.freelancer} message={feedback.message} />)}
+            {feedbacks.map(feedback => <FreelancerFeedback person={feedback.person} message={feedback.message} />)}
         </ReviewFeedbacks>
     </ReviewsWrapper>)
 }

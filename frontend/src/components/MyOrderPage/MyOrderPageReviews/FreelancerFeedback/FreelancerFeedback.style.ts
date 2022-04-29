@@ -11,7 +11,6 @@ export const FeedbackInner = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
 `
 
 export const FeedbackPrivateInfo = styled.div`
@@ -27,7 +26,7 @@ export const FeedbackPrivateInfo = styled.div`
 `
 
 export const FeedbackReview = styled.div`
-    
+    width: 80%;
 `
 
 export const FreelancerInfo = styled.div`
@@ -35,6 +34,7 @@ export const FreelancerInfo = styled.div`
     display: flex;
     flex-direction:column ;
     align-items:center ;
+    width: 20%;
 `
 
 export const FeedbackFreelancerAva = styled.img`

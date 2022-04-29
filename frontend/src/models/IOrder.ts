@@ -13,7 +13,7 @@ export interface IOrder {
 }
 
 export interface IFeedback {
-    freelancer: TFreelancerApi,
+    person: TFreelancerApi,
     message: string
 }
 

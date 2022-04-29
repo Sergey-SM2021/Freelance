@@ -35,7 +35,6 @@ export type TSetFreelancer = {
 
 export type TInitialState = {
     isAuth: boolean,
-    // don't person / profile
     person: Partial<TFreelancer & TClient>,
     isLoading: boolean,
     error: string | null,

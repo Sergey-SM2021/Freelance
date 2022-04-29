@@ -12,3 +12,11 @@ export interface TClientApi {
 export interface TClient extends TClientApi {
     myOrder: IOrder
 }
+
+    // id: number,
+    // mail: string,
+    // password: string,
+    // orders: Array<IOrder>,
+    // name: string | null,
+    // phone: string | null
+    // myOrder: IOrder

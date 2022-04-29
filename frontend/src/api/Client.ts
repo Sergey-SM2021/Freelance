@@ -57,13 +57,13 @@ class Client {
         }
     }
 
-    getOrder: (id: Number) => Promise<IOrder> = async (id) => {
-        try {
-            return await (await this.baseURL.get(`order/${id}`)).data
-        } catch (error) {
+    // getOrder: (id: Number) => Promise<IOrder> = async (id) => {
+    //     try {
+    //         return await (await this.baseURL.get(`order/${id}`)).data
+    //     } catch (error) {
 
-        }
-    }
+    //     }
+    // }
 }
 
 export const ClientApi = new Client("http://localhost:8900/client/")
