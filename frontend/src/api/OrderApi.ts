@@ -43,4 +43,4 @@ class Order {
     path
 }
 
-export const OrderApi = new Order("http://localhost:8900/order/")
+export const OrderApi = new Order("http://62.113.109.76/order/")

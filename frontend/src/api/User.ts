@@ -20,4 +20,4 @@ class User {
     }
 }
 
-export const UserApi = new User("http://localhost:8900/user")
+export const UserApi = new User("http://62.113.109.76/user")

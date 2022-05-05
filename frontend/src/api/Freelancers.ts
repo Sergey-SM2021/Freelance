@@ -59,4 +59,4 @@ class Freelancers {
         }
 }
 
-export default new Freelancers("http://localhost:8900/freelancers/")
+export default new Freelancers("http://62.113.109.76/freelancers/")
