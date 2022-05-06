@@ -9,7 +9,6 @@ import { TFreelancerProfileSetting } from "../../../models/IFreelancer"
 import { RootType } from "../../../store/store"
 import { putFreelancer } from "../../../store/reducers/auth/authActions"
 import { AddComplitedWork, ComplitedWork } from "./EditFreelancerProfile.style"
-import { SkillList } from "../../SkillList/SkillList"
 
 export const FreelancerProfileSettings = memo(() => {
 

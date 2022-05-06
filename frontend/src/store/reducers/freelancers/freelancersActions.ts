@@ -1,6 +1,6 @@
 import { constants, dispatchType, setFreelancersType, TStartLoading, TEndLoading, TSetError } from "./freelancersActionsTypes"
 import { TFreelancer } from "../../../models/IFreelancer"
-import Freelancers from "../../../api/Freelancers"
+import {FreelancersApi} from "../../../api/Freelancers"
 
 export const setFreelancers = (freelancers: Array<TFreelancer>): setFreelancersType => ({
     payload: freelancers,
@@ -22,7 +22,7 @@ export const endLoading = (): TEndLoading => ({
 
 export const findFreelancerByName = (name:string) => async (dispatch:dispatchType) => {
     dispatch(startLoading())
-    const freelancers = await Freelancers.findFreelancersByName(name)
+    const freelancers = await FreelancersApi.findFreelancersByName(name)
     dispatch(setFreelancers(freelancers))
     dispatch(endLoading())
 }
@@ -30,7 +30,7 @@ export const findFreelancerByName = (name:string) => async (dispatch:dispatchTyp
 export const getFreelancers = () => async (dispatch: dispatchType) => {
     try {
         dispatch(startLoading())
-        const freelancers = await Freelancers.getFreelancers()
+        const freelancers = await FreelancersApi.getFreelancers()
         dispatch(setFreelancers(freelancers))
     } catch (error) {
         dispatch(setError(JSON.stringify(error)))

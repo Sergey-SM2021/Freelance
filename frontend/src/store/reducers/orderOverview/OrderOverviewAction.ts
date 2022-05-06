@@ -3,7 +3,7 @@ import { OrderApi } from "../../../api/OrderApi"
 import { TClientApi } from "../../../models/IClient"
 import { IOrder } from "../../../models/IOrder"
 import { constants, IEndLoading, ISetOrders, IStartLoading } from "./orderOverviewReducerTypes"
-import FreelancerApi from '../../../api/Freelancer'
+import {FreelancerApi} from '../../../api/Freelancer'
 
 export const StartLoading = (): IStartLoading => ({ type: constants.STARTORDEROVERVIEWLOADING })
 

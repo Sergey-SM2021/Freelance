@@ -1,7 +1,7 @@
 import { OrderApi } from './../../../api/OrderApi';
 import { IOrder } from './../../../models/IOrder';
 import { ClientApi } from "../../../api/Client"
-import Freelancer from "../../../api/Freelancer"
+import {FreelancerApi} from "../../../api/Freelancer"
 import { UserApi } from "../../../api/User"
 import { TClientApi } from "../../../models/IClient"
 import { TFreelancer, TFreelancerProfileSetting } from "../../../models/IFreelancer"
@@ -68,7 +68,7 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
         const { type, id } = (await UserApi.getUser(mail, password))
         switch (type) {
             case "freelancer":
-                const freelancerProfile = await Freelancer.getFreelancerById(id)
+                const freelancerProfile = await FreelancerApi.getFreelancerById(id)
                 dispatch(setFreelancer(freelancerProfile))
                 break
             case "client":
@@ -88,8 +88,8 @@ export const getUser = (mail: string, password: string) => async (dispatch: TDis
 export const putFreelancer = (freelancer: TFreelancerProfileSetting) => async (dispatch: TDispatch) => {
     dispatch(startLoading())
     try {
-        await Freelancer.putFreelancer(freelancer)
-        const freelancerProfile = await Freelancer.getFreelancerById(freelancer.id)
+        await FreelancerApi.putFreelancer(freelancer)
+        const freelancerProfile = await FreelancerApi.getFreelancerById(freelancer.id)
         dispatch(setFreelancer(freelancerProfile))
         alert("Профиль был успешно обнавлён")
     } catch {
