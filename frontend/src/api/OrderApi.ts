@@ -32,6 +32,13 @@ class Order {
     constructor(path: string) {
         this.path = axios.create({ baseURL: path })
     }
+    createOrder: (newOrder: IOrder) => Promise<void> = async (newOrder: IOrder) => {
+        try {
+            await this.path.post("create", newOrder)
+        } catch (error) {
+            throw "Не удалось создать заказ"
+        }
+    }
     getOrder: (id: number) => Promise<IOrder> = async (id) => {
         try {
             const r = await (await this.path.get<IOrder>(`${id}`)).data
@@ -42,5 +49,5 @@ class Order {
     }
     path
 }
-
-export const OrderApi = new Order("http://62.113.109.76/order/")
+// export const OrderApi = new Order("http://62.113.109.76/order/")
+export const OrderApi = new Order("http://localhost:8900/order/")

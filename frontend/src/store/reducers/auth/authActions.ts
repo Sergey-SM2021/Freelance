@@ -121,7 +121,8 @@ const addOrderIntoMyOrders = (order:IOrder): IAddOrderIntoMyOrders => ({
 export const createOrder = (order: IOrder) => async (dispatch: TDispatch) => {
     dispatch(startLoading())
     try {
-        await ClientApi.createOrder(order)
+        // await ClientApi.createOrder(order)
+        await OrderApi.createOrder(order)
         dispatch(addOrderIntoMyOrders(order))
         alert("заказ был успешно создан")
     } catch (error) {

@@ -16,5 +16,5 @@ class Orders {
             }
         }
 }
-
-export const OrdersApi = new Orders("http://62.113.109.76/orders")
+// export const OrdersApi = new Orders("http://62.113.109.76/orders")
+export const OrdersApi = new Orders("http://localhost:8900/orders")

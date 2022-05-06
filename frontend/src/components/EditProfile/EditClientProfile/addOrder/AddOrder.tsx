@@ -41,7 +41,7 @@ export const AddOrder = ({ id }: TProps) => {
                     <AddOrderWrapper>
                         <Field name="title" title="Название" component={MyField} />
                         <Field name="description" title="Описание заказа" component={MyTextArea} />
-                        <SkillList obj={{ order: id }} name="skills" skills={values.skills} />
+                        <SkillList name="skills" skills={values.skills} />
                         <Field name="price" title={"Цена проекта"} component={MyRange} />
                         <Button>Создать заказ</Button>
                     </AddOrderWrapper>
@@ -50,3 +50,5 @@ export const AddOrder = ({ id }: TProps) => {
         </Formik>
     )
 }
+
+// name: string, id: number, order: number

@@ -104,7 +104,7 @@ export const FreelancerProfileSettings = memo(() => {
                         <Field component={MyField} title="Опыт работы" value={values.about.expiriens} name="about.expiriens" />
                         <Field component={MyField} title="Способ оплаты" value={values.about.paymentMethod} name="about.paymentMethod" />
                         <Field component={MyField} title="Цена" value={values.about.price} name="about.price" />
-                        <SkillList obj={{ freelancer: id }} name="about.stack" skills={values.about.stack} />
+                        {/* <SkillList obj={{ freelancer: id }} name="about.stack" skills={values.about.stack} /> */}
                     </ProfilePaper>
                     <SectionTitle>Завершенные заказы</SectionTitle>
                     <ProfilePaper isMainPage>

@@ -19,5 +19,5 @@ class User {
         await this.baseUrl.post("", { mail, password, type })
     }
 }
-
-export const UserApi = new User("http://62.113.109.76/user")
+// export const UserApi = new User("http://62.113.109.76/user")
+export const UserApi = new User("http://localhost:8900/user")
