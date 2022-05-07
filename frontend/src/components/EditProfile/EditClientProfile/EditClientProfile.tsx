@@ -99,7 +99,7 @@ export const EditClientProfile = memo(() => {
             validationSchema={ValidateSchema}
             initialValues={initialValues}
             onSubmit={HandlerSubmit}
-        >{({ values }) => (<>
+        >{() => (<>
             <Form>
                 <EditProfileInner>
                     <EditClientProfileHeader>

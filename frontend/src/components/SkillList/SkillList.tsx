@@ -1,10 +1,9 @@
 import { FieldArray } from "formik"
-import { FormEvent, SyntheticEvent, useState } from "react"
+import React, { FormEvent, SyntheticEvent, useState } from "react"
 
 import close from '../../assets/cancel.png'
-import { TStack } from "../../models/IFreelancer"
 import { ISkill } from "../../models/IOrder"
-import { FieldTitle } from "../Common/Common.style"
+import { Button, FieldTitle } from "../Common/Common.style"
 import { Close, Input, Skill, SkillsWrapper } from "./SkillList.style"
 
 interface ISkillList {
@@ -20,11 +19,20 @@ export const SkillList = ({ skills, name }: ISkillList) => {
         setValue(e.currentTarget.value)
     }
 
-    const AddSkillHandler = (push: any) => (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && Value.length > 0) {
-            push({ name: Value })
-            setValue("")
-            e.preventDefault();
+    const AddSkillHandler = (push: any) => (e: React.KeyboardEvent<HTMLInputElement> | React.SyntheticEvent<HTMLButtonElement>) => {
+        if (e.type == "keydown") {
+            // @ts-ignore
+            if (e.key === 'Enter' && Value.length > 0) {
+                push({ name: Value })
+                setValue("")
+                e.preventDefault();
+            }
+        } else {
+            if (Value.length > 0) {
+                push({ name: Value })
+                setValue("")
+                e.preventDefault();
+            }
         }
     }
 
@@ -40,12 +48,13 @@ export const SkillList = ({ skills, name }: ISkillList) => {
                     <FieldTitle>Навыки</FieldTitle>
                     <SkillsWrapper>
                         {
-                            skills && skills.map((skill, i) => (<Skill key={i}>{skill.name}
+                            skills && skills.map((skill, i) => (<Skill type="button" key={i}>{skill.name}
                                 <Close src={close} onClick={RemoveSkillHandler(remove, i)} />
                             </Skill>))
                         }
                         <Input placeholder='Добаить навык' type="text" value={Value} onChange={changeHandler} onKeyDown={AddSkillHandler(push)} />
                     </SkillsWrapper>
+                    <Button type="button" onClick={AddSkillHandler(push)}>Добавить</Button>
                 </>
             )}
         </FieldArray>
