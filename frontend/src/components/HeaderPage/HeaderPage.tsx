@@ -1,6 +1,6 @@
 import { FreelancersCount, FreelancersHeader } from "./HeaderPage.style"
 import {Search} from '../Search/Search'
-import { FormEvent, memo, useState } from "react"
+import { memo } from "react"
 import { findFreelancerByName } from "../../store/reducers/freelancers/freelancersActions"
 import { useDispatch, useSelector } from "react-redux"
 import { RootType } from "../../store/store"

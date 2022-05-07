@@ -34,6 +34,7 @@ class Order {
     }
     createOrder: (newOrder: IOrder) => Promise<void> = async (newOrder: IOrder) => {
         try {
+            console.log(newOrder)
             await this.path.post("create", newOrder)
         } catch (error) {
             throw "Не удалось создать заказ"
